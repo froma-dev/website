@@ -21,3 +21,17 @@ h1 {
     font-family: 'Aldrich', sans-serif;
     color: var(--color-text-primary);
 }
+
+/* Small devices (landscape phones, 576px and up) */
+@media (width <= 576px) {
+    align-items: flex-start;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (width <= 768px) { }
+
+/* Large devices (desktops, 992px and up) */
+@media (width <= 992px) { }
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (width <= 1200px) { }
