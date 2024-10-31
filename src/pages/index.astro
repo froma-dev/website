@@ -1,16 +1,38 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Tag from "../components/Tag.astro";
+import Metadata from "../components/Metadata.astro";
 ---
 
 <Layout
-	title="Frank Romaña - Software Engineering"
-	description="Frank Romaña is a software engineer with a passion for building user-friendly, accessible, and performant web applications. Focused on building innovative solutions for connected devices and applications.">
-	<main>
-		<h1>Frank<br/>
-			Romaña</h1>
-	</main>
+        title="Frank Romaña - Software Engineering"
+        description="Frank Romaña is a software engineer with a passion for building user-friendly, accessible, and performant web applications. Focused on building innovative solutions for connected devices and applications.">
+    <main>
+        <Metadata>
+            <h1>Frank<br/>Romaña</h1>
+            <h3>WEB DEVELOPER / SPAIN</h3>
+            <div class="tags">
+                <Tag text="SmartTV"/>
+                <Tag text="OTT"/>
+                <Tag text="IPTV"/>
+                <Tag text="Video Streaming"/>
+                <Tag text="Frontend"/>
+            </div>
+            <p>
+                10 years of experience collaborating to drive innovation in Connected TV web applications. Strong ability to take ownership of projects in dynamic environments, anticipating challenges to ensure exceptional user experiences and exceed customer expectations.
+            </p>
+        </Metadata>
+    </main>
 </Layout>
 
 <style>
-
+    main {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
 </style>
