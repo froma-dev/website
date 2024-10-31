@@ -1,16 +1,16 @@
 .metadata {
     display: flex;
     width: 100%;
-    padding: 0.625rem;
+    padding: 1.625rem;
     flex-direction: column;
     align-items: center;
     gap: 0.25rem;
 
     h1 {
-        font-size: 4rem;
+        font-size: 5rem;
         font-style: normal;
         font-weight: 400;
-        line-height: 4rem;
+        line-height: 5rem;
     }
     h3 {
         font-family: 'REM Variable', sans-serif;
@@ -18,7 +18,7 @@
         font-size: 1.2rem;
         font-style: normal;
         font-weight: 400;
-        line-height: 2rem;
+        line-height: 1.2rem;
     }
     .tags {
         display: flex;
@@ -32,6 +32,7 @@
     }
     p {
         color: var(--color-text-paragraph);
+        max-width: 80ch;
         text-align: center;
         font-size: 1rem;
         font-style: normal;
