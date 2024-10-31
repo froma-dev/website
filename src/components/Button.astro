@@ -1,0 +1,55 @@
+---
+const {type, text, disabled} = Astro.props;
+---
+<button class={`button ${type} ${disabled ? 'disabled' : ''}`}>
+    <slot/>
+    {text}
+</button>
+
+<style>
+    .button {
+        display: inline-flex;
+        padding: 1rem 2rem;
+        align-items: center;
+        gap: 0.75rem;
+        border: none;
+
+        color: var(--color-background-dark);
+        font-family: 'REM Variable', sans-serif;
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        transition: background 0.25s var(--smooth-transition-function);
+
+        &.default {
+            border-radius: 0.25rem;
+            background: var(--color-border);
+        }
+
+        &.cta {
+            border-radius: 0.25rem;
+            background: var(--color-accent-primary);
+
+            &:hover {
+                background: var(--color-accent-hover);
+            }
+        }
+
+        &.round {
+            color: var(--color-text-paragraph);
+            display: inline-flex;
+            padding: 1rem;
+            align-items: center;
+            gap: 0.75rem;
+
+            border-radius: 50px;
+            background: var(--color-border);
+        }
+
+        &.disabled {
+            border-radius: 0.25rem;
+            background: var(--color-text-muted);
+        }
+    }
+</style>

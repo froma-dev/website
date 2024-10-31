@@ -39,4 +39,14 @@
         line-height: normal;
         font-family: 'B612', sans-serif;
     }
+    .buttons {
+        display: flex;
+        padding: 0.5rem 0;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        gap: 0.75rem;
+        align-self: stretch;
+        flex-wrap: wrap;
+    }
 }

@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Tag from "../components/Tag.astro";
 import Metadata from "../components/Metadata.astro";
+import Button from "../components/Button.astro";
+import Play from "../icons/Play.astro";
 ---
 
 <Layout
@@ -21,6 +23,10 @@ import Metadata from "../components/Metadata.astro";
             <p>
                 10 years of experience collaborating to drive innovation in Connected TV web applications. Strong ability to take ownership of projects in dynamic environments, anticipating challenges to ensure exceptional user experiences and exceed customer expectations.
             </p>
+            <div class="buttons">
+                <Button text="Download CV" type="cta" />
+                <Button text="" type="round"><Play/></Button>
+            </div>
         </Metadata>
     </main>
 </Layout>
