@@ -11,6 +11,15 @@ importers:
       '@astrojs/check':
         specifier: ^0.9.4
         version: 0.9.4(typescript@5.6.3)
+      '@fontsource-variable/rem':
+        specifier: ^5.1.0
+        version: 5.1.0
+      '@fontsource/aldrich':
+        specifier: ^5.1.0
+        version: 5.1.0
+      '@fontsource/b612':
+        specifier: ^5.1.0
+        version: 5.1.0
       astro:
         specifier: ^4.16.7
         version: 4.16.7(rollup@4.24.2)(typescript@5.6.3)
@@ -306,6 +315,15 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource-variable/rem@5.1.0':
+    resolution: {integrity: sha512-1bb08ABDwKba1Up1ZE0omLYxPDJoJtJhh83IHInQ8ile+ZmLxHNzpkZ4k9twd7gZr6uHVmCx5JkSwwCDyLFH7A==}
+
+  '@fontsource/aldrich@5.1.0':
+    resolution: {integrity: sha512-Uz7pf83uchWOr69K3fnN1JoxCFSq7iBKcp5lpNGasuCs2njUA4V2Q2CorZr1yu03YK7K5MO5fYUARQBOvLzlGA==}
+
+  '@fontsource/b612@5.1.0':
+    resolution: {integrity: sha512-32q/ezniX6hO+FPl8v7GYAoH/75XOSOfJHKYWj03XGAbqyV8HFmDGcRMLAzSaZXYoschFutm96lNYqd9T8UiWQ==}
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -2118,6 +2136,12 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.5':
     optional: true
+
+  '@fontsource-variable/rem@5.1.0': {}
+
+  '@fontsource/aldrich@5.1.0': {}
+
+  '@fontsource/b612@5.1.0': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:

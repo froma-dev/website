@@ -1,0 +1,29 @@
+:root {
+    /* Accent Colors */
+    --color-accent-primary: hsl(48, 100%, 50%);     /* #FFCC00 */
+    --color-accent-hover: hsl(48, 100%, 45%);       /* #E6B800 */
+    --color-accent-secondary: hsl(199, 100%, 50%);  /* #00A3FF */
+
+    /* Background Colors */
+    --color-background-dark: hsl(216, 25%, 9%);     /* #111827 */
+    --color-background-light: hsl(217, 28%, 19%);   /* #1E293B */
+
+    /* Border & Divider Colors */
+    --color-border: hsl(210, 22%, 30%);             /* #334155 */
+    --color-divider: hsl(211, 30%, 14%);            /* #1C2A3A */
+
+    /* Shadow Color */
+    --color-shadow: hsla(210, 20%, 5%, 1);          /* #0B1015 */
+
+    /* Text Colors */
+    --color-text-primary: hsl(51, 100%, 50%);       /* #FFD700 */
+    --color-text-secondary: hsl(215, 15%, 85%);     /* #D1D5DB */
+    --color-text-paragraph: hsl(215, 13%, 71%);     /* #A1A9B8 */
+    --color-text-muted: hsl(215, 8%, 48%);          /* #6B7280 */
+
+    --color-overlay: hsla(215, 13%, 71%, 0.06);     /* #A1A9B8 with 6% opacity */
+
+    &.light {
+
+    }
+}
