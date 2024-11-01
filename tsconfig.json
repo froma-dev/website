@@ -8,6 +8,7 @@
       "@icons/*": ["src/icons/*"],
       "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"],
+      "@scripts/*": ["src/scripts/*"],
       "@fontsource/*": ["node_modules/@fontsource/*"],
       "@fontsource-variable/*": ["node_modules/@fontsource-variable/*"]
     }

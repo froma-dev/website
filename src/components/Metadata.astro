@@ -5,9 +5,3 @@ import '@styles/components/Metadata.css';
 <section class="metadata loading">
     <slot/>
 </section>
-
-<script>
-const $metadata = document.querySelector('.metadata')
-$metadata?.classList.remove('loading')
-$metadata?.classList.add('loaded')
-</script>

@@ -1,0 +1,27 @@
+---
+
+---
+
+<video class="video hidden" playsinline>
+    <source src="https://res.cloudinary.com/fromaweb/video/upload/v1/videos/cy3xruz1xtb9usxafo3q?_a=DATAdtWMZAA0" type="video/mp4">
+</video>
+
+<style>
+    video {
+        width: 100%;
+        height: inherit;
+        object-fit: cover;
+        grid-row: 1;
+        grid-column: 1;
+        transition: opacity 1s var(--smooth-transition-function);
+        opacity: 1;
+
+        &.visible {
+            opacity: 1;
+        }
+
+        &.hidden {
+            opacity: 0;
+        }
+    }
+</style>

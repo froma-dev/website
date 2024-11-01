@@ -1,7 +1,13 @@
 ---
-const {type, text, disabled} = Astro.props;
+interface Props {
+    type: string;
+    text: string;
+    disabled?: boolean;
+    id: string;
+}
+const {type, text, disabled, id}: Props = Astro.props;
 ---
-<button class={`button ${type} ${disabled ? 'disabled' : ''}`}>
+<button class={`button ${type} ${disabled ? 'disabled' : ''}`} id={id}>
     <slot/>
     {text}
 </button>

@@ -16,7 +16,9 @@ import Play from "../icons/Play.astro";
             <h1>Frank<br/>Romaña</h1>
             <h3>WEB DEVELOPER / SPAIN</h3>
             <p>
-                10 years of experience collaborating to drive innovation in Connected TV web applications. Strong ability to take ownership of projects in dynamic environments, anticipating challenges to ensure exceptional user experiences and exceed customer expectations.
+                10 years of experience collaborating to drive innovation in Connected TV web applications. Strong
+                ability to take ownership of projects in dynamic environments, anticipating challenges to ensure
+                exceptional user experiences and exceed customer expectations.
             </p>
             <div class="tags">
                 <Tag text="SmartTV"/>
@@ -26,12 +28,27 @@ import Play from "../icons/Play.astro";
                 <Tag text="Frontend"/>
             </div>
             <div class="buttons">
-                <Button text="Download CV" type="cta" id="download-cv" />
-                <Button text="" type="round" id="play"><Play/></Button>
+                <Button text="Download CV" type="cta" id="download-cv"/>
+                <Button text="" type="round" id="play-stop-button">
+                    <Play/>
+                </Button>
             </div>
         </Metadata>
     </main>
 </Layout>
+
+<script>
+    import {playStopVideo} from "../scripts/backgroundManager";
+
+    const $metadata = document.querySelector('.metadata')
+
+    if ($metadata) {
+        const $playStopButton = $metadata.querySelector('#play-stop-button') as HTMLButtonElement;
+        $metadata.classList.remove('loading')
+        $metadata.classList.add('loaded')
+        $playStopButton?.addEventListener('click', () => playStopVideo())
+    }
+</script>
 
 <style>
     main {

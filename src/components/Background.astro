@@ -1,24 +1,17 @@
 ---
+import Video from "./Video.astro";
 const {src, alt} = Astro.props;
 ---
 <div class="background">
+    <Video/>
     <img src={src} alt={alt} class="background-image loading"/>
     <div class="background-overlay"/>
 </div>
 
 <script>
-    const $backgroundImage = document.querySelector('.background-image') as HTMLImageElement;
+    import {setupBackground} from "@scripts/backgroundManager";
 
-    const onBackgroundImageLoad = () => {
-        $backgroundImage?.classList.add('loaded');
-        $backgroundImage?.classList.remove('loading');
-    }
-
-    if ($backgroundImage?.complete) {
-        onBackgroundImageLoad();
-    } else {
-        $backgroundImage?.addEventListener('load', () => onBackgroundImageLoad());
-    }
+    setupBackground()
 </script>
 
 <style>
@@ -35,8 +28,8 @@ const {src, alt} = Astro.props;
             height: inherit;
             grid-row: 1;
             grid-column: 1;
-            transition: opacity 2s var(--smooth-transition-function);
-            z-index: -1;
+            transition: opacity 1.5s var(--smooth-transition-function);
+            z-index: 0;
 
             &.loading {
                 opacity: 0;
@@ -44,7 +37,6 @@ const {src, alt} = Astro.props;
 
             &.loaded {
                 opacity: 1;
-                //animation: slide-in-from-right-10 1s var(--smooth-transition-function) forwards;
             }
         }
 
@@ -53,6 +45,7 @@ const {src, alt} = Astro.props;
             grid-row: 1;
             grid-column: 1;
             transition: opacity 1s var(--smooth-transition-function);
+            z-index: 0;
         }
     }
 </style>
