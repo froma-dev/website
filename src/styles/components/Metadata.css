@@ -5,6 +5,16 @@
     flex-direction: column;
     align-items: center;
     gap: 0.25rem;
+    transition: opacity 1s var(--smooth-transition-function);
+
+    &.loading {
+        opacity: 0;
+    }
+
+    &.loaded {
+        opacity: 1;
+        animation: slide-in-from-right-5 0.5s ease-in-out forwards;
+    }
 
     h1 {
         font-size: 5rem;
