@@ -1,10 +1,8 @@
 import {stopVideo, setupVideo, showVideo, hideVideo, isPaused, playVideo} from "@scripts/videoManager"
 let $backgroundImage: HTMLImageElement | null = null
-let $backgroundContainer: HTMLDivElement | null = null
 
 export function setupBackground() {
     $backgroundImage = document.querySelector('.background-image') as HTMLImageElement
-    $backgroundContainer = document.querySelector('.background')
     const backgroundImageLoaded = $backgroundImage.complete
 
     setupVideo({videoEventCallback})
@@ -14,10 +12,6 @@ export function setupBackground() {
     } else {
         $backgroundImage.addEventListener('load', () => onBackgroundImageLoad())
     }
-
-    $backgroundContainer?.addEventListener('ended', () => {
-        onVideoEnded()
-    })
 }
 
 export function showBackgroundImage() {
@@ -56,8 +50,8 @@ export function playStopVideo() {
     }
 }
 
-function videoEventCallback<T>(type: T) {
-    if (type === 'ended') {
+function videoEventCallback(ev: Event) {
+    if (ev.type === 'ended') {
         onVideoEnded()
     }
 }

@@ -1,7 +1,7 @@
 let $video: HTMLVideoElement | null = null
 
 interface SetupVideoParams {
-    videoEventCallback: (type: string, ev: Event) => void
+    videoEventCallback: (ev: Event) => void
 }
 
 export function playVideo() {
@@ -26,8 +26,7 @@ export function isPaused() {
 export function setupVideo({videoEventCallback}: SetupVideoParams) {
     $video = document.querySelector('video') as HTMLVideoElement
 
-    console.log('setupVideo')
-    $video.addEventListener('ended', (ev: Event) => videoEventCallback(ev.type, ev))
+    $video.addEventListener('ended', (ev: Event) => videoEventCallback(ev))
 }
 
 export function showVideo() {
