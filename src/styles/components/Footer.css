@@ -37,6 +37,7 @@ footer {
 
             &:hover {
                 transform: scale(1.1);
+                color: var(--color-accent-secondary);
             }
 
             &.opened {

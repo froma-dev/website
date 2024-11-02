@@ -5,6 +5,7 @@ interface SetupVideoParams {
 }
 
 export function playVideo() {
+    if ($video) $video.playbackRate = 3.0
     return $video?.play()
 }
 
@@ -26,7 +27,10 @@ export function isPaused() {
 export function setupVideo({videoEventCallback}: SetupVideoParams) {
     $video = document.querySelector('video') as HTMLVideoElement
 
-    $video.addEventListener('ended', (ev: Event) => videoEventCallback(ev))
+    $video.addEventListener('ended', (ev: Event) => {
+        document.dispatchEvent(new CustomEvent('playback-ended', {detail: ev}))
+        videoEventCallback(ev)
+    })
 }
 
 export function showVideo() {

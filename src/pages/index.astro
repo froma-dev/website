@@ -3,7 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Tag from "../components/Tag.astro";
 import Metadata from "../components/Metadata.astro";
 import Button from "../components/Button.astro";
-import Play from "../icons/Play.astro";
+import Pdf from "../icons/Pdf.astro";
+import PlayFilled from "../icons/PlayFilled.astro";
+import StopFilled from "../icons/StopFilled.astro";
 ---
 
 <Layout
@@ -28,9 +30,14 @@ import Play from "../icons/Play.astro";
                 <Tag text="Frontend"/>
             </div>
             <div class="buttons">
-                <Button text="Download CV" type="cta" id="download-cv"/>
+                <Button text="Download CV" type="cta" id="download-cv">
+                    <Pdf/>
+                </Button>
                 <Button text="" type="round" id="play-stop-button">
-                    <Play/>
+                    <div class="icon-left">
+                        <PlayFilled/>
+                        <StopFilled/>
+                    </div>
                 </Button>
             </div>
         </Metadata>
@@ -46,7 +53,13 @@ import Play from "../icons/Play.astro";
         const $playStopButton = $metadata.querySelector('#play-stop-button') as HTMLButtonElement;
         $metadata.classList.remove('loading')
         $metadata.classList.add('loaded')
-        $playStopButton?.addEventListener('click', () => playStopVideo())
+        $playStopButton?.addEventListener('click', () => {
+            $playStopButton.classList.toggle('playing')
+            playStopVideo()
+        })
+        document.addEventListener('playback-ended', () => {
+            $playStopButton.classList.toggle('playing')
+        })
     }
 </script>
 
