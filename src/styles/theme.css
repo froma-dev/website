@@ -1,12 +1,15 @@
 :root {
     /* Accent Colors */
     --color-accent-primary: hsl(48, 100%, 50%);     /* #FFCC00 */
+    --color-accent-primary-values: 48, 100%, 50%;     /* --color-accent-primary*/
     --color-accent-hover: hsl(48, 100%, 45%);       /* #E6B800 */
     --color-accent-secondary: hsl(199, 100%, 50%);  /* #00A3FF */
 
     /* Background Colors */
     --color-background-dark: hsl(216, 25%, 9%);     /* #111827 */
     --color-background-light: hsl(217, 28%, 19%);   /* #1E293B */
+    --color-background-neutral: hsl(0, 0%, 94%);   /* #F0F0F0 */
+    --color-background-neutral-values: 0, 0%, 94%;   /* --color-background-neutral */
 
     /* Border & Divider Colors */
     --color-border: hsl(210, 22%, 30%);             /* #334155 */
