@@ -1,24 +1,36 @@
 ---
 import '@styles/components/Footer.css';
+import '@styles/components/Tooltip.css';
 import Linkedin from "../icons/Linkedin.astro";
 import Mail from "../icons/Mail.astro";
 import Github from "../icons/Github.astro";
+import MailOpened from "../icons/MailOpened.astro";
+
+const emailLink = 'contact@froma.dev'
+const githubLink = 'https://github.com/froma-dev'
+const linkedinLink = 'https://www.linkedin.com/in/frankromana'
 ---
 
 <footer>
     <div class="contact">
+        <span class="tooltip">Email copied</span>
         <a id="linkedin"
-           href="https://www.linkedin.com/in/frankromana"
+           href={linkedinLink}
            target="_blank"
            rel="noopener noreferrer"
            class="button">
             <Linkedin/>
         </a>
-        <button class="button">
+        <a id="mail"
+           href=`mailto:${emailLink}`
+           data-email={emailLink}
+           rel="noopener noreferrer"
+           class="button">
             <Mail/>
-        </button>
+            <MailOpened/>
+        </a>
         <a id="github"
-           href="https://github.com/froma-dev"
+           href={githubLink}
            target="_blank"
            rel="noopener noreferrer"
            class="button">
@@ -26,3 +38,29 @@ import Github from "../icons/Github.astro";
         </a>
     </div>
 </footer>
+
+<script>
+    const $mail = document.querySelector('#mail') as HTMLAnchorElement
+    const $tooltip = document.querySelector('.tooltip') as HTMLSpanElement
+    let timeoutId: number = 0
+
+    $mail?.addEventListener('click', () => onMailSelected())
+    $mail?.addEventListener('touchend',
+        () => onMailSelected(),
+        {passive: true}
+    )
+
+    function onMailSelected() {
+        navigator.clipboard.writeText($mail.dataset.email ?? '')
+        $mail.classList.add('opened')
+        $tooltip.classList.add('visible')
+
+        if (timeoutId)
+            clearTimeout(timeoutId)
+
+        timeoutId = setTimeout(() => {
+            $mail.classList.remove('opened')
+            $tooltip.classList.remove('visible')
+        }, 2000)
+    }
+</script>

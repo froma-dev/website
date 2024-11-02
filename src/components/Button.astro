@@ -19,6 +19,7 @@ const {type, text, disabled, id}: Props = Astro.props;
         align-items: center;
         gap: 0.75rem;
         border: none;
+        background: hsla(var(--color-background-neutral-values), 0.8);
 
         color: var(--color-background-dark);
         font-family: 'REM Variable', sans-serif;
@@ -26,31 +27,36 @@ const {type, text, disabled, id}: Props = Astro.props;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
-        transition: background 0.25s var(--smooth-transition-function);
+        transition: background 0.25s var(--smooth-transition-function),transform 0.25s var(--smooth-transition-function);
+        &:hover {
+            transform: scale(1.05);
+        }
+        &:hover {
+            background: hsla(var(--color-background-neutral-values), 1);
+        }
 
         &.default {
             border-radius: 0.25rem;
-            background: var(--color-border);
+            background: var(--color-background-neutral);
         }
 
         &.cta {
             border-radius: 0.25rem;
-            background: var(--color-accent-primary);
+            background: hsla(var(--color-accent-primary-values),0.8);
 
             &:hover {
-                background: var(--color-accent-hover);
+                background: hsla(var(--color-accent-primary-values), 1);
             }
         }
 
         &.round {
-            color: var(--color-text-paragraph);
+            color: var(--color-background-dark);
             display: inline-flex;
             padding: 1rem;
             align-items: center;
             gap: 0.75rem;
 
             border-radius: 50px;
-            background: var(--color-border);
         }
 
         &.disabled {

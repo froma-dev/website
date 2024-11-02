@@ -32,10 +32,17 @@ footer {
             width: 32px;
             height: 32px;
             color: var(--color-text-paragraph);
-            transition: transform 0.2s var(--smooth-transition-function);
+            overflow: hidden;
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
             &:hover {
                 transform: scale(1.1);
+            }
+
+            &.opened {
+                svg:first-child {
+                    display: none;
+                }
             }
         }
     }
