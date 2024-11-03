@@ -6,6 +6,8 @@ import Button from "../components/Button.astro";
 import Pdf from "../icons/Pdf.astro";
 import PlayFilled from "../icons/PlayFilled.astro";
 import StopFilled from "../icons/StopFilled.astro";
+import Volume from "../icons/Volume.astro";
+import VolumeOff from "../icons/VolumeOff.astro";
 ---
 
 <Layout
@@ -33,32 +35,52 @@ import StopFilled from "../icons/StopFilled.astro";
                 <Button text="Download CV" type="cta" id="download-cv">
                     <Pdf/>
                 </Button>
-                <Button text="" type="round" id="play-stop-button">
-                    <div class="icon-left">
-                        <PlayFilled/>
-                        <StopFilled/>
-                    </div>
-                </Button>
+                <div class="playback-controls">
+                    <Button text="" type="round" id="play-stop-button">
+                        <div class="icon-left">
+                            <PlayFilled/>
+                            <StopFilled/>
+                        </div>
+                    </Button>
+                    <Button text="" type="round" id="volume-on-off-button">
+                        <div class="icon-left">
+                            <Volume/>
+                            <VolumeOff/>
+                        </div>
+                    </Button>
+                </div>
             </div>
         </Metadata>
     </main>
 </Layout>
 
 <script>
-    import {playStopVideo} from "../scripts/backgroundManager";
+    import {playStopVideo} from "@scripts/backgroundManager";
+    import {toggleMute} from "@scripts/videoManager";
 
     const $metadata = document.querySelector('.metadata')
+    const showMetadata = () => {
+        $metadata?.classList.remove('loading')
+        $metadata?.classList.add('loaded')
+    }
 
     if ($metadata) {
         const $playStopButton = $metadata.querySelector('#play-stop-button') as HTMLButtonElement;
-        $metadata.classList.remove('loading')
-        $metadata.classList.add('loaded')
+        const $volumeOnOffButton = $metadata.querySelector('#volume-on-off-button') as HTMLButtonElement;
+        showMetadata()
+
         $playStopButton?.addEventListener('click', () => {
             $playStopButton.classList.toggle('playing')
+            $volumeOnOffButton.classList.toggle('visible')
             playStopVideo()
+        })
+        $volumeOnOffButton?.addEventListener('click', () => {
+            $volumeOnOffButton.classList.toggle('muted')
+            toggleMute()
         })
         document.addEventListener('playback-ended', () => {
             $playStopButton.classList.toggle('playing')
+            $volumeOnOffButton.classList.toggle('visible')
         })
     }
 </script>

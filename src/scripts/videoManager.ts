@@ -5,7 +5,7 @@ interface SetupVideoParams {
 }
 
 export function playVideo() {
-    if ($video) $video.playbackRate = 3.0
+    //if ($video) $video.playbackRate = 3.0
     return $video?.play()
 }
 
@@ -31,6 +31,12 @@ export function setupVideo({videoEventCallback}: SetupVideoParams) {
         document.dispatchEvent(new CustomEvent('playback-ended', {detail: ev}))
         videoEventCallback(ev)
     })
+}
+
+export function toggleMute() {
+    if ($video) {
+        $video.muted = !$video.muted
+    }
 }
 
 export function showVideo() {

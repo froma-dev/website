@@ -19,7 +19,7 @@
     h1 {
         font-size: 5rem;
         font-style: normal;
-        font-weight: 400;
+        font-weight: 600;
         line-height: 4rem;
     }
     h3 {
@@ -65,6 +65,36 @@
         .button {
             &:hover {
                 background-color: var(--color-text-secondary);
+            }
+        }
+
+        .playback-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+
+            .button {
+                transition-duration: 0.5s;
+
+                &:first-child {
+                    flex-shrink: 0;
+                    z-index: 1;
+                }
+
+                &:last-child {
+                    animation: fade-out 0.5s var(--smooth-transition-function) forwards;
+                    flex-shrink: 1;
+                    width: 0;
+                    height: 0;
+                    padding: 0;
+                    transform: translateX(-100%);
+                }
+
+                &.visible {
+                    animation: fade-in 0.5s var(--smooth-transition-function) forwards;
+                    transform: translateX(0);
+                }
             }
         }
     }
