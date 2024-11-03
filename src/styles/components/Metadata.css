@@ -1,7 +1,6 @@
 .metadata {
     display: flex;
     width: 100%;
-    padding: 1.625rem;
     flex-direction: column;
     align-items: center;
     gap: 0.25rem;
@@ -102,7 +101,6 @@
 @media (width >= 576px) {
     .metadata {
         align-items: flex-start;
-        padding: 0 4rem;
 
         h1 {
             font-size: 6rem;
@@ -135,8 +133,6 @@
 /* Large devices (desktops, 992px and up) */
 @media (width >= 992px) {
     .metadata {
-        padding: 0 6rem;
-
         .tags {
             font-size: 1rem;
         }
@@ -145,15 +141,10 @@
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (width >= 1200px) {
-    .metadata {
-        padding: 0 8rem;
-    }
 }
 
 @media (width >= 1440px) {
     .metadata {
-        padding: 0 15rem;
-
         h1 {
             font-size: 7rem;
             line-height: 5.8rem;
