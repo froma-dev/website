@@ -102,11 +102,6 @@ import VolumeOff from "../icons/VolumeOff.astro";
     main {
         width: 100%;
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
         grid-row: 1;
         grid-column: 1;
 
@@ -145,7 +140,7 @@ import VolumeOff from "../icons/VolumeOff.astro";
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
-        padding: 1rem 0;
+        transform: translateY(-40%);
         border-radius: 0.5rem;
 
         h3 {
@@ -181,7 +176,6 @@ import VolumeOff from "../icons/VolumeOff.astro";
                     align-items: center;
                     text-decoration: none;
                     border-radius: 0.5rem;
-                    background: hsl(var(--oil-black) / 0.4);
                     overflow: hidden;
                     box-shadow: none;
                     border: none;
