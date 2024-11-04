@@ -3,12 +3,15 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "@layouts/*": ["src/layouts/*"],
       "@components/*": ["src/components/*"],
       "@styles/*": ["src/styles/*"],
       "@icons/*": ["src/icons/*"],
       "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"],
       "@scripts/*": ["src/scripts/*"],
+      "@static-paths/*": ["src/statics/*"],
+      "@types/*": ["src/types/*"],
       "@fontsource/*": ["node_modules/@fontsource/*"],
       "@fontsource-variable/*": ["node_modules/@fontsource-variable/*"]
     }

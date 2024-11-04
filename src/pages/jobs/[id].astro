@@ -1,0 +1,101 @@
+---
+import { JOBS } from 'src/staticpaths/jobs';
+import Tag from "@components/Tag.astro";
+import Metadata from "@components/Metadata.astro";
+import Layout from "@layouts/Layout.astro";
+
+export async function getStaticPaths() {
+    return JOBS.map((job) => {
+        return {
+            props: {
+                data: job
+            },
+        }
+    })
+}
+
+const {data} = Astro.props
+---
+
+<Layout
+        title={`Frank Romaña - Experience at ${data.name}`}
+        description="Frank Romaña is a software engineer with a passion for building user-friendly, accessible, and performant web applications. Focused on building innovative solutions."
+        bgSrc=`${data.backgroundUrl}`
+        bgTitle={`Frank Romaña - Experience at ${data.name}`}>
+    <main>
+        <Metadata>
+            <img class="logo" src={data.logo} alt={data.name}/>
+            <h3>{data.roles.join(' / ')}</h3>
+            <p>{data.description}</p>
+            <div class="tags">
+                {data.tags.map((tag) => <Tag text={tag}/>)}
+            </div>
+        </Metadata>
+    </main>
+</Layout>
+
+<script>
+    import {playStopVideo} from "@scripts/backgroundManager";
+    import {toggleMute} from "@scripts/videoManager";
+
+    const $metadata = document.querySelector('.metadata')
+    const showMetadata = () => {
+        $metadata?.classList.remove('loading')
+        $metadata?.classList.add('loaded')
+    }
+
+    if ($metadata) {
+        const $playStopButton = $metadata.querySelector('#play-stop-button') as HTMLButtonElement;
+        const $volumeOnOffButton = $metadata.querySelector('#volume-on-off-button') as HTMLButtonElement;
+        showMetadata()
+
+        $playStopButton?.addEventListener('click', () => {
+            $playStopButton.classList.toggle('playing')
+            $volumeOnOffButton.classList.toggle('visible')
+            playStopVideo()
+        })
+        $volumeOnOffButton?.addEventListener('click', () => {
+            $volumeOnOffButton.classList.toggle('muted')
+            toggleMute()
+        })
+        document.addEventListener('playback-ended', () => {
+            $playStopButton.classList.toggle('playing')
+            $volumeOnOffButton.classList.toggle('visible')
+        })
+    }
+</script>
+
+<style>
+    main {
+        width: 100%;
+        height: 100%;
+        grid-row: 1;
+        grid-column: 1;
+
+        padding: 1.625rem;
+    }
+
+    @media (width >= 576px) {
+        main {
+            padding: 0 4rem;
+        }
+    }
+
+    @media (width >= 992px) {
+        main {
+            padding: 0 6rem;
+        }
+    }
+
+    @media (width >= 1200px) {
+        main {
+            padding: 0 8rem;
+        }
+    }
+
+    @media (width >= 1440px) {
+        main {
+            padding: 0 15rem;
+        }
+    }
+</style>
