@@ -10,8 +10,9 @@ const {src, alt} = Astro.props;
 
 <script>
     import {setupBackground} from "@scripts/backgroundManager";
-
-    setupBackground()
+        document.addEventListener('astro:page-load', () => {
+            setupBackground()
+            })
 </script>
 
 <style>

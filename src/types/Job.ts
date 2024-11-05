@@ -7,5 +7,6 @@ export interface Job {
     tags: string[]
     description: string,
     logo: string,
-    backgroundUrl: string
+    backgroundUrl: string,
+    transitionName?: string
 }

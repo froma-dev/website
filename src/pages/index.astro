@@ -56,10 +56,10 @@ import VolumeOff from "../icons/VolumeOff.astro";
             <div class="carousel">
                 <div class="strip">
                     <a class="asset job" href="/jobs/24i">
-                        <img src="/images/24i_logo.svg" alt="24i logo"/>
+                        <img transition:name="24i_logo" src="/images/24i_logo.svg" alt="24i logo"/>
                     </a>
                     <a class="asset job" href="/jobs/nokia">
-                        <img src="/images/nokia_logo.svg" alt="Nokia TECSS logo"/>
+                        <img transition:name="nokia_logo" src="/images/nokia_logo.svg" alt="Nokia TECSS logo"/>
                     </a>
                 </div>
             </div>
@@ -71,31 +71,33 @@ import VolumeOff from "../icons/VolumeOff.astro";
     import {playStopVideo} from "@scripts/backgroundManager";
     import {toggleMute} from "@scripts/videoManager";
 
-    const $metadata = document.querySelector('.metadata')
-    const showMetadata = () => {
-        $metadata?.classList.remove('loading')
-        $metadata?.classList.add('loaded')
-    }
+    document.addEventListener('astro:page-load', () => {
+        const $metadata = document.querySelector('.metadata')
+        const showMetadata = () => {
+            $metadata?.classList.remove('loading')
+            $metadata?.classList.add('loaded')
+        }
 
-    if ($metadata) {
-        const $playStopButton = $metadata.querySelector('#play-stop-button') as HTMLButtonElement;
-        const $volumeOnOffButton = $metadata.querySelector('#volume-on-off-button') as HTMLButtonElement;
-        showMetadata()
+        if ($metadata) {
+            const $playStopButton = $metadata.querySelector('#play-stop-button') as HTMLButtonElement;
+            const $volumeOnOffButton = $metadata.querySelector('#volume-on-off-button') as HTMLButtonElement;
+            showMetadata()
 
-        $playStopButton?.addEventListener('click', () => {
-            $playStopButton.classList.toggle('playing')
-            $volumeOnOffButton.classList.toggle('visible')
-            playStopVideo()
-        })
-        $volumeOnOffButton?.addEventListener('click', () => {
-            $volumeOnOffButton.classList.toggle('muted')
-            toggleMute()
-        })
-        document.addEventListener('playback-ended', () => {
-            $playStopButton.classList.toggle('playing')
-            $volumeOnOffButton.classList.toggle('visible')
-        })
-    }
+            $playStopButton?.addEventListener('click', () => {
+                $playStopButton.classList.toggle('playing')
+                $volumeOnOffButton.classList.toggle('visible')
+                playStopVideo()
+            })
+            $volumeOnOffButton?.addEventListener('click', () => {
+                $volumeOnOffButton.classList.toggle('muted')
+                toggleMute()
+            })
+            document.addEventListener('playback-ended', () => {
+                $playStopButton.classList.toggle('playing')
+                $volumeOnOffButton.classList.toggle('visible')
+            })
+        }
+    })
 </script>
 
 <style>

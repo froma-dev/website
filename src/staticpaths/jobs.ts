@@ -11,7 +11,8 @@ export const JOBS: Job[] = [
         description: 'Delivered seamless VOD and Live streaming experiences including Catch-Up, Start-Over, and CDVR, ' +
             'leveraging DRMs and different players (Shaka Player and native TV players).',
         logo: '/images/24i_logo.svg',
-        backgroundUrl: 'https://res.cloudinary.com/fromaweb/image/upload/e_grayscale/images/cthefogvyyi6z9ulvqad.jpg'
+        backgroundUrl: 'https://res.cloudinary.com/fromaweb/image/upload/e_grayscale/images/cthefogvyyi6z9ulvqad.jpg',
+        transitionName: '24i_logo'
     },
     {
         id: 'nokia',
@@ -25,6 +26,7 @@ export const JOBS: Job[] = [
             'colleagues and crafting exceptional user experiences, this developer proves that technical brilliance, ' +
             'leadership skills, and a global perspective can thrive together, leading to remarkable outcomes.',
         logo: '/images/nokia_logo.svg',
-        backgroundUrl: 'https://res.cloudinary.com/fromaweb/image/upload/e_grayscale/images/cthefogvyyi6z9ulvqad.jpg'
+        backgroundUrl: 'https://res.cloudinary.com/fromaweb/image/upload/e_grayscale/images/cthefogvyyi6z9ulvqad.jpg',
+        transitionName: 'nokia_logo'
     }
 ]

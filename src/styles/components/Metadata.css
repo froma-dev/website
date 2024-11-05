@@ -17,6 +17,11 @@
         animation: slide-in-from-right-5 0.5s ease-in-out forwards;
     }
 
+    .logo {
+        width: 15.625rem;
+        padding: 0.25rem 0;
+    }
+
     h1 {
         font-size: 5rem;
         font-style: normal;

@@ -1,20 +1,25 @@
 ---
-import { JOBS } from 'src/staticpaths/jobs';
+import {JOBS} from 'src/staticpaths/jobs';
 import Tag from "@components/Tag.astro";
 import Metadata from "@components/Metadata.astro";
 import Layout from "@layouts/Layout.astro";
+import {fade} from "astro:transitions";
 
 export async function getStaticPaths() {
     return JOBS.map((job) => {
         return {
-            props: {
-                data: job
+            params: {
+                id: job.id
             },
         }
     })
 }
 
-const {data} = Astro.props
+const {id} = Astro.params
+const data = JOBS.filter((job) => job.id === id)[0]
+
+const is24i = id === '24i'
+const isNokia = id === 'nokia'
 ---
 
 <Layout
@@ -24,45 +29,33 @@ const {data} = Astro.props
         bgTitle={`Frank Romaña - Experience at ${data.name}`}>
     <main>
         <Metadata>
-            <img class="logo" src={data.logo} alt={data.name}/>
+            <img transition:animate={fade({ duration: '0.5s' })} class="logo" transition:name={data.transitionName} src={data.logo} alt={data.name}/>
             <h3>{data.roles.join(' / ')}</h3>
             <p>{data.description}</p>
             <div class="tags">
-                {data.tags.map((tag) => <Tag text={tag}/>)}
+                {data.tags.map((tag) =>
+                        <Tag text={tag}/>
+                )}
             </div>
         </Metadata>
+        <section class="experience">
+            <h3>Experience</h3>
+            <div class="carousel">
+                <div class="strip">
+                    <a class=`asset job ${is24i ? 'active' : ''}`>
+                        <img transition:name={is24i ? '' : '24i_logo'} src="/images/24i_logo.svg" alt="24i logo"/>
+                    </a>
+                    <a class=`asset job ${isNokia ? 'active' : ''}`>
+                        <img transition:name={isNokia ? '' : 'nokia_logo'} src="/images/nokia_logo.svg" alt="Nokia TECSS logo"/>
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 </Layout>
 
 <script>
-    import {playStopVideo} from "@scripts/backgroundManager";
-    import {toggleMute} from "@scripts/videoManager";
 
-    const $metadata = document.querySelector('.metadata')
-    const showMetadata = () => {
-        $metadata?.classList.remove('loading')
-        $metadata?.classList.add('loaded')
-    }
-
-    if ($metadata) {
-        const $playStopButton = $metadata.querySelector('#play-stop-button') as HTMLButtonElement;
-        const $volumeOnOffButton = $metadata.querySelector('#volume-on-off-button') as HTMLButtonElement;
-        showMetadata()
-
-        $playStopButton?.addEventListener('click', () => {
-            $playStopButton.classList.toggle('playing')
-            $volumeOnOffButton.classList.toggle('visible')
-            playStopVideo()
-        })
-        $volumeOnOffButton?.addEventListener('click', () => {
-            $volumeOnOffButton.classList.toggle('muted')
-            toggleMute()
-        })
-        document.addEventListener('playback-ended', () => {
-            $playStopButton.classList.toggle('playing')
-            $volumeOnOffButton.classList.toggle('visible')
-        })
-    }
 </script>
 
 <style>
@@ -96,6 +89,87 @@ const {data} = Astro.props
     @media (width >= 1440px) {
         main {
             padding: 0 15rem;
+        }
+    }
+
+    .experience {
+        z-index: 1;
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        transform: translateY(-40%);
+        border-radius: 0.5rem;
+
+        h3 {
+            font-family: 'REM Variable', sans-serif;
+            color: var(--color-text-secondary);
+            font-size: 1.5rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 1.2rem;
+            text-align: left;
+        }
+
+        .carousel {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            max-width: 70rem;
+
+            .strip {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: left;
+                gap: 1rem;
+                width: 100%;
+
+                .asset {
+                    display: flex;
+                    flex-direction: column;
+                    flex-basis: 8.75rem;
+                    align-items: center;
+                    text-decoration: none;
+                    border-radius: 0.5rem;
+                    overflow: hidden;
+                    box-shadow: none;
+                    border: none;
+                    outline: transparent solid 3px;
+                    outline-offset: 0;
+                    transition: background 0.25s var(--smooth-transition-function),
+                    transform 0.25s var(--smooth-transition-function);
+
+                    &:hover {
+                        transform: scale(1.05);
+                        background: var(--color-overlay);
+                        backdrop-filter: blur(12px);
+                    }
+
+                    &.job {
+                        width: 8.75rem;
+                        height: 8.75rem;
+                        border: 1px solid var(--color-border);
+                        border-radius: 0.5rem;
+
+                        img {
+                            padding: 1rem;
+                            object-fit: contain;
+                            width: inherit;
+                            height: inherit;
+                        }
+                    }
+
+                    &.active {
+                        border-color: var(--color-accent-primary);
+                        transform: scale(1.05);
+                    }
+                }
+            }
         }
     }
 </style>
