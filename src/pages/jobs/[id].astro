@@ -30,7 +30,7 @@ const isNokia = id === 'nokia'
     <main>
         <Metadata>
             <img transition:animate={fade({ duration: '0.5s' })} class="logo" transition:name={data.transitionName} src={data.logo} alt={data.name}/>
-            <h3>{data.roles.join(' / ')}</h3>
+            <h3>{data.name + ' // ' + data.roles.join(' / ')}</h3>
             <p>{data.description}</p>
             <div class="tags">
                 {data.tags.map((tag) =>
@@ -42,10 +42,10 @@ const isNokia = id === 'nokia'
             <h3>Experience</h3>
             <div class="carousel">
                 <div class="strip">
-                    <a class=`asset job ${is24i ? 'active' : ''}`>
+                    <a class=`asset job ${is24i ? 'active' : ''}` href={is24i ? '#metadata' : '/jobs/24i'} data-astro-history="replace">
                         <img transition:name={is24i ? '' : '24i_logo'} src="/images/24i_logo.svg" alt="24i logo"/>
                     </a>
-                    <a class=`asset job ${isNokia ? 'active' : ''}`>
+                    <a class=`asset job ${isNokia ? 'active' : ''}` href={isNokia ? '#metadata' : '/jobs/nokia'} data-astro-history="replace">
                         <img transition:name={isNokia ? '' : 'nokia_logo'} src="/images/nokia_logo.svg" alt="Nokia TECSS logo"/>
                     </a>
                 </div>
