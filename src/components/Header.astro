@@ -1,0 +1,49 @@
+---
+
+---
+
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="/">
+                <h2 transition:name="brand-logo">Frank<br/>Romaña</h2>
+            </a>
+        </div>
+    </div>
+</header>
+
+<style>
+    .header {
+        padding: 2rem var(--layout-padding-x);
+        align-self: flex-start;
+        grid-row: 1;
+        grid-column: 1;
+        z-index: 1;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        a {
+            text-decoration: none;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            line-height: 2rem;
+            margin: 0;
+            font-family: 'Aldrich', sans-serif;
+            color: var(--color-text-primary);
+        }
+    }
+</style>
