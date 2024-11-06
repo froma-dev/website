@@ -35,6 +35,57 @@ const { title, description, bgSrc, bgTitle } = Astro.props;
 	</body>
 </html>
 
-<style>
+<script>
+	import {playPauseVideo} from "@scripts/backgroundManager";
+	import {toggleMute} from "@scripts/videoManager";
 
-</style>
+	let $playPauseButton: HTMLButtonElement
+	let $volumeOnOffButton: HTMLButtonElement
+
+	const onPlayPauseButtonClick = () => {
+		$playPauseButton.classList.toggle('playing')
+		$volumeOnOffButton.classList.toggle('visible')
+		playPauseVideo()
+	}
+
+	const onVolumeOnOffButtonClick = () => {
+		$volumeOnOffButton.classList.toggle('muted')
+		toggleMute()
+	}
+
+	const onPlaybackEnded = () => {
+		$playPauseButton.classList.toggle('playing')
+		$volumeOnOffButton.classList.toggle('visible')
+	}
+
+	document.addEventListener('astro:page-load', () => {
+		const $metadata = document.querySelector('.metadata')
+		const showMetadata = () => {
+			$metadata?.classList.remove('loading')
+			$metadata?.classList.add('loaded')
+		}
+
+		if ($metadata) {
+			$playPauseButton = $metadata.querySelector('#play-pause-button') as HTMLButtonElement;
+			$volumeOnOffButton = $metadata.querySelector('#volume-on-off-button') as HTMLButtonElement;
+			showMetadata()
+			addEventListeners()
+		}
+	})
+
+	document.addEventListener('astro:before-preparation', () => {
+		removeEventListeners()
+	})
+
+	function addEventListeners() {
+		$playPauseButton?.addEventListener('click', onPlayPauseButtonClick)
+		$volumeOnOffButton?.addEventListener('click', onVolumeOnOffButtonClick)
+		document.addEventListener('playback-ended', onPlaybackEnded)
+	}
+
+	function removeEventListeners() {
+		$playPauseButton?.removeEventListener('click', onPlayPauseButtonClick)
+		$volumeOnOffButton?.removeEventListener('click', onVolumeOnOffButtonClick)
+		document.removeEventListener('playback-ended', onPlaybackEnded)
+	}
+</script>
