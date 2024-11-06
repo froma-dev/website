@@ -30,7 +30,6 @@
         .strip {
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
             justify-content: left;
             gap: 1rem;
             width: 100%;
@@ -38,27 +37,29 @@
             .asset {
                 width: 100%;
                 display: flex;
+                background-color: var(--color-overlay);
                 flex-direction: column;
-                flex-basis: 16rem;
+                flex: 0 1 20rem;
                 align-items: center;
+                justify-content: center;
                 text-decoration: none;
                 border-radius: 0.5rem;
                 overflow: hidden;
                 box-shadow: none;
                 border: none;
-                outline: transparent solid 3px;
+                outline: none;
                 outline-offset: 0;
                 transition: background 0.25s var(--smooth-transition-function),
-                transform 0.25s var(--smooth-transition-function);
+                transform 0.25s var(--smooth-transition-function),
+                backdrop-filter 0.25s var(--smooth-transition-function);
 
                 &:hover {
                     transform: scale(1.05);
                     background: var(--color-overlay);
-                    backdrop-filter: blur(12px);
+                    backdrop-filter: blur(0.75rem);
                 }
 
                 &.job {
-                    height: 16rem;
                     border: 1px solid var(--color-border);
                     border-radius: 0.5rem;
 
