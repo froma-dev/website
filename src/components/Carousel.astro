@@ -1,14 +1,15 @@
 ---
 import '@styles/components/Carousel.css'
 import type {Asset} from "../types/Asset";
-const {assets} = Astro.props
+const {assets, params} = Astro.props
+const {title, history} = params
 ---
 <section class="carousel-container">
-    <h3>Experience</h3>
+    <h3>{title}</h3>
     <div class="carousel">
         <div class="strip">
             {assets.map(({classNames, href, logo, transitionName, alt}: Asset) =>
-                    <a class=`asset ${classNames}` href={href} data-astro-history="auto">
+                    <a class=`asset ${classNames}` href={href} data-astro-history={history ?? 'auto'}>
                         <img transition:name={transitionName} src={logo} alt={alt}/>
                     </a>
             )}

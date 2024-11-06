@@ -4,10 +4,13 @@ import Tag from "@components/Tag.astro";
 import Metadata from "@components/Metadata.astro";
 import Layout from "@layouts/Layout.astro";
 import {fade} from "astro:transitions";
-import Carousel from "../../components/Carousel.astro";
-import type {Asset} from "../../types/Asset";
+import Carousel from "@components/Carousel.astro";
+import type {Asset} from "@types/Asset";
+import type {JobId} from "@types/Job";
+import Header from "@components/Header.astro";
+import type {GetStaticPathsResult} from "astro";
 
-export async function getStaticPaths() {
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     return JOBS.map((job) => {
         return {
             params: {
@@ -30,7 +33,7 @@ const {
     tags,
     description,
     transitionName
-} = getJobById(id)
+} = getJobById(id as JobId)
 
 const assets: Asset[] = JOBS.map((job): Asset => {
     return {
@@ -41,6 +44,11 @@ const assets: Asset[] = JOBS.map((job): Asset => {
         alt: job.name
     }
 })
+
+const carouselParams = {
+    title: 'Experience',
+    history: 'replace'
+}
 ---
 
 <Layout
@@ -48,11 +56,13 @@ const assets: Asset[] = JOBS.map((job): Asset => {
         description="Frank Romaña is a software engineer with a passion for building user-friendly, accessible, and performant web applications. Focused on building innovative solutions."
         bgSrc=`${backgroundUrl}`
         bgTitle={`Frank Romaña - Experience at ${name}`}>
+    <Header/>
     <main>
         <Metadata>
             <img transition:animate={fade({duration: '0.5s'})} class="logo" transition:name={transitionName} src={logo}
                  alt={name}/>
-            <h3>{name + ' // ' + roles.join(' / ')}</h3>
+            <h3>{name}</h3>
+            <h3>{roles.join(' / ')}</h3>
             <p>{description}</p>
             <div class="tags">
                 {tags.map((tag) =>
@@ -60,7 +70,7 @@ const assets: Asset[] = JOBS.map((job): Asset => {
                 )}
             </div>
         </Metadata>
-        <Carousel assets={assets}/>
+        <Carousel assets={assets} params={carouselParams}/>
     </main>
 </Layout>
 
@@ -71,30 +81,6 @@ const assets: Asset[] = JOBS.map((job): Asset => {
         grid-row: 1;
         grid-column: 1;
 
-        padding: 1.625rem;
-    }
-
-    @media (width >= 576px) {
-        main {
-            padding: 0 4rem;
-        }
-    }
-
-    @media (width >= 992px) {
-        main {
-            padding: 0 6rem;
-        }
-    }
-
-    @media (width >= 1200px) {
-        main {
-            padding: 0 8rem;
-        }
-    }
-
-    @media (width >= 1440px) {
-        main {
-            padding: 0 15rem;
-        }
+        padding: var(--layout-padding-y) var(--layout-padding-x);
     }
 </style>

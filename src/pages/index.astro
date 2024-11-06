@@ -5,11 +5,11 @@ import Metadata from "../components/Metadata.astro";
 import Button from "../components/Button.astro";
 import Pdf from "../icons/Pdf.astro";
 import PlayFilled from "../icons/PlayFilled.astro";
-import StopFilled from "../icons/StopFilled.astro";
 import Volume from "../icons/Volume.astro";
 import VolumeOff from "../icons/VolumeOff.astro";
 import Carousel from "../components/Carousel.astro";
 import {JOBS} from "../staticpaths/jobs";
+import PauseFilled from "../icons/PauseFilled.astro";
 
 const assets = JOBS.map((job) => {
     return {
@@ -20,6 +20,11 @@ const assets = JOBS.map((job) => {
         alt: job.name
     }
 })
+
+const carouselParams = {
+    title: 'Experience',
+    history: 'auto'
+}
 ---
 
 <Layout
@@ -29,7 +34,7 @@ const assets = JOBS.map((job) => {
         bgTitle="Frank Romaña - Software Engineering">
     <main>
         <Metadata>
-            <h1>Frank<br/>Romaña</h1>
+            <h1 transition:name="brand-logo">Frank<br/>Romaña</h1>
             <h3>WEB DEVELOPER / SPAIN</h3>
             <p>
                 10 years of experience collaborating to drive innovation in Connected TV web applications. Strong
@@ -48,10 +53,10 @@ const assets = JOBS.map((job) => {
                     <Pdf/>
                 </Button>
                 <div class="playback-controls">
-                    <Button text="" type="round" id="play-stop-button">
+                    <Button text="" type="round" id="play-pause-button">
                         <div class="icon-left">
                             <PlayFilled/>
-                            <StopFilled/>
+                            <PauseFilled/>
                         </div>
                     </Button>
                     <Button text="" type="round" id="volume-on-off-button">
@@ -63,42 +68,9 @@ const assets = JOBS.map((job) => {
                 </div>
             </div>
         </Metadata>
-        <Carousel assets={assets}/>
+        <Carousel assets={assets} params={carouselParams}/>
     </main>
 </Layout>
-
-<script>
-    import {playStopVideo} from "@scripts/backgroundManager";
-    import {toggleMute} from "@scripts/videoManager";
-
-    document.addEventListener('astro:page-load', () => {
-        const $metadata = document.querySelector('.metadata')
-        const showMetadata = () => {
-            $metadata?.classList.remove('loading')
-            $metadata?.classList.add('loaded')
-        }
-
-        if ($metadata) {
-            const $playStopButton = $metadata.querySelector('#play-stop-button') as HTMLButtonElement;
-            const $volumeOnOffButton = $metadata.querySelector('#volume-on-off-button') as HTMLButtonElement;
-            showMetadata()
-
-            $playStopButton?.addEventListener('click', () => {
-                $playStopButton.classList.toggle('playing')
-                $volumeOnOffButton.classList.toggle('visible')
-                playStopVideo()
-            })
-            $volumeOnOffButton?.addEventListener('click', () => {
-                $volumeOnOffButton.classList.toggle('muted')
-                toggleMute()
-            })
-            document.addEventListener('playback-ended', () => {
-                $playStopButton.classList.toggle('playing')
-                $volumeOnOffButton.classList.toggle('visible')
-            })
-        }
-    })
-</script>
 
 <style>
     main {
@@ -107,30 +79,6 @@ const assets = JOBS.map((job) => {
         grid-row: 1;
         grid-column: 1;
 
-        padding: 1.625rem;
-    }
-
-    @media (width >= 576px) {
-        main {
-            padding: 0 4rem;
-        }
-    }
-
-    @media (width >= 992px) {
-        main {
-            padding: 0 6rem;
-        }
-    }
-
-    @media (width >= 1200px) {
-        main {
-            padding: 0 8rem;
-        }
-    }
-
-    @media (width >= 1440px) {
-        main {
-            padding: 0 15rem;
-        }
+        padding: var(--layout-padding-y) var(--layout-padding-x);
     }
 </style>
