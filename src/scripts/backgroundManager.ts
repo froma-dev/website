@@ -1,4 +1,4 @@
-import {stopVideo, setupVideo, showVideo, hideVideo, isPaused, playVideo} from "@scripts/videoManager"
+import {stopVideo, setupVideo, showVideo, hideVideo, isPaused, playVideo, pauseVideo} from "@scripts/videoManager"
 let $backgroundImage: HTMLImageElement | null = null
 
 export function setupBackground() {
@@ -47,6 +47,15 @@ export function playStopVideo() {
     } else {
         stopVideo()
         showBackgroundImage()
+    }
+}
+
+export function playPauseVideo() {
+    if(isPaused()) {
+        playVideo()
+        showPlayer()
+    } else {
+        pauseVideo()
     }
 }
 

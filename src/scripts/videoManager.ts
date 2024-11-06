@@ -5,7 +5,6 @@ interface SetupVideoParams {
 }
 
 export function playVideo() {
-    //if ($video) $video.playbackRate = 3.0
     return $video?.play()
 }
 
