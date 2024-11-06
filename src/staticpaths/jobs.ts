@@ -12,7 +12,8 @@ export const JOBS: Job[] = [
             'leveraging DRMs and different players (Shaka Player and native TV players).',
         logo: '/images/24i_logo.svg',
         backgroundUrl: 'https://res.cloudinary.com/fromaweb/image/upload/e_grayscale/images/cthefogvyyi6z9ulvqad.jpg',
-        transitionName: '24i_logo'
+        transitionName: '24i_logo',
+        href: '/jobs/24i'
     },
     {
         id: 'nokia',
@@ -27,6 +28,11 @@ export const JOBS: Job[] = [
             'leadership skills, and a global perspective can thrive together, leading to remarkable outcomes.',
         logo: '/images/nokia_logo.svg',
         backgroundUrl: 'https://res.cloudinary.com/fromaweb/image/upload/e_grayscale/images/cthefogvyyi6z9ulvqad.jpg',
-        transitionName: 'nokia_logo'
+        transitionName: 'nokia_logo',
+        href: '/jobs/nokia'
     }
 ]
+
+export function getJobById(id: string): Job {
+    return JOBS.filter((job) => job.id === id)[0]
+}

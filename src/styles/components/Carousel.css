@@ -1,0 +1,76 @@
+.carousel-container {
+    z-index: 1;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    transform: translateY(-40%);
+    border-radius: 0.5rem;
+
+    h3 {
+        font-family: 'REM Variable', sans-serif;
+        color: var(--color-text-secondary);
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.2rem;
+        text-align: left;
+    }
+
+    .carousel {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        max-width: 70rem;
+
+        .strip {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: left;
+            gap: 1rem;
+            width: 100%;
+
+            .asset {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                flex-basis: 16rem;
+                align-items: center;
+                text-decoration: none;
+                border-radius: 0.5rem;
+                overflow: hidden;
+                box-shadow: none;
+                border: none;
+                outline: transparent solid 3px;
+                outline-offset: 0;
+                transition: background 0.25s var(--smooth-transition-function),
+                transform 0.25s var(--smooth-transition-function);
+
+                &:hover {
+                    transform: scale(1.05);
+                    background: var(--color-overlay);
+                    backdrop-filter: blur(12px);
+                }
+
+                &.job {
+                    height: 16rem;
+                    border: 1px solid var(--color-border);
+                    border-radius: 0.5rem;
+
+                    img {
+                        padding: 3rem;
+                        object-fit: contain;
+                        width: inherit;
+                        height: inherit;
+                    }
+                }
+
+            }
+        }
+    }
+}
