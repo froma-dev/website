@@ -8,6 +8,6 @@ export interface Job {
     description: string,
     logo: string,
     backgroundUrl: string,
-    transitionName?: string,
+    transitionName: string,
     href: string
 }

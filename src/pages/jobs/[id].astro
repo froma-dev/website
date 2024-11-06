@@ -32,14 +32,14 @@ const {
     transitionName
 } = getJobById(id)
 
-const assets: Asset[] = JOBS.map((job) => {
+const assets: Asset[] = JOBS.map((job): Asset => {
     return {
         classNames: 'job',
         href: url === job.href ? '#metadata' : job.href,
         logo: job.logo,
         transitionName: url === job.href ? '' : job.transitionName,
         alt: job.name
-    } as Asset
+    }
 })
 ---
 
@@ -63,10 +63,6 @@ const assets: Asset[] = JOBS.map((job) => {
         <Carousel assets={assets}/>
     </main>
 </Layout>
-
-<script>
-
-</script>
 
 <style>
     main {
