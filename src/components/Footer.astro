@@ -50,8 +50,8 @@ const linkedinLink = 'https://www.linkedin.com/in/frankromana'
         {passive: true}
     )
 
-    function onMailSelected() {
-        navigator.clipboard.writeText($mail.dataset.email ?? '')
+    async function onMailSelected() {
+        await navigator.clipboard.writeText($mail.dataset.email ?? '')
         $mail.classList.add('opened')
         $tooltip.classList.add('visible')
 
