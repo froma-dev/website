@@ -2,7 +2,7 @@ export type JobId = '24i' | 'nokia'
 
 export interface Job {
     id: JobId,
-    name: string,
+    company: string,
     linkedinUrl: string,
     websiteUrl: string,
     roles: string[]
@@ -11,5 +11,7 @@ export interface Job {
     logo: string,
     backgroundUrl: string,
     transitionName: string,
-    href: string
+    href: string,
+    startYear: number
+    endYear: number
 }

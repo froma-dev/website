@@ -9,6 +9,8 @@ import type {Asset} from "@types/Asset";
 import type {JobId} from "@types/Job";
 import Header from "@components/Header.astro";
 import type {GetStaticPathsResult} from "astro";
+import Linkedin from "../../icons/Linkedin.astro";
+import WorldWWW from "../../icons/WorldWWW.astro";
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     return JOBS.map((job) => {
@@ -26,13 +28,17 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 const {id} = Astro.params
 const {url} = Astro.props
 const {
-    name,
+    company,
     backgroundUrl,
     logo,
     roles,
     tags,
     description,
-    transitionName
+    transitionName,
+    startYear,
+    endYear,
+    linkedinUrl,
+    websiteUrl
 } = getJobById(id as JobId)
 
 const assets: Asset[] = JOBS.map((job): Asset => {
@@ -41,7 +47,7 @@ const assets: Asset[] = JOBS.map((job): Asset => {
         href: url === job.href ? '#metadata' : job.href,
         logo: job.logo,
         transitionName: url === job.href ? '' : job.transitionName,
-        alt: job.name
+        alt: job.company
     }
 })
 
@@ -52,17 +58,22 @@ const carouselParams = {
 ---
 
 <Layout
-        title={`Frank Romaña - Experience at ${name}`}
+        title={`Frank Romaña - Experience at ${company}`}
         description="Frank Romaña is a software engineer with a passion for building user-friendly, accessible, and performant web applications. Focused on building innovative solutions."
         bgSrc=`${backgroundUrl}`
-        bgTitle={`Frank Romaña - Experience at ${name}`}>
+        bgTitle={`Frank Romaña - Experience at ${company}`}>
     <Header/>
     <main>
         <Metadata>
             <img transition:animate={fade({duration: '0.5s'})} class="logo" transition:name={transitionName} src={logo}
-                 alt={name}/>
-            <h3>{name}</h3>
-            <h3>{roles.join(' / ')}</h3>
+                 alt={company}/>
+            <div class="info">
+                {startYear}
+                <Tag text={`${endYear - startYear} Seasons`}/>
+                <a href={linkedinUrl} target="_blank" rel="noopener noreferrer"><Linkedin/></a>
+                <a href={websiteUrl} target="_blank" rel="noopener noreferrer"><WorldWWW/></a>
+            </div>
+            <h3>{roles.join(' & ')}</h3>
             <p>{description}</p>
             <div class="tags">
                 {tags.map((tag) =>

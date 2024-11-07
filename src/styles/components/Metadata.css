@@ -19,7 +19,7 @@
 
     .logo {
         max-width: 21.625rem;
-        padding: 1rem 0;
+        padding-bottom: 0.5rem;
     }
 
     h1 {
@@ -28,18 +28,41 @@
         font-weight: 600;
         line-height: 4rem;
     }
+    .info {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        color: var(--color-text-secondary);
+        font-family: 'REM Variable', sans-serif;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            line-height: 0;
+            transition: color 0.3s var(--smooth-transition-function);
+
+            &:hover {
+                color: var(--color-accent-secondary);
+            }
+        }
+
+        .tag {
+            background-color: var(--color-overlay);
+        }
+    }
     h3 {
         font-family: 'REM Variable', sans-serif;
         color: var(--color-text-secondary);
         font-size: 1.5rem;
         font-style: normal;
         font-weight: 400;
-        line-height: 1.2rem;
+        line-height: 1.5rem;
         text-align: center;
     }
     .tags {
         display: flex;
-        padding: 0.25rem 0;
         justify-content: center;
         align-items: center;
         align-content: center;
@@ -57,7 +80,7 @@
         font-weight: 400;
         line-height: normal;
         font-family: 'B612', sans-serif;
-        padding: 0.5rem 0;
+        padding: 0 0 0.5rem 0;
     }
     .buttons {
         display: flex;
@@ -100,6 +123,12 @@
                     animation: fade-in 0.5s var(--smooth-transition-function) forwards;
                     transform: translateX(0);
                 }
+
+                &:hover {
+                    &.visible {
+                        transform: translateX(0) scale(1.05);
+                    }
+                }
             }
         }
     }
@@ -117,7 +146,7 @@
 
         h3 {
             font-size: 1.86rem;
-            line-height: 1.5rem;
+            line-height: 1.86rem;
         }
 
         .tags {
@@ -155,12 +184,12 @@
     .metadata {
         h1 {
             font-size: 7rem;
-            line-height: 5.8rem;
+            line-height: 5.4rem;
         }
 
         h3 {
             font-size: 2.2rem;
-            line-height: 1.8rem;;
+            line-height: 2.2rem;
         }
 
         .tags {
