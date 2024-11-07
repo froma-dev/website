@@ -25,26 +25,5 @@ footer {
         border: 1px solid var(--color-border);
         background: var(--color-overlay);
         backdrop-filter: blur(12px);
-
-        .button {
-            border: none;
-            background: none;
-            width: 32px;
-            height: 32px;
-            color: var(--color-text-paragraph);
-            overflow: hidden;
-            transition: transform 0.25s var(--smooth-transition-function);
-
-            &:hover {
-                transform: scale(1.1);
-                color: var(--color-accent-secondary);
-            }
-
-            &.opened {
-                svg:first-child {
-                    display: none;
-                }
-            }
-        }
     }
 }

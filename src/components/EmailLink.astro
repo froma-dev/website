@@ -1,0 +1,43 @@
+---
+import Mail from "../icons/Mail.astro";
+import MailOpened from "../icons/MailOpened.astro";
+
+const {emailLink} = Astro.props
+---
+<a id="mail"
+   href=`mailto:${emailLink}`
+   data-email={emailLink}
+   rel="noopener noreferrer"
+   class="icon-button">
+    <span class="tooltip">Email copied</span>
+    <Mail/>
+</a>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const $mail = document.querySelector('#mail') as HTMLAnchorElement
+        const $tooltip = $mail.querySelector('.tooltip') as HTMLSpanElement
+        let timeoutId: number = 0
+
+        $mail?.addEventListener('click', () => onMailSelected())
+        $mail?.addEventListener('touchend',
+            () => onMailSelected(),
+            {passive: true}
+        )
+
+        async function onMailSelected() {
+            await navigator.clipboard.writeText($mail.dataset.email ?? '')
+            $mail.classList.add('opened')
+            $tooltip.classList.add('visible')
+
+            if (timeoutId)
+                clearTimeout(timeoutId)
+
+            timeoutId = setTimeout(() => {
+                $mail.classList.remove('opened')
+                $tooltip.classList.remove('visible')
+            }, 2000)
+        }
+    })
+
+</script>

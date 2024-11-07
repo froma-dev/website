@@ -10,6 +10,9 @@ import VolumeOff from "../icons/VolumeOff.astro";
 import Carousel from "../components/Carousel.astro";
 import {JOBS} from "../staticpaths/jobs";
 import PauseFilled from "../icons/PauseFilled.astro";
+import Linkedin from "../icons/Linkedin.astro";
+import Github from "../icons/Github.astro";
+import EmailLink from "../components/EmailLink.astro";
 
 const assets = JOBS.map((job) => {
     return {
@@ -17,14 +20,16 @@ const assets = JOBS.map((job) => {
         href: job.href,
         logo: job.logo,
         transitionName: job.transitionName,
-        alt: job.name
+        alt: job.company
     }
 })
-
 const carouselParams = {
     title: 'Experience',
     history: 'auto'
 }
+const emailUrl = 'contact@froma.dev'
+const githubUrl = 'https://github.com/froma-dev'
+const linkedinUrl = 'https://www.linkedin.com/in/frankromana'
 ---
 
 <Layout
@@ -35,7 +40,18 @@ const carouselParams = {
     <main>
         <Metadata>
             <h1 transition:name="brand-logo">Frank<br/>Romaña</h1>
-            <h3>WEB DEVELOPER / SPAIN</h3>
+            <div class="info">
+                <h3>Web Developer • Spain / </h3>
+                <a class="icon-button" href={linkedinUrl} target="_blank" rel="noopener noreferrer">
+                    <span class="tooltip">{linkedinUrl}</span>
+                    <Linkedin/>
+                </a>
+                <EmailLink emailLink={emailUrl}/>
+                <a class="icon-button" href={githubUrl} target="_blank" rel="noopener noreferrer">
+                    <span class="tooltip">{githubUrl}</span>
+                    <Github/>
+                </a>
+            </div>
             <p>
                 10 years of experience collaborating to drive innovation in Connected TV web applications. Strong
                 ability to take ownership of projects in dynamic environments, anticipating challenges to ensure

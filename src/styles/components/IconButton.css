@@ -1,0 +1,28 @@
+.icon-button {
+    border: none;
+    background: none;
+    width: 32px;
+    height: 32px;
+    color: var(--color-text-paragraph);
+    transition: transform 0.25s var(--smooth-transition-function);
+
+    &:hover {
+        transform: scale(1.1);
+        color: var(--color-accent-secondary);
+
+        .tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-120%) scale(1);
+        }
+
+        svg:first-child {
+            display: none;
+        }
+    }
+
+    &.opened {
+        svg:first-child {
+            display: none;
+        }
+    }
+}
