@@ -1,0 +1,9 @@
+---
+import GithubIcon from "@icons/Github.astro";
+
+const {href, tooltipText} = Astro.props
+---
+<a class="icon-button" href={href} target="_blank" rel="noopener noreferrer">
+    <span class="tooltip">{tooltipText}</span>
+    <GithubIcon/>
+</a>

@@ -5,12 +5,12 @@ import Metadata from "@components/Metadata.astro";
 import Layout from "@layouts/Layout.astro";
 import {fade} from "astro:transitions";
 import Carousel from "@components/Carousel.astro";
-import type {Asset} from "@types/Asset";
-import type {JobId} from "@types/Job";
 import Header from "@components/Header.astro";
+import type {JobId} from "../../types/Job";
 import type {GetStaticPathsResult} from "astro";
-import Linkedin from "../../icons/Linkedin.astro";
-import WorldWWW from "../../icons/WorldWWW.astro";
+import {createAsset} from "../../types/Asset";
+import LinkedinLink from "@components/Links/Linkedin.astro";
+import WebsiteLink from "@components/Links/Website.astro";
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     return JOBS.map((job) => {
@@ -41,20 +41,23 @@ const {
     websiteUrl
 } = getJobById(id as JobId)
 
-const assets: Asset[] = JOBS.map((job): Asset => {
-    return {
+const assets = JOBS.map((job) => {
+    return createAsset({
         classNames: 'job',
         href: url === job.href ? '#metadata' : job.href,
         logo: job.logo,
         transitionName: url === job.href ? '' : job.transitionName,
         alt: job.company
-    }
+    })
 })
 
 const carouselParams = {
     title: 'Experience',
     history: 'replace'
 }
+
+const websiteTooltipText = `${company}'s Website`
+const linkedinTooltipText = `${company}'s Linkedin`
 ---
 
 <Layout
@@ -65,15 +68,15 @@ const carouselParams = {
     <Header/>
     <main>
         <Metadata>
-            <img transition:animate={fade({duration: '0.5s'})} class="logo" transition:name={transitionName} src={logo}
+            <img transition:animate={fade({duration: 0.7})} class="logo" transition:name={transitionName} src={logo}
                  alt={company}/>
             <div class="info">
                 {startYear}
                 <Tag text={`${endYear - startYear} Seasons`}/>
-                <a href={linkedinUrl} target="_blank" rel="noopener noreferrer"><Linkedin/></a>
-                <a href={websiteUrl} target="_blank" rel="noopener noreferrer"><WorldWWW/></a>
+                <LinkedinLink href={linkedinUrl} tooltipText={linkedinTooltipText}/>
+                <WebsiteLink href={websiteUrl} websiteTooltipText={websiteTooltipText}/>
             </div>
-            <h3>{roles.join(' & ')}</h3>
+            <h2>{roles.join(' & ')}</h2>
             <p>{description}</p>
             <div class="tags">
                 {tags.map((tag) =>
@@ -84,14 +87,3 @@ const carouselParams = {
         <Carousel assets={assets} params={carouselParams}/>
     </main>
 </Layout>
-
-<style>
-    main {
-        width: 100%;
-        height: 100%;
-        grid-row: 1;
-        grid-column: 1;
-
-        padding: var(--layout-padding-y) var(--layout-padding-x);
-    }
-</style>

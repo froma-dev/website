@@ -4,10 +4,11 @@ interface Props {
     text: string;
     disabled?: boolean;
     id: string;
+    ariaLabel?: string;
 }
-const {type, text, disabled, id}: Props = Astro.props;
+const {type, text, disabled, id, ariaLabel}: Props = Astro.props;
 ---
-<button class={`button ${type} ${disabled ? 'disabled' : ''}`} id={id}>
+<button class={`button ${type} ${disabled ? 'disabled' : ''}`} id={id} aria-label={ariaLabel}>
     <slot/>
     {text}
 </button>
@@ -23,7 +24,7 @@ const {type, text, disabled, id}: Props = Astro.props;
 
         color: var(--color-background-dark);
         font-family: 'REM Variable', sans-serif;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-style: normal;
         font-weight: 500;
         line-height: normal;

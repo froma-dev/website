@@ -1,4 +1,4 @@
-import type {Job} from "@types/Job.ts";
+import type {Job} from "../types/Job.ts";
 
 export const JOBS: Job[] = [
     {
@@ -11,7 +11,7 @@ export const JOBS: Job[] = [
         description: 'Delivered seamless VOD and Live streaming experiences including Catch-Up, Start-Over, and CDVR, ' +
             'leveraging DRMs and different players (Shaka Player and native TV players).',
         logo: '/images/24i_logo.svg',
-        backgroundUrl: 'https://res.cloudinary.com/fromaweb/image/upload/e_grayscale/images/cthefogvyyi6z9ulvqad.jpg',
+        backgroundUrl: '/images/ams_canals.webp',
         transitionName: '24i_logo',
         href: '/jobs/24i',
         startYear: 2019,
@@ -29,7 +29,7 @@ export const JOBS: Job[] = [
             'colleagues and crafting exceptional user experiences, this developer proves that technical brilliance, ' +
             'leadership skills, and a global perspective can thrive together, leading to remarkable outcomes.',
         logo: '/images/nokia_logo.svg',
-        backgroundUrl: 'https://res.cloudinary.com/fromaweb/image/upload/e_grayscale/images/cthefogvyyi6z9ulvqad.jpg',
+        backgroundUrl: '/images/nokia.webp',
         transitionName: 'nokia_logo',
         href: '/jobs/nokia',
         startYear: 2013,

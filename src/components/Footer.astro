@@ -1,32 +1,23 @@
 ---
 import '@styles/components/Footer.css';
 import '@styles/components/Tooltip.css';
-import Linkedin from "../icons/Linkedin.astro";
-import Github from "../icons/Github.astro";
-import EmailLink from "./EmailLink.astro";
+import LinkedinLink from "@components/Links/Linkedin.astro";
+import GithubLink from "@components/Links/Github.astro";
+import EmailLink from "./Links/EmailLink.astro";
 
 const emailLink = 'contact@froma.dev'
 const githubLink = 'https://github.com/froma-dev'
 const linkedinLink = 'https://www.linkedin.com/in/frankromana'
+
+const linkedinTooltipText = 'Frank\'s Linkedin'
+const githubTooltipText = 'Frank\'s Github'
+const emailTooltipText = emailLink
 ---
 
 <footer>
     <div class="contact">
-        <span class="tooltip">Email copied</span>
-        <a id="linkedin"
-           href={linkedinLink}
-           target="_blank"
-           rel="noopener noreferrer"
-           class="icon-button">
-            <Linkedin/>
-        </a>
-        <EmailLink emailLink={emailLink}/>
-        <a id="github"
-           href={githubLink}
-           target="_blank"
-           rel="noopener noreferrer"
-           class="icon-button">
-            <Github/>
-        </a>
+        <LinkedinLink href={linkedinLink} tooltipText={linkedinTooltipText}/>
+        <EmailLink emailLink={emailLink} tooltipText={emailTooltipText}/>
+        <GithubLink href={githubLink} tooltipText={githubTooltipText}/>
     </div>
 </footer>

@@ -4,15 +4,16 @@ const {src, alt} = Astro.props;
 ---
 <div class="background">
     <Video/>
-    <img src={src} alt={alt} class="background-image loading"/>
+    <img src={src} alt={alt} class="background-image loading" aspect-ratio="3000/2000"/>
     <div class="background-overlay"/>
 </div>
 
 <script>
     import {setupBackground} from "@scripts/backgroundManager";
-        document.addEventListener('astro:page-load', () => {
-            setupBackground()
-            })
+
+    document.addEventListener('astro:page-load', () => {
+        setupBackground()
+    })
 </script>
 
 <style>
