@@ -14,11 +14,11 @@ const {href, tooltipText} = Astro.props
 
 <script>
     let $mail: HTMLAnchorElement | null = null
-    let $tooltip: HTMLSpanElement | null = null
+    let $toast: HTMLSpanElement | null = null
     let timeoutId: number = 0
     document.addEventListener('astro:page-load', () => {
         $mail = document.querySelector('#mail') as HTMLAnchorElement
-        $tooltip = $mail.querySelector('.tooltip') as HTMLSpanElement
+        $toast = document.querySelector('.toast') as HTMLDivElement
         addEventListeners()
     })
 
@@ -31,14 +31,18 @@ const {href, tooltipText} = Astro.props
     async function onMailSelected() {
         await navigator.clipboard.writeText($mail?.dataset.email ?? '')
         $mail?.classList.add('opened')
-        $tooltip?.classList.add('visible')
+
+        if($toast) {
+            $toast.innerText = 'Email Copied!'
+            $toast.classList.add('visible')
+        }
 
         if (timeoutId)
             clearTimeout(timeoutId)
 
         timeoutId = setTimeout(() => {
             $mail?.classList.remove('opened')
-            $tooltip?.classList.remove('visible')
+            $toast?.classList.remove('visible')
         }, 2000)
     }
 

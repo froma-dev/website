@@ -9,6 +9,7 @@ import '@fontsource-variable/rem';
 import Footer from "../components/Footer.astro";
 import Background from "../components/Background.astro";
 import { ViewTransitions } from "astro:transitions";
+import Toast from "../components/Toast.astro";
 interface Props {
 	title: string;
 	description: string;
@@ -33,6 +34,7 @@ const { title, description, bgSrc, bgTitle } = Astro.props;
 		<Background src={bgSrc} alt={bgTitle}/>
 		<slot />
 		<Footer/>
+		<Toast/>
 	</body>
 </html>
 
