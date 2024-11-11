@@ -62,7 +62,7 @@
                 &.job {
                     border: 1px solid var(--color-border);
                     border-radius: 0.5rem;
-                    padding: 3rem;
+                    padding: 1.85rem;
 
                     img {
                         object-fit: contain;
@@ -71,6 +71,20 @@
                     }
                 }
 
+            }
+        }
+    }
+}
+
+@media (width >= 440px) {
+    .carousel-container {
+        .carousel {
+            .strip {
+                .asset {
+                    &.job {
+                        padding: 3rem;
+                    }
+                }
             }
         }
     }
