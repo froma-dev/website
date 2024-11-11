@@ -14,12 +14,12 @@
 
     &.loaded {
         opacity: 1;
-        animation: slide-in-from-right-5 0.5s ease-in-out forwards;
+        animation: slide-in-from-right-5 0.25s ease-in-out forwards;
     }
 
     .logo {
         max-width: 21.625rem;
-        padding-bottom: 0.5rem;
+        width: 18rem;
     }
 
     h1 {
@@ -35,7 +35,7 @@
         color: var(--color-text-secondary);
         font-family: 'REM Variable', sans-serif;
         gap: 0.5rem;
-        margin-bottom: 0.5rem;
+        margin: 0.5rem 0;
         position: relative;
 
         .tag {
@@ -82,12 +82,6 @@
         gap: 0.75rem;
         align-self: stretch;
         flex-wrap: wrap;
-
-        /*.button {*/
-        /*    &:hover {*/
-        /*        background-color: var(--color-text-secondary);*/
-        /*    }*/
-        /*}*/
 
         .playback-controls {
             display: flex;

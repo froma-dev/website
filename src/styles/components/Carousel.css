@@ -62,9 +62,9 @@
                 &.job {
                     border: 1px solid var(--color-border);
                     border-radius: 0.5rem;
+                    padding: 3rem;
 
                     img {
-                        padding: 3rem;
                         object-fit: contain;
                         width: inherit;
                         height: inherit;
