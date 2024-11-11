@@ -11,6 +11,8 @@ import type {GetStaticPathsResult} from "astro";
 import {createAsset} from "../../types/Asset";
 import LinkedinLink from "@components/Links/Linkedin.astro";
 import WebsiteLink from "@components/Links/Website.astro";
+import Pdf from "@icons/Pdf.astro";
+import Button from "@components/Button.astro";
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     return JOBS.map((job) => {
@@ -85,6 +87,11 @@ const linkedinTooltipText = `${company}'s Linkedin`
                 {tags.map((tag) =>
                         <Tag text={tag}/>
                 )}
+            </div>
+            <div class="buttons">
+                <Button text="Download CV" type="cta" id="download-cv" ariaLabel="Download CV">
+                    <Pdf/>
+                </Button>
             </div>
         </Metadata>
         <Carousel assets={assets} params={carouselParams}/>
