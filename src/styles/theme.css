@@ -47,9 +47,4 @@
         --layout-padding-y: 0;
         --layout-padding-x: 8rem;
     }
-
-    @media (width >= 1440px) {
-        --layout-padding-y: 0;
-        --layout-padding-x: 15rem;
-    }
 }

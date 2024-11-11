@@ -1,0 +1,37 @@
+---
+import '@styles/base.css';
+import '@styles/theme.css';
+import '@styles/animations.css';
+import '@fontsource/b612';
+import '@fontsource/aldrich';
+import '@fontsource-variable/rem';
+import '@styles/components/IconButton.css';
+import Footer from "@components/Footer.astro";
+import Background from "@components/Background.astro";
+import { ViewTransitions } from "astro:transitions";
+interface Props {
+    title: string;
+    description: string;
+    bgSrc: string;
+    bgTitle: string;
+}
+
+const { title, description, bgSrc, bgTitle } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <ViewTransitions />
+</head>
+<body>
+<Background src={bgSrc} alt={bgTitle}/>
+<slot />
+<Footer/>
+</body>
+</html>

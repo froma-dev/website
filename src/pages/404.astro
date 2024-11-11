@@ -1,0 +1,89 @@
+---
+import ErrorLayout from "../layouts/ErrorLayout.astro";
+import Tag from "../components/Tag.astro";
+import Metadata from "../components/Metadata.astro";
+import Button from "../components/Button.astro";
+import Pdf from "../icons/Pdf.astro";
+import PlayFilled from "../icons/PlayFilled.astro";
+import Volume from "../icons/Volume.astro";
+import VolumeOff from "../icons/VolumeOff.astro";
+import Carousel from "../components/Carousel.astro";
+import {JOBS} from "../staticpaths/jobs";
+import PauseFilled from "../icons/PauseFilled.astro";
+import LinkedinLink from "@components/Links/Linkedin.astro";
+import GithubLink from "@components/Links/Github.astro";
+import EmailLink from "../components/Links/EmailLink.astro";
+import '@styles/components/Button.css';
+
+
+const assets = JOBS.map((job) => {
+    return {
+        classNames: 'job',
+        href: job.href,
+        logo: job.logo,
+        transitionName: job.transitionName,
+        alt: job.company
+    }
+})
+const carouselParams = {
+    title: 'Experience',
+    history: 'auto'
+}
+const emailUrl = 'contact@froma.dev'
+const githubUrl = 'https://github.com/froma-dev'
+const linkedinUrl = 'https://www.linkedin.com/in/frankromana'
+const linkedinTooltipText = 'Frank\'s Linkedin'
+const githubTooltipText = 'Frank\'s Github'
+---
+
+<ErrorLayout
+        title="Frank Romaña - 404 Not Found"
+        description="404 Not Found - Frank Romaña is a software engineer with a passion for building user-friendly, accessible, and performant web applications. Focused on building innovative solutions for connected devices and applications."
+        bgSrc="/images/SMPTE_Color_Bars.svg"
+        bgTitle="SMPTE Color Bars">
+    <main>
+        <section class="error-container">
+            <div class="message-strip">
+                <h1>NO SIGNAL (404)</h1>
+            </div>
+            <a href="/" class="button">Back to home</a>
+        </section>
+    </main>
+</ErrorLayout>
+
+<style>
+    main {
+        z-index: 0;
+        padding: 0;
+    }
+    .error-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        padding: 0;
+        height: 100dvh;
+        width: 100%;
+
+        .message-strip {
+            background: var(--color-background-dark);
+            width: 100%;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            h1 {
+                font-size: 3rem;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 3rem;
+                text-align: center;
+                color: var(--color-text-secondary);
+                width: 100%;
+            }
+        }
+    }
+</style>

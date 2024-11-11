@@ -63,6 +63,7 @@
     }
     p {
         color: var(--color-text-paragraph);
+        text-shadow: 2px 2px 0.2rem var(--color-background-dark);
         max-width: 80ch;
         text-align: center;
         font-size: 1rem;
@@ -82,11 +83,11 @@
         align-self: stretch;
         flex-wrap: wrap;
 
-        .button {
-            &:hover {
-                background-color: var(--color-text-secondary);
-            }
-        }
+        /*.button {*/
+        /*    &:hover {*/
+        /*        background-color: var(--color-text-secondary);*/
+        /*    }*/
+        /*}*/
 
         .playback-controls {
             display: flex;
