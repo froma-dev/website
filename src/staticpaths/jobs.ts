@@ -8,8 +8,7 @@ export const JOBS: Job[] = [
         websiteUrl: 'https://www.24i.com/',
         roles: ['SmartTV Developer', 'Team Leader '],
         tags: ['Samsung Tizen', 'LG WebOS', 'AndroidTV', 'OTT'],
-        description: 'Delivered seamless VOD and Live streaming experiences including Catch-Up, Start-Over, and CDVR, ' +
-            'leveraging DRMs and different players (Shaka Player and native TV players).',
+        description: 'Frank Romaña, a frontend developer and dedicated team lead, brought a global touch to his work at 24i, captivating audiences across Europe, North America, and South America. Known for his technical expertise, leading initiatives that grew the user base by 10x. Frank’s approach seamlessly merges leadership with innovation, leaving a lasting impact on the streaming experience.',
         logo: '/images/24i_logo.svg',
         backgroundUrl: '/images/ams_canals.webp',
         transitionName: '24i_logo',
@@ -24,10 +23,7 @@ export const JOBS: Job[] = [
         websiteUrl: 'https://www.nokia.com/',
         roles: ['Frontend Developer'],
         tags: ['Samsung Tizen', 'LG WebOS', 'Arris STB', 'IPTV'],
-        description: 'A skilled frontend developer, known for building top-tier streaming apps that delighted users ' +
-            'across Europe, North America, and South America, also excelled as a team lead. Simultaneously guiding ' +
-            'colleagues and crafting exceptional user experiences, this developer proves that technical brilliance, ' +
-            'leadership skills, and a global perspective can thrive together, leading to remarkable outcomes.',
+        description: 'At Nokia TECSS, Frank Romaña was part of a multidisciplinary team dedicated to building a custom IPTV app across platforms like Arris Set-Top-Boxes, Samsung Tizen, and LG WebOS. His contributions included working on an innovative Proof of Concept for video conferencing on Set-Top-Boxes, voice control features, third-party app integrations, expanding the future possibilities of connected devices.',
         logo: '/images/nokia_logo.svg',
         backgroundUrl: '/images/nokia.webp',
         transitionName: 'nokia_logo',
