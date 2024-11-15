@@ -1,0 +1,96 @@
+:root {
+    /* breakpoints */
+    --breakpoint-xxs: 320px;
+    --breakpoint-xs: 375px;
+    --breakpoint-s: 425px;
+    --breakpoint-m: 768px;
+    --breakpoint-l: 1024px;
+    --breakpoint-xl: 1440px;
+    --breakpoint-xxl: 1800px;
+
+    /* --breakpoint-xxs */
+    --layout-padding-y: 1.625rem;
+    --layout-padding-x: 1.625rem;
+    --metadata-h1: 4rem;
+    --metadata-h1-lineheight: 3rem;
+    --metadata-h2: 1.5rem;
+    --metadata-h2-lineheight: 1.5rem;
+    --metadata-align-items: center;
+    --metadata-tags-justify-content: center;
+    --metadata-tag-font-size: 0.5rem;
+    --metadata-text-size: 1rem;
+    --metadata-text-align: center;
+    --metadata-buttons-justify-content: center;
+    --metadata-links-flex-direction: column;
+    --metadata-info-margin: 0;
+
+        /* --breakpoint-xs */
+    @media (width >= 375px) {
+    --layout-padding-y: 0;
+    --layout-padding-x: 2rem;
+    --metadata-h1: 4rem;
+    --metadata-h1-lineheight: 3.5rem;
+}
+
+    /* --breakpoint-s */
+    @media (width >= 425px) {
+        --layout-padding-y: 0;
+        --layout-padding-x: 1.5rem;
+    }
+
+    /* --breakpoint-m */
+    @media (width >= 768px) {
+        --layout-padding-y: 0;
+        --layout-padding-x: 4rem;
+        --metadata-h1: 6rem;
+        --metadata-h1-lineheight: 4.8rem;
+        --metadata-align-items: flex-start;
+        --metadata-h2: 1.86rem;
+        --metadata-h2-lineheight: 1.86rem;
+        --metadata-tags-justify-content: flex-start;
+        --metadata-text-size: 1.5rem;
+        --metadata-text-align: left;
+        --metadata-buttons-justify-content: flex-start;
+        --metadata-links-flex-direction: row;
+        --metadata-info-margin: 0.5rem 0;
+    }
+
+    /* --breakpoint-l */
+    @media (width >= 1024px) {
+        --layout-padding-y: 0;
+        --layout-padding-x: 6rem;
+        --metadata-h1: 5rem;
+        --metadata-h1-lineheight: 3.8rem;
+        --metadata-h2: 1.85rem;
+        --metadata-h2-lineheight: 2.2rem;
+        --metadata-tags-justify-content: flex-start;
+        --metadata-text-size: 1.2rem;
+        --metadata-tag-font-size: 1rem;
+    }
+
+    /* --breakpoint-xl */
+    @media (width >= 1440px) {
+        --layout-padding-y: 0;
+        --layout-padding-x: 6rem;
+        --metadata-h1: 5rem;
+        --metadata-h1-lineheight: 3.8rem;
+        --metadata-h2: 1.85rem;
+        --metadata-h2-lineheight: 2.2rem;
+        --metadata-tags-justify-content: flex-start;
+        --metadata-tag-font-size: 0.8rem;
+        --metadata-text-size: 1.2rem;
+    }
+
+    /* --breakpoint-xl */
+    @media (width >= 1800px) {
+        --layout-padding-y: 0;
+        --layout-padding-x: 8rem;
+        --metadata-h1: 6rem;
+        --metadata-h1-lineheight: 4.5rem;
+        --metadata-h2: 2.2rem;
+        --metadata-h2-lineheight: 2.2rem;
+        --metadata-tags-justify-content: flex-start;
+        --metadata-tag-font-size: 1rem;
+        --metadata-text-size: 1.5rem;
+    }
+}

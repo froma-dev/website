@@ -25,26 +25,4 @@
     --color-text-muted: hsl(215, 8%, 48%);          /* #6B7280 */
 
     --color-overlay: hsla(215, 13%, 71%, 0.06);     /* #A1A9B8 with 6% opacity */
-
-    --layout-padding-y: 1.625rem;
-    --layout-padding-x: 1.625rem;
-
-    &.light {
-
-    }
-
-    @media (width >= 576px) {
-        --layout-padding-y: 0;
-        --layout-padding-x: 4rem;
-    }
-
-    @media (width >= 992px) {
-        --layout-padding-y: 0;
-        --layout-padding-x: 6rem;
-    }
-
-    @media (width >= 1200px) {
-        --layout-padding-y: 0;
-        --layout-padding-x: 8rem;
-    }
 }

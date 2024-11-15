@@ -1,4 +1,5 @@
 ---
+import '@styles/breakpoints.css';
 import '@styles/base.css';
 import '@styles/theme.css';
 import '@styles/animations.css';
@@ -6,10 +7,10 @@ import '@styles/components/IconButton.css';
 import '@fontsource/b612';
 import '@fontsource/aldrich';
 import '@fontsource-variable/rem';
-import Footer from "../components/Footer.astro";
-import Background from "../components/Background.astro";
+import Footer from "@components/Footer.astro";
+import Background from "@components/Background.astro";
 import { ViewTransitions } from "astro:transitions";
-import Toast from "../components/Toast.astro";
+import Toast from "@components/Toast.astro";
 interface Props {
 	title: string;
 	description: string;
