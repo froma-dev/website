@@ -1,12 +1,12 @@
 footer {
     display: flex;
     width: 100%;
-    padding: 1.5rem 0;
+    padding: 0 0 1.5rem 0;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
     align-self: flex-end;
-    grid-row: 1;
+    grid-row: 2;
     grid-column: 1;
 
     .contact {
