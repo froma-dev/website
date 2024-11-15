@@ -17,20 +17,20 @@
     --metadata-h2-lineheight: 1.5rem;
     --metadata-align-items: center;
     --metadata-tags-justify-content: center;
-    --metadata-tag-font-size: 0.5rem;
+    --metadata-tag-font-size: 0.75rem;
     --metadata-text-size: 1rem;
     --metadata-text-align: center;
     --metadata-buttons-justify-content: center;
     --metadata-links-flex-direction: column;
     --metadata-info-margin: 0;
 
-        /* --breakpoint-xs */
+    /* --breakpoint-xs */
     @media (width >= 375px) {
-    --layout-padding-y: 0;
-    --layout-padding-x: 2rem;
-    --metadata-h1: 4rem;
-    --metadata-h1-lineheight: 3.5rem;
-}
+        --layout-padding-y: 0;
+        --layout-padding-x: 2rem;
+        --metadata-h1: 4rem;
+        --metadata-h1-lineheight: 3.5rem;
+    }
 
     /* --breakpoint-s */
     @media (width >= 425px) {
@@ -42,8 +42,8 @@
     @media (width >= 768px) {
         --layout-padding-y: 0;
         --layout-padding-x: 4rem;
-        --metadata-h1: 6rem;
-        --metadata-h1-lineheight: 4.8rem;
+        --metadata-h1: 5rem;
+        --metadata-h1-lineheight: 4.25rem;
         --metadata-align-items: flex-start;
         --metadata-h2: 1.86rem;
         --metadata-h2-lineheight: 1.86rem;
@@ -60,7 +60,7 @@
         --layout-padding-y: 0;
         --layout-padding-x: 6rem;
         --metadata-h1: 5rem;
-        --metadata-h1-lineheight: 3.8rem;
+        --metadata-h1-lineheight: 4.25rem;
         --metadata-h2: 1.85rem;
         --metadata-h2-lineheight: 2.2rem;
         --metadata-tags-justify-content: flex-start;
