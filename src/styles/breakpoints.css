@@ -36,6 +36,10 @@
     @media (width >= 425px) {
         --layout-padding-y: 0;
         --layout-padding-x: 1.5rem;
+        --metadata-h1: 5rem;
+        --metadata-h1-lineheight: 4.25rem;
+        --metadata-h2: 1.85rem;
+        --metadata-h2-lineheight: 1.5rem;
     }
 
     /* --breakpoint-m */

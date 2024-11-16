@@ -76,10 +76,14 @@ const linkedinTooltipText = `${company}'s Linkedin`
                  src={logo}
                  alt={company}/>
             <div class="info">
-                {startYear}
-                <Tag text={`${endYear - startYear} Seasons`}/>
-                <LinkedinLink href={linkedinUrl} tooltipText={linkedinTooltipText}/>
-                <WebsiteLink href={websiteUrl} websiteTooltipText={websiteTooltipText}/>
+                <div class="experience-years">
+                    <span>{startYear}</span>
+                    <Tag text={`${endYear - startYear} Seasons`}/>
+                </div>
+                <div class="links">
+                    <LinkedinLink href={linkedinUrl} tooltipText={linkedinTooltipText}/>
+                    <WebsiteLink href={websiteUrl} websiteTooltipText={websiteTooltipText}/>
+                </div>
             </div>
             <h2>{roles.join(' & ')}</h2>
             <p>{description}</p>
