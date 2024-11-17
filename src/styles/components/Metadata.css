@@ -20,7 +20,7 @@
 
     .logo {
         max-width: 21.625rem;
-        width: 18rem;
+        width: var(--metadata-logo-size);
     }
 
     h1 {
@@ -45,6 +45,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-size: var(--metadata-text-size)
         }
 
         .links {
