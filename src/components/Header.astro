@@ -1,12 +1,12 @@
 ---
-
+const {classNames} = Astro.props
 ---
 
-<header class="header">
+<header class={`header ${classNames}`}>
     <div class="container">
         <div class="logo">
             <a href="/">
-                <h2 transition:name="brand-logo">Frank<br/>Romaña</h2>
+                <slot />
             </a>
         </div>
     </div>
@@ -27,6 +27,13 @@
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
+    }
+
+    & .hidden {
+        .logo {
+            opacity: 0;
+            pointer-events: none;
+        }
     }
 
     .logo {

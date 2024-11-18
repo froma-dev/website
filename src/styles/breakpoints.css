@@ -24,6 +24,7 @@
     --metadata-buttons-justify-content: center;
     --metadata-links-flex-direction: column;
     --metadata-info-margin: 0;
+    --button-cta-font-size: 1.15rem;
 
     /* --breakpoint-xs */
     @media (width >= 375px) {
@@ -60,6 +61,7 @@
         --metadata-links-flex-direction: row;
         --metadata-info-margin: 0.5rem 0;
         --metadata-logo-size: 10.75rem;
+        --button-cta-font-size: 1.5rem;
     }
 
     /* --breakpoint-l */
@@ -100,6 +102,6 @@
         --metadata-h2-lineheight: 2.2rem;
         --metadata-tags-justify-content: flex-start;
         --metadata-tag-font-size: 1rem;
-        --metadata-text-size: 1.5rem;
+        --metadata-text-size: 1.3rem;
     }
 }

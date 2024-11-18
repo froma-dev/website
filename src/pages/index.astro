@@ -13,6 +13,7 @@ import PauseFilled from "../icons/PauseFilled.astro";
 import LinkedinLink from "@components/Links/Linkedin.astro";
 import GithubLink from "@components/Links/Github.astro";
 import EmailLink from "../components/Links/EmailLink.astro";
+import Header from "../components/Header.astro";
 
 const assets = JOBS.map((job) => {
     return {
@@ -39,6 +40,9 @@ const githubTooltipText = 'Frank\'s Github'
         description="Frank Romaña is a software engineer with a passion for building user-friendly, accessible, and performant web applications. Focused on building innovative solutions for connected devices and applications."
         bgSrc="/images/frank_gayscale_fixed_uvfv8l.webp"
         bgTitle="Frank Romaña - Software Engineering">
+    <Header classNames="hidden">
+        <h2>Frank<br/>Romaña</h2>
+    </Header>
     <main>
         <Metadata>
             <h1 transition:name="brand-logo">Frank<br/>Romaña</h1>
