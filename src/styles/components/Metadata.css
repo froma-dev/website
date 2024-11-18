@@ -85,7 +85,7 @@
         font-size: var(--metadata-text-size);
         font-style: normal;
         font-weight: 400;
-        line-height: normal;
+        line-height: var(--metadata-text-line-height);
         font-family: 'B612', sans-serif;
         padding: 0 0 0.5rem 0;
     }

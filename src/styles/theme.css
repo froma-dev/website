@@ -8,6 +8,7 @@
     /* Background Colors */
     --color-background-dark: hsl(216, 25%, 9%);     /* #111827 */
     --color-background-light: hsl(217, 28%, 19%);   /* #1E293B */
+    --color-background-light-values: 217, 28%, 19%;   /* #1E293B */
     --color-background-neutral: hsl(0, 0%, 94%);   /* #F0F0F0 */
     --color-background-neutral-values: 0, 0%, 94%;   /* --color-background-neutral */
 

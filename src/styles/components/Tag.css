@@ -7,7 +7,7 @@
 
     border-radius: 0.125rem;
     border: 0.0625rem solid var(--color-border);
-    background: var(--color-background-light);
+    background: hsla(var(--color-background-light-values), 0.5);
     color: var(--color-text-paragraph);
 
     font-family: 'REM Variable', sans-serif;
