@@ -15,11 +15,12 @@
     --metadata-h1-lineheight: 3.5rem;
     --metadata-logo-size: 11rem;
     --metadata-h2: 1.25rem;
-    --metadata-h2-lineheight: 1.5rem;
+    --metadata-h2-lineheight: 1.25rem;
     --metadata-align-items: center;
     --metadata-tags-justify-content: center;
     --metadata-tag-font-size: 0.65rem;
     --metadata-text-size: 0.85rem;
+    --metadata-text-line-height: 0.85rem;
     --metadata-text-align: center;
     --metadata-buttons-justify-content: center;
     --metadata-links-flex-direction: column;
@@ -40,8 +41,8 @@
         --layout-padding-x: 1.5rem;
         --metadata-h1: 5rem;
         --metadata-h1-lineheight: 4.25rem;
-        --metadata-h2: 1.85rem;
-        --metadata-h2-lineheight: 1.5rem;
+        --metadata-h2: 1.25rem;
+        --metadata-h2-lineheight: 1.25rem;
         --metadata-logo-size: 10.75rem;
     }
 
@@ -52,28 +53,29 @@
         --metadata-h1: 5rem;
         --metadata-h1-lineheight: 4.25rem;
         --metadata-align-items: flex-start;
-        --metadata-h2: 1.86rem;
-        --metadata-h2-lineheight: 1.86rem;
+        --metadata-h2: 1.25rem;
+        --metadata-h2-lineheight: 1.25rem;
         --metadata-tags-justify-content: flex-start;
-        --metadata-text-size: 1.15rem;
+        --metadata-text-size: 1rem;
+        --metadata-text-line-height: 1.15rem;
         --metadata-text-align: left;
         --metadata-buttons-justify-content: flex-start;
         --metadata-links-flex-direction: row;
         --metadata-info-margin: 0.5rem 0;
         --metadata-logo-size: 10.75rem;
-        --button-cta-font-size: 1.5rem;
+        --button-cta-font-size: 1.25rem;
     }
 
     /* --breakpoint-l */
     @media (width >= 1024px) {
         --layout-padding-y: 0;
-        --layout-padding-x: 6rem;
+        --layout-padding-x: 4rem;
         --metadata-h1: 5rem;
         --metadata-h1-lineheight: 4.25rem;
-        --metadata-h2: 1.85rem;
-        --metadata-h2-lineheight: 2.2rem;
+        --metadata-h2: 1.25rem;
+        --metadata-h2-lineheight: 1.25rem;
         --metadata-tags-justify-content: flex-start;
-        --metadata-text-size: 1.2rem;
+        --metadata-text-size: 1rem;
         --metadata-tag-font-size: 1rem;
         --metadata-logo-size: 10rem;
     }
@@ -81,27 +83,29 @@
     /* --breakpoint-xl */
     @media (width >= 1440px) {
         --layout-padding-y: 0;
-        --layout-padding-x: 6rem;
+        --layout-padding-x: 4rem;
         --metadata-h1: 5rem;
         --metadata-h1-lineheight: 4.25rem;
-        --metadata-h2: 1.85rem;
-        --metadata-h2-lineheight: 2.2rem;
+        --metadata-h2: 1.4rem;
+        --metadata-h2-lineheight: 1.4rem;
         --metadata-tags-justify-content: flex-start;
         --metadata-tag-font-size: 0.8rem;
-        --metadata-text-size: 1.2rem;
+        --metadata-text-size: 1.25rem;
+        --metadata-text-line-height: 1.35rem;
         --metadata-logo-size: 11.85rem;
     }
 
     /* --breakpoint-xl */
     @media (width >= 1800px) {
         --layout-padding-y: 0;
-        --layout-padding-x: 8rem;
+        --layout-padding-x: 6rem;
         --metadata-h1: 6rem;
         --metadata-h1-lineheight: 5rem;
-        --metadata-h2: 2.2rem;
-        --metadata-h2-lineheight: 2.2rem;
+        --metadata-h2: 1.4rem;
+        --metadata-h2-lineheight: 1.4rem;
         --metadata-tags-justify-content: flex-start;
         --metadata-tag-font-size: 1rem;
-        --metadata-text-size: 1.3rem;
+        --metadata-text-size: 1.35rem;
+        --metadata-text-line-height: 1.45rem;
     }
 }
