@@ -1,8 +1,7 @@
 .metadata {
     display: flex;
     width: 100%;
-    height: 100dvh;
-    min-height: 43.125rem;
+    height: 90dvh;
     flex-direction: column;
     align-items: var(--metadata-align-items);
     justify-content: center;
@@ -20,6 +19,7 @@
 
     .logo {
         max-width: 21.625rem;
+        padding: 0.5rem 0;
         width: var(--metadata-logo-size);
     }
 
@@ -32,7 +32,7 @@
 
     .info {
         display: flex;
-        flex-direction: var(--metadata-links-flex-direction);
+        /*flex-direction: var(--metadata-links-flex-direction);*/
         align-items: center;
         font-size: 1.5rem;
         color: var(--color-text-secondary);
