@@ -32,10 +32,10 @@ const { title, description, bgSrc, bgTitle } = Astro.props;
 		<ViewTransitions />
 	</head>
 	<body>
+		<Toast/>
 		<Background src={bgSrc} alt={bgTitle}/>
 		<slot />
 		<Footer/>
-		<Toast/>
 	</body>
 </html>
 

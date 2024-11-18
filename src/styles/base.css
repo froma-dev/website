@@ -18,13 +18,13 @@ html {
 body {
     display: grid;
     height: 100%;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: auto 1fr auto;
 }
 
 main {
     width: 100%;
     height: 100%;
-    grid-row: 1;
+    grid-row: auto;
     grid-column: 1;
 
     padding: var(--layout-padding-y) var(--layout-padding-x);
