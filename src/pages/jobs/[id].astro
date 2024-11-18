@@ -77,7 +77,7 @@ const linkedinTooltipText = `${company}'s Linkedin`
                  alt={company}/>
             <div class="info">
                 <div class="experience-years">
-                    <span>{startYear}</span>
+                    <Tag text={`${startYear}`} className="year"/>
                     <Tag text={`${endYear - startYear} Seasons`}/>
                 </div>
                 <div class="links">

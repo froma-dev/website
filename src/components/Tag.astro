@@ -1,7 +1,11 @@
 ---
 import '@styles/components/Tag.css';
-const {text} = Astro.props;
+interface Props {
+    text: string,
+    className?: string,
+}
+const {text, className} = Astro.props;
 ---
-<span class="tag">
+<span class=`tag ${className}`>
     {text}
 </span>
