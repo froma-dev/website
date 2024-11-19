@@ -28,8 +28,8 @@ export const JOBS: Job[] = [
         backgroundUrl: '/images/nokia.webp',
         transitionName: 'nokia_logo',
         href: '/jobs/nokia',
-        startYear: 2013,
-        endYear: 2019
+        startYear: 2014,
+        endYear: 2020
     }
 ]
 
