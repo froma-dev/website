@@ -1,17 +1,25 @@
 footer {
     display: flex;
+    grid-template-rows: auto;
+    grid-template-columns: auto 1fr;
     width: 100%;
-    padding: 1.5rem 0;
-    justify-content: center;
+    margin: 2.5rem 0;
+    padding: 1.5rem var(--layout-padding-x);
+    gap: 0.25rem;
+    border-top: 1px solid var(--color-border);
+    justify-content: var(--footer-justify-content);
     align-items: center;
-    gap: 0.5rem;
     align-self: flex-end;
     grid-row: auto;
     grid-column: 1;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: var(--color-overlay);
+    backdrop-filter: blur(12px);
+    color: var(--color-text-secondary);
 
     .contact {
         display: flex;
-        padding: 0.625rem 1rem;
         justify-content: flex-end;
         align-items: center;
         align-content: center;
@@ -19,12 +27,9 @@ footer {
         flex-wrap: wrap;
         opacity: 0;
         animation: reveal 1s var(--smooth-transition-function) forwards;
-
-        color: var(--color-text-secondary);
-        border-radius: 50px;
-        border: 1px solid var(--color-border);
-        background: var(--color-overlay);
-        backdrop-filter: blur(12px);
+        grid-row: 1;
+        grid-column: 1;
+        justify-self: flex-start;
 
         .icon-button {
             &:hover {
@@ -33,6 +38,12 @@ footer {
                 }
             }
         }
+    }
+
+    .signature {
+        grid-row: 1;
+        grid-column: 2;
+        justify-self: flex-start;
     }
 }
 

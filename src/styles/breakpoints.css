@@ -18,15 +18,16 @@
     --metadata-h2-lineheight: 1.25rem;
     --metadata-align-items: center;
     --metadata-tags-justify-content: center;
-    --metadata-tag-font-size: 0.65rem;
-    --metadata-text-size: 0.85rem;
+    --metadata-tag-font-size: 0.75rem;
     --metadata-experience-tag-font-size: 0.65rem;
-    --metadata-text-line-height: 0.85rem;
+    --metadata-text-size: 1rem;
+    --metadata-text-line-height: 1rem;
     --metadata-text-align: center;
     --metadata-buttons-justify-content: center;
     --metadata-links-flex-direction: column;
     --metadata-info-margin: 0;
     --button-cta-font-size: 1.15rem;
+    --footer-justify-content: center;
 
     /* --breakpoint-xs */
     @media (width >= 375px) {

@@ -16,9 +16,10 @@ interface Props {
 	description: string;
 	bgSrc: string;
 	bgTitle: string;
+	hasFooterContact?: boolean;
 }
 
-const { title, description, bgSrc, bgTitle } = Astro.props;
+const { title, description, bgSrc, bgTitle, hasFooterContact } = Astro.props;
 ---
 
 <!doctype html>
@@ -35,7 +36,7 @@ const { title, description, bgSrc, bgTitle } = Astro.props;
 		<Toast/>
 		<Background src={bgSrc} alt={bgTitle}/>
 		<slot />
-		<Footer/>
+		<Footer hasFooterContact={hasFooterContact}/>
 	</body>
 </html>
 
