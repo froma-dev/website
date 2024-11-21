@@ -1,16 +1,14 @@
 ---
 interface Props {
-    src: URL;
+    src: string;
     alt: string;
 }
 import Video from "./Video.astro";
 const {src, alt}: Props = Astro.props;
-
-const backgroundSrc = src.toString();
 ---
 <div class="background">
     <Video/>
-    <img src={backgroundSrc} alt={alt} class="background-image loading" aspect-ratio="3000/2000"/>
+    <img src={src} alt={alt} class="background-image loading" aspect-ratio="3000/2000"/>
     <div class="background-overlay"/>
 </div>
 
