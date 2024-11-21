@@ -48,7 +48,7 @@
             font-size: var(--metadata-text-size);
 
             .year {
-                background-color: var(--color-background-neutral);
+                background-color: var(--color-text-paragraph);
                 color: var(--color-background-dark);
             }
 
