@@ -1,39 +1,6 @@
 ---
 import ErrorLayout from "../layouts/ErrorLayout.astro";
-import Tag from "../components/Tag.astro";
-import Metadata from "../components/Metadata.astro";
-import Button from "../components/Button.astro";
-import Pdf from "../icons/Pdf.astro";
-import PlayFilled from "../icons/PlayFilled.astro";
-import Volume from "../icons/Volume.astro";
-import VolumeOff from "../icons/VolumeOff.astro";
-import Carousel from "../components/Carousel.astro";
-import {JOBS} from "../staticpaths/jobs";
-import PauseFilled from "../icons/PauseFilled.astro";
-import LinkedinLink from "@components/Links/Linkedin.astro";
-import GithubLink from "@components/Links/Github.astro";
-import EmailLink from "../components/Links/EmailLink.astro";
 import '@styles/components/Button.css';
-
-
-const assets = JOBS.map((job) => {
-    return {
-        classNames: 'job',
-        href: job.href,
-        logo: job.logo,
-        transitionName: job.transitionName,
-        alt: job.company
-    }
-})
-const carouselParams = {
-    title: 'Experience',
-    history: 'auto'
-}
-const emailUrl = 'contact@froma.dev'
-const githubUrl = 'https://github.com/froma-dev'
-const linkedinUrl = 'https://www.linkedin.com/in/frankromana'
-const linkedinTooltipText = 'Frank\'s Linkedin'
-const githubTooltipText = 'Frank\'s Github'
 ---
 
 <ErrorLayout
