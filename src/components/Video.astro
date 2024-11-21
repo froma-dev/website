@@ -1,9 +1,11 @@
 ---
+import {getObjectUrl} from "@services/cloud/cloud";
 
+const videoSrc = getObjectUrl('me_vid_2.mp4').toString()
 ---
 
 <video class="video hidden" preload="none" playsinline>
-    <source src="https://res.cloudinary.com/fromaweb/video/upload/v1/videos/cy3xruz1xtb9usxafo3q?_a=DATAdtWMZAA0" type="video/mp4">
+    <source src={videoSrc} type="video/mp4">
 </video>
 
 <style>

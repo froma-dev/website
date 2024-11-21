@@ -12,6 +12,7 @@
       "@scripts/*": ["src/scripts/*"],
       "@static-paths/*": ["src/statics/*"],
       "@types/*": ["src/types/*"],
+      "@config/*": ["src/config/*"],
       "@fontsource/*": ["node_modules/@fontsource/*"],
       "@fontsource-variable/*": ["node_modules/@fontsource-variable/*"]
     }

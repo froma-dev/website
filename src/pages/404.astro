@@ -1,12 +1,15 @@
 ---
-import ErrorLayout from "../layouts/ErrorLayout.astro";
+import {getObjectUrl} from "@services/cloud/cloud";
+import ErrorLayout from "@layouts/ErrorLayout.astro";
 import '@styles/components/Button.css';
+
+const backgroundSrc = getObjectUrl('SMPTE_Color_Bars.svg').toString()
 ---
 
 <ErrorLayout
         title="Frank Romaña - 404 Not Found"
         description="404 Not Found - Frank Romaña is a software engineer with a passion for building user-friendly, accessible, and performant web applications. Focused on building innovative solutions for connected devices and applications."
-        bgSrc="/images/SMPTE_Color_Bars.svg"
+        bgSrc={backgroundSrc}
         bgTitle="SMPTE Color Bars">
     <main>
         <section class="error-container">

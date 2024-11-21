@@ -14,6 +14,7 @@ import LinkedinLink from "@components/Links/Linkedin.astro";
 import GithubLink from "@components/Links/Github.astro";
 import EmailLink from "../components/Links/EmailLink.astro";
 import Header from "../components/Header.astro";
+import {getObjectUrl} from "@services/cloud/cloud";
 
 const assets = JOBS.map((job) => {
     return {
@@ -33,12 +34,13 @@ const githubUrl = 'https://github.com/froma-dev'
 const linkedinUrl = 'https://www.linkedin.com/in/frankromana'
 const linkedinTooltipText = 'Frank\'s Linkedin'
 const githubTooltipText = 'Frank\'s Github'
+const backgroundSrc = getObjectUrl('frank_grayscale.webp').toString()
 ---
 
 <Layout
         title="Frank Romaña - Software Engineering"
         description="Frank Romaña is a software engineer with a passion for building user-friendly, accessible, and performant web applications. Focused on building innovative solutions for connected devices and applications."
-        bgSrc="/images/frank_gayscale_fixed_uvfv8l.webp"
+        bgSrc={backgroundSrc}
         bgTitle="Frank Romaña - Software Engineering">
     <Header classNames="hidden">
         <h2>Frank<br/>Romaña</h2>
