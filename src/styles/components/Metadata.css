@@ -94,6 +94,7 @@
         color: var(--color-text-paragraph);
         text-shadow: 2px 2px 0.2rem var(--color-background-dark);
         max-width: 80ch;
+        text-wrap: balance;
         text-align: var(--metadata-text-align);
         font-size: var(--metadata-text-size);
         font-style: normal;
