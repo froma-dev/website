@@ -14,7 +14,7 @@
     "@fontsource-variable/rem": "^5.1.0",
     "@fontsource/aldrich": "^5.1.0",
     "@fontsource/b612": "^5.1.0",
-    "astro": "^4.16.7",
+    "astro": "^4.16.18",
     "typescript": "^5.6.3"
   }
 }
