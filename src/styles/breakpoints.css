@@ -51,7 +51,7 @@
     /* --breakpoint-m */
     @media (width >= 768px) {
         --layout-padding-y: 0;
-        --layout-padding-x: 4rem;
+        --layout-padding-x: 6rem;
         --metadata-h1: 5rem;
         --metadata-h1-lineheight: 4.25rem;
         --metadata-align-items: flex-start;
@@ -71,7 +71,7 @@
     /* --breakpoint-l */
     @media (width >= 1024px) {
         --layout-padding-y: 0;
-        --layout-padding-x: 4rem;
+        --layout-padding-x: 10rem;
         --metadata-h1: 4.5rem;
         --metadata-h1-lineheight: 4.25rem;
         --metadata-h2: 1.35rem;
@@ -86,7 +86,7 @@
     /* --breakpoint-xl */
     @media (width >= 1440px) {
         --layout-padding-y: 0;
-        --layout-padding-x: 4rem;
+        --layout-padding-x: 20rem;
         --metadata-h1: 5rem;
         --metadata-h1-lineheight: 4.25rem;
         --metadata-h2: 1.5rem;
@@ -102,7 +102,7 @@
     /* --breakpoint-xl */
     @media (width >= 1800px) {
         --layout-padding-y: 0;
-        --layout-padding-x: 6rem;
+        --layout-padding-x: 25rem;
         --metadata-h1: 6rem;
         --metadata-h1-lineheight: 5rem;
         --metadata-h2: 1.85rem;
