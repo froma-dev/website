@@ -19,7 +19,7 @@
     }
 
     .logo {
-        max-width: 21.625rem;
+        /*max-width: 21.625rem;*/
         padding: 0.5rem 0;
         width: var(--metadata-logo-size);
     }
@@ -92,15 +92,15 @@
         text-wrap: balance;
         text-align: var(--metadata-text-align);
         font-size: var(--metadata-text-size);
+        line-height: var(--metadata-text-line-height);
         font-style: normal;
         font-weight: 400;
-        line-height: var(--metadata-text-line-height);
         font-family: 'B612', sans-serif;
         padding: 0.5rem 0 0.5rem 0;
     }
     .buttons {
         display: flex;
-        padding: 0.5rem 0;
+        padding: 1.5rem 0;
         justify-content: var(--metadata-buttons-justify-content);
         align-items: center;
         align-content: center;

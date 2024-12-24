@@ -59,9 +59,17 @@
                 }
 
                 &.job {
-                    border: 1px solid var(--color-border);
+                    border: 2px solid var(--color-border);
                     border-radius: 0.5rem;
                     padding: 1.85rem;
+                    transition: background 0.25s var(--smooth-transition-function),
+                                transform 0.25s var(--smooth-transition-function),
+                                backdrop-filter 0.25s var(--smooth-transition-function),
+                                0.25s border-color ease-in-out;
+
+                    &:hover {
+                        border-color: var(--color-text-secondary);
+                    }
 
                     img {
                         object-fit: contain;

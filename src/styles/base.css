@@ -26,6 +26,7 @@ main {
     height: 100%;
     grid-row: auto;
     grid-column: 1;
+    margin-bottom: 10rem;
 
     padding: var(--layout-padding-y) var(--layout-padding-x);
 }
