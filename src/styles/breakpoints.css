@@ -26,8 +26,9 @@
     --metadata-buttons-justify-content: center;
     --metadata-links-flex-direction: column;
     --metadata-info-margin: 0;
-    --button-cta-font-size: 1.15rem;
+    --button-cta-font-size: 1.25rem;
     --footer-justify-content: center;
+    --metadata-tooltip-x-position: translateX(-50%);
 
     /* --breakpoint-xs */
     @media (width >= 375px) {
@@ -35,6 +36,10 @@
         --layout-padding-x: 2rem;
         --metadata-h1: 4rem;
         --metadata-h1-lineheight: 3.5rem;
+    }
+
+    @media (width > 400px) {
+        --metadata-tooltip-x-position: translateX(-50%)
     }
 
     /* --breakpoint-s */
@@ -51,7 +56,7 @@
     /* --breakpoint-m */
     @media (width >= 768px) {
         --layout-padding-y: 0;
-        --layout-padding-x: 6rem;
+        --layout-padding-x: 8rem;
         --metadata-h1: 5rem;
         --metadata-h1-lineheight: 4.25rem;
         --metadata-align-items: flex-start;
@@ -65,7 +70,7 @@
         --metadata-buttons-justify-content: flex-start;
         --metadata-links-flex-direction: row;
         --metadata-logo-size: 20.85rem;
-        --button-cta-font-size: 1.25rem;
+        --button-cta-font-size: 1.5rem;
     }
 
     /* --breakpoint-l */
@@ -86,7 +91,6 @@
     /* --breakpoint-xl */
     @media (width >= 1440px) {
         --layout-padding-y: 0;
-        --layout-padding-x: 20rem;
         --metadata-h1: 5rem;
         --metadata-h1-lineheight: 4.25rem;
         --metadata-h2: 1.5rem;

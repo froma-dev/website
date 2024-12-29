@@ -33,7 +33,7 @@ footer {
         .icon-button {
             &:hover {
                 .tooltip {
-                    transform: translateX(-90%) translateY(-120%) scale(1);
+                    transform: translateX(-50%) translateY(-100%) scale(1);
                 }
             }
         }
@@ -44,19 +44,5 @@ footer {
         grid-column: 2;
         justify-self: flex-start;
         font-weight: bold;
-    }
-}
-
-@media (width >= 525px) {
-    footer {
-        .contact {
-            .icon-button {
-                &:hover {
-                    .tooltip {
-                        transform: translateX(-50%) translateY(-100%) scale(1);
-                    }
-                }
-            }
-        }
     }
 }
