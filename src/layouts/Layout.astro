@@ -64,6 +64,7 @@ const { title, description, bgSrc, bgTitle, hasFooterContact } = Astro.props;
 	}
 
 	document.addEventListener('astro:page-load', () => {
+		window.scrollTo({top: 0, behavior: 'smooth'})
 		const $metadata = document.querySelector('.metadata')
 		const showMetadata = () => {
 			$metadata?.classList.remove('loading')

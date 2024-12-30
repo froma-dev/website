@@ -24,7 +24,7 @@ const {hasFooterContact} = Astro.props
     {hasFooterContact && (
             <div class="contact">
                 <LinkedinLink href={linkedinLink} tooltipText={linkedinTooltipText}/>
-                <EmailLink emailLink={emailLink} tooltipText={emailTooltipText}/>
+                <EmailLink href={emailLink} tooltipText={emailTooltipText}/>
                 <GithubLink href={githubLink} tooltipText={githubTooltipText}/>
             </div>
     )}

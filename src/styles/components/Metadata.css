@@ -19,7 +19,7 @@
     }
 
     .logo {
-        max-width: 21.625rem;
+        /*max-width: 21.625rem;*/
         padding: 0.5rem 0;
         width: var(--metadata-logo-size);
     }
@@ -40,17 +40,14 @@
         gap: 0.5rem;
         margin: var(--metadata-info-margin);
         position: relative;
+        flex-wrap: wrap;
+        justify-content: center;
 
         .experience-years {
             display: flex;
             align-items: center;
             gap: 0.5rem;
             font-size: var(--metadata-text-size);
-
-            .year {
-                background-color: var(--color-text-paragraph);
-                color: var(--color-background-dark);
-            }
 
             .tag {
                 font-size: var(--metadata-experience-tag-font-size);
@@ -75,6 +72,8 @@
         font-style: normal;
         font-weight: 400;
         text-align: center;
+        display: flex;
+        gap: 0.5rem;
     }
     > h2 {
         padding: 0.5rem 0 0;
@@ -97,15 +96,15 @@
         text-wrap: balance;
         text-align: var(--metadata-text-align);
         font-size: var(--metadata-text-size);
+        line-height: var(--metadata-text-line-height);
         font-style: normal;
         font-weight: 400;
-        line-height: var(--metadata-text-line-height);
         font-family: 'B612', sans-serif;
         padding: 0.5rem 0 0.5rem 0;
     }
     .buttons {
         display: flex;
-        padding: 0.5rem 0;
+        padding: 1.5rem 0;
         justify-content: var(--metadata-buttons-justify-content);
         align-items: center;
         align-content: center;
@@ -130,7 +129,6 @@
                     flex-shrink: 1;
                     width: 0;
                     height: 0;
-                    padding: 0;
                     transform: translateX(-100%);
                 }
 

@@ -16,6 +16,7 @@ const {href, tooltipText} = Astro.props
     let $mail: HTMLAnchorElement | null = null
     let $toast: HTMLSpanElement | null = null
     let timeoutId: number = 0
+    const timeoutTimeMs = 5000
     document.addEventListener('astro:page-load', () => {
         $mail = document.querySelector('#mail') as HTMLAnchorElement
         $toast = document.querySelector('.toast') as HTMLDivElement
@@ -43,7 +44,7 @@ const {href, tooltipText} = Astro.props
         timeoutId = setTimeout(() => {
             $mail?.classList.remove('opened')
             $toast?.classList.remove('visible')
-        }, 2000)
+        }, timeoutTimeMs)
     }
 
     function addEventListeners() {

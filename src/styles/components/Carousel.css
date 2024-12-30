@@ -36,7 +36,7 @@
             .asset {
                 width: 100%;
                 display: flex;
-                background-color: var(--color-overlay);
+                background-color: var(--asset-background-overlay);
                 flex-direction: column;
                 flex: 0 1 20rem;
                 align-items: center;
@@ -59,9 +59,19 @@
                 }
 
                 &.job {
-                    border: 1px solid var(--color-border);
                     border-radius: 0.5rem;
+                    opacity: 0.8;
                     padding: 1.85rem;
+                    transition: background 0.25s var(--smooth-transition-function),
+                                transform 0.25s var(--smooth-transition-function),
+                                backdrop-filter 0.25s var(--smooth-transition-function),
+                                opacity 0.5s var(--smooth-transition-function),
+                                0.25s border-color ease-in-out;
+
+                    &:hover {
+                        background-color: var(--asset-background-overlay-hover);
+                        opacity: 1;
+                    }
 
                     img {
                         object-fit: contain;

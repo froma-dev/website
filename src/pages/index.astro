@@ -39,7 +39,7 @@ const backgroundSrc = getObjectUrl('frank_grayscale.webp').toString()
 
 <Layout
         title="Frank Romaña - Software Engineering"
-        description="Frank Romaña is a software engineer with a passion for building user-friendly, accessible, and performant web applications. Focused on building innovative solutions for connected devices and applications."
+        description="Frank Romaña is a software engineer with a passion for building user-friendly, accessible, and performant web applications."
         bgSrc={backgroundSrc}
         bgTitle="Frank Romaña - Software Engineering">
     <Header classNames="hidden">
@@ -49,7 +49,11 @@ const backgroundSrc = getObjectUrl('frank_grayscale.webp').toString()
         <Metadata>
             <h1 transition:name="brand-logo">Frank<br/>Romaña</h1>
             <section class="info">
-                <h2>Web Developer / Spain</h2>
+                <h2>
+                    <span class="role">Web Developer</span>
+                    <span>/</span>
+                    <span>Spain</span>
+                </h2>
                 <div class="links">
                     <LinkedinLink href={linkedinUrl} tooltipText={linkedinTooltipText}/>
                     <EmailLink href={emailUrl} tooltipText={emailUrl}/>
@@ -57,7 +61,10 @@ const backgroundSrc = getObjectUrl('frank_grayscale.webp').toString()
                 </div>
             </section>
             <p>
-                Meet Frank Romaña. With over 10 years as a frontend developer, Frank has transformed screens into captivating, user-focused experiences. Known for his ability to lead and innovate, Frank seamlessly blends design with technology, creating applications that continually elevate user expectations. <br/>The journey continues with every new line of code.
+                Meet Frank Romaña. With over 10 years as a frontend developer, Frank has transformed screens into
+                captivating, user-focused experiences. Known for his ability to lead and innovate, Frank seamlessly
+                blends design with technology, creating applications that continually elevate user expectations. <br/>The
+                journey continues with every new line of code.
             </p>
             <div class="tags">
                 <Tag text="SmartTV"/>
