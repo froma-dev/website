@@ -40,6 +40,8 @@
         gap: 0.5rem;
         margin: var(--metadata-info-margin);
         position: relative;
+        flex-wrap: wrap;
+        justify-content: center;
 
         .experience-years {
             display: flex;
@@ -70,6 +72,8 @@
         font-style: normal;
         font-weight: 400;
         text-align: center;
+        display: flex;
+        gap: 0.5rem;
     }
     > h2 {
         padding: 0.5rem 0 0;
@@ -125,7 +129,6 @@
                     flex-shrink: 1;
                     width: 0;
                     height: 0;
-                    padding: 0;
                     transform: translateX(-100%);
                 }
 
