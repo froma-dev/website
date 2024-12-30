@@ -13,7 +13,7 @@
     --layout-padding-x: 1.625rem;
     --metadata-h1: 4rem;
     --metadata-h1-lineheight: 3.5rem;
-    --metadata-logo-size: 15rem;
+    --metadata-logo-size: 14.85rem;
     --metadata-h2: 1.25rem;
     --metadata-h2-lineheight: 1.25rem;
     --metadata-align-items: center;
@@ -50,7 +50,7 @@
         --metadata-h1-lineheight: 4.25rem;
         --metadata-h2: 1.25rem;
         --metadata-h2-lineheight: 1.25rem;
-        --metadata-logo-size: 20.85rem;
+        --metadata-logo-size: 14.85rem;
     }
 
     /* --breakpoint-m */
@@ -69,7 +69,7 @@
         --metadata-text-align: left;
         --metadata-buttons-justify-content: flex-start;
         --metadata-links-flex-direction: row;
-        --metadata-logo-size: 20.85rem;
+        --metadata-logo-size: 14.85rem;
         --button-cta-font-size: 1.5rem;
     }
 
@@ -85,7 +85,7 @@
         --metadata-text-size: 1rem;
         --metadata-experience-tag-font-size: 0.9rem;
         --metadata-tag-font-size: 0.8rem;
-        --metadata-logo-size: 20.85rem;
+        --metadata-logo-size: 14.85rem;
     }
 
     /* --breakpoint-xl */
@@ -100,13 +100,13 @@
         --metadata-text-size: 1.25rem;
         --metadata-experience-tag-font-size: 1.15rem;
         --metadata-text-line-height: 1.875rem;
-        --metadata-logo-size: 22.85rem;
+        --metadata-logo-size: 14.85rem;
     }
 
     /* --breakpoint-xl */
     @media (width >= 1800px) {
         --layout-padding-y: 0;
-        --layout-padding-x: 20rem;
+        --layout-padding-x: 16rem;
         --metadata-h1: 6rem;
         --metadata-h1-lineheight: 5rem;
         --metadata-h2: 1.85rem;
