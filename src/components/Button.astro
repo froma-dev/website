@@ -1,7 +1,7 @@
 ---
 import '@styles/components/Button.css';
 interface Props {
-    type: string;
+    type?: string;
     text: string;
     disabled?: boolean;
     id: string;
@@ -9,7 +9,7 @@ interface Props {
 }
 const {type, text, disabled, id, ariaLabel}: Props = Astro.props;
 ---
-<button class={`button ${type} ${disabled ? 'disabled' : ''}`} id={id} aria-label={ariaLabel}>
+<button class={`button ${type ?? 'default'} ${disabled ? 'disabled' : ''}`} id={id} aria-label={ariaLabel}>
     <slot/>
     {text}
 </button>
