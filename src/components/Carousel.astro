@@ -8,9 +8,10 @@ const {title, history} = params
     <h3>{title}</h3>
     <div class="carousel">
         <div class="strip">
-            {assets.map(({classNames, href, logo, transitionName, alt}: Asset) =>
+            {assets.map(({classNames, href, logoSrc, transitionName, alt, title}: Asset) =>
                     <a class=`asset ${classNames}` href={href} data-astro-history={history ?? 'auto'}>
-                        <img transition:name={transitionName} src={logo} alt={alt}/>
+                        {logoSrc && (<img transition:name={transitionName} src={logoSrc} alt={alt}/>)}
+                        {!logoSrc && (<h2 transition:name={transitionName} class="title">{title}</h2>)}
                     </a>
             )}
         </div>

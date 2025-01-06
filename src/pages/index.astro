@@ -20,9 +20,8 @@ const assets = JOBS.map((job) => {
     return {
         classNames: 'job',
         href: job.href,
-        logo: job.logo,
         transitionName: job.transitionName,
-        alt: job.company
+        title: job.company,
     }
 })
 const carouselParams = {
@@ -38,8 +37,8 @@ const backgroundSrc = getObjectUrl('frank_grayscale.webp').toString()
 ---
 
 <Layout
-        title="Frank Romaña - Software Engineering"
-        description="Frank Romaña is a software engineer with a passion for building user-friendly, accessible, and performant web applications."
+        title="Frank Romaña - Software Engineering | Front-End Developer"
+        description="Frank Romaña is a software engineer with nearly a decade of professional experience building user-friendly and high-performance web applications. He is passionate about crafting intuitive interfaces and delivering robust, scalable solutions."
         bgSrc={backgroundSrc}
         bgTitle="Frank Romaña - Software Engineering">
     <Header classNames="hidden">
@@ -61,7 +60,7 @@ const backgroundSrc = getObjectUrl('frank_grayscale.webp').toString()
                 </div>
             </section>
             <p>
-                Meet Frank Romaña. With over 10 years as a frontend developer, Frank has transformed screens into
+                Meet Frank Romaña. With over 10 years as a front-end developer, Frank has transformed screens into
                 captivating, user-focused experiences. Known for his ability to lead and innovate, Frank seamlessly
                 blends design with technology, creating applications that continually elevate user expectations. <br/>The
                 journey continues with every new line of code.

@@ -1,15 +1,17 @@
 export interface Asset {
     classNames: string,
     href: string,
-    logo: string,
+    logoSrc?: string,
     transitionName: string,
-    alt: string
+    alt?: string,
+    title?: string,
 }
 
-export const createAsset = ({classNames, href, logo, transitionName, alt}: Asset): Asset => ({
+export const createAsset = ({classNames, href, logoSrc, transitionName, alt, title}: Asset): Asset => ({
     classNames,
     href,
-    logo,
+    logoSrc,
     transitionName,
+    title,
     alt
 })

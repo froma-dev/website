@@ -8,7 +8,7 @@ export interface Job {
     roles: string[]
     tags: string[]
     description: string,
-    logo: string,
+    logoSrc?: string,
     backgroundUrl: string,
     transitionName: string,
     href: string,

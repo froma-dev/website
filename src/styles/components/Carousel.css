@@ -59,6 +59,7 @@
                 }
 
                 &.job {
+                    border: 1px solid var(--asset-background-overlay-hover);
                     border-radius: 0.5rem;
                     opacity: 0.8;
                     padding: 1.85rem;
@@ -77,6 +78,13 @@
                         object-fit: contain;
                         width: inherit;
                         height: inherit;
+                    }
+
+                    .title {
+                        color: var(--color-text-primary);
+                        font-size: 3rem;
+                        text-align: center;
+                        font-weight: 800;
                     }
                 }
 
