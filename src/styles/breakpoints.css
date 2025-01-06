@@ -29,6 +29,7 @@
     --button-cta-font-size: 1.25rem;
     --footer-justify-content: center;
     --metadata-tooltip-x-position: translateX(-50%);
+    --carousel-h3: 1.5rem;
 
     /* --breakpoint-xs */
     @media (width >= 375px) {
@@ -101,6 +102,7 @@
         --metadata-experience-tag-font-size: 1.15rem;
         --metadata-text-line-height: 1.875rem;
         --metadata-logo-size: 14.85rem;
+        --carousel-h3: 1.9rem;
     }
 
     /* --breakpoint-xl */

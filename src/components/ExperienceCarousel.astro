@@ -9,15 +9,16 @@ const {title, history} = params
 ---
 <Carousel title={title} classNames="job">
     {assets.map(({classNames, company, title, description, href, transitionName}: ExperienceAsset) =>
-            <article class=`asset ${classNames}` data-astro-history={history ?? 'auto'}>
-                <div class="company title">{company}</div>
-                <div class="metadata">
-                    <h2 transition:name={transitionName} class="role">{title}</h2>
-                    <p>{description}</p>
-                    <Button text="More Info" ariaLabel="more information" id="more-info-btn">
-                        <Info />
-                    </Button>
-                </div>
-            </article>
+            <a class="asset-link" href={href}>
+                <article class=`asset ${classNames}` data-astro-history={history ?? 'auto'}>
+                    <section class="company-info">
+                        <h3 class="title">{company}</h3>
+                    </section>
+                    <section class="metadata">
+                        <h2 transition:name={transitionName} class="role">{title}</h2>
+                        <p class="description">{description}</p>
+                    </section>
+                </article>
+            </a>
     )}
 </Carousel>

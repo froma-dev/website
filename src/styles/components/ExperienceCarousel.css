@@ -1,71 +1,133 @@
-.strip {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
+.carousel-container {
+    .carousel {
+        max-width: 100%;
 
-    .asset {
-        width: 100%;
-        display: flex;
-        background-color: var(--asset-background-overlay);
-        flex-direction: row;
-        flex: 0 1 20rem;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        border-radius: 0.5rem;
-        overflow: hidden;
-        box-shadow: none;
-        border: none;
-        outline: none;
-        outline-offset: 0;
-        transition: background 0.25s var(--smooth-transition-function),
-        transform 0.25s var(--smooth-transition-function),
-        backdrop-filter 0.25s var(--smooth-transition-function);
+        .strip {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
 
-        &.job {
-            border: 1px solid var(--asset-background-overlay-hover);
-            border-radius: 0.5rem;
-            opacity: 0.8;
-            padding: 1.85rem;
-            transition: background 0.25s var(--smooth-transition-function),
-            transform 0.25s var(--smooth-transition-function),
-            backdrop-filter 0.25s var(--smooth-transition-function),
-            opacity 0.5s var(--smooth-transition-function),
-            0.25s border-color ease-in-out;
-
-            &:hover {
-                background-color: var(--asset-background-overlay-hover);
-                opacity: 1;
+            .asset-link {
+                text-decoration: none;
             }
+            .asset {
+                width: 100%;
+                display: flex;
+                background-color: var(--asset-background-overlay);
+                flex-direction: row;
+                border-radius: 0.5rem;
+                transition: background 0.25s var(--smooth-transition-function),
+                transform 0.25s var(--smooth-transition-function),
+                backdrop-filter 0.25s var(--smooth-transition-function);
 
-            img {
-                object-fit: contain;
-                width: inherit;
-                height: inherit;
-            }
 
-            .title {
-                color: var(--color-text-primary);
-                font-size: 3rem;
-                text-align: center;
-                font-weight: 800;
+                &:hover {
+                    transform: scale(1.015);
+                    background: var(--color-overlay);
+                    backdrop-filter: blur(0.75rem);
+                }
+
+                &.job {
+                    border: 1px solid var(--asset-background-overlay-hover);
+                    border-radius: 0.5rem;
+                    padding: 0.25rem;
+                    transition: background 0.25s var(--smooth-transition-function),
+                    transform 0.25s var(--smooth-transition-function),
+                    backdrop-filter 0.25s var(--smooth-transition-function),
+                    opacity 0.5s var(--smooth-transition-function),
+                    0.25s border-color ease-in-out;
+
+                    &:hover {
+                        background-color: var(--asset-background-overlay-hover);
+                    }
+
+                    .company-info {
+                        display: flex;
+                        width: 230px;
+                        padding: 10px;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        flex-shrink: 0;
+                        align-self: stretch;
+
+                        .title {
+                            font-family: 'Aldrich', sans-serif;
+                            font-size: 3rem;
+                            text-align: center;
+                            font-weight: 800;
+                            line-height: 3rem;
+                            color: var(--color-text-primary);
+                        }
+
+                        img {
+                            object-fit: contain;
+                            width: inherit;
+                            height: inherit;
+                        }
+                    }
+
+                    .metadata {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+
+                        h2 {
+                            font-family: 'REM Variable', sans-serif;
+                            color: var(--color-text-secondary);
+                            font-size: var(--metadata-h2);
+                            line-height: var(--metadata-h2-lineheight);
+                            font-style: normal;
+                            font-weight: 400;
+                            text-align: center;
+                            display: flex;
+                            gap: 0.5rem;
+                        }
+
+                        .description {
+                            color: var(--color-text-paragraph);
+                            text-shadow: 2px 2px 0.2rem var(--color-background-dark);
+                            max-width: 80ch;
+                            text-wrap: balance;
+                            text-align: var(--metadata-text-align);
+                            font-size: var(--metadata-text-size);
+                            line-height: var(--metadata-text-line-height);
+                            font-style: normal;
+                            font-weight: 400;
+                            font-family: 'B612', sans-serif;
+                            margin: 0.5rem 0 0.5rem 0;
+
+                            /*clamp*/
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 2;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+
+                        .button {
+                            align-self: flex-start;
+                        }
+                    }
+                }
+
             }
         }
-
     }
 }
 
-@media (width >= 440px) {
-    .carousel-container {
-        .carousel {
-            .strip {
-                .asset {
-                    &.job {
-                        padding: 3rem;
+    @media (width >= 440px) {
+        .carousel-container {
+            .carousel {
+                .strip {
+                    .asset {
+                        &.job {
+                            padding: 2rem 2rem 2rem 0;
+                        }
                     }
                 }
             }
         }
     }
-}

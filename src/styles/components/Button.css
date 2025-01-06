@@ -23,7 +23,6 @@
 
     &.default {
         border-radius: 0.25rem;
-        background: var(--color-background-neutral);
     }
 
     &.cta {
