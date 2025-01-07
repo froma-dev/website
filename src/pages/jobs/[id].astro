@@ -4,11 +4,11 @@ import Tag from "@components/Tag.astro";
 import Metadata from "@components/Metadata.astro";
 import Layout from "@layouts/Layout.astro";
 import {fade} from "astro:transitions";
-import Carousel from "@components/Carousel.astro";
+import ExperienceCarousel from "@components/ExperienceCarousel.astro";
 import Header from "@components/Header.astro";
 import type {JobId} from "../../types/Job";
 import type {GetStaticPathsResult} from "astro";
-import {createAsset} from "../../types/Asset";
+import {type ExperienceAsset} from "../../types/Asset";
 import LinkedinLink from "@components/Links/Linkedin.astro";
 import WebsiteLink from "@components/Links/Website.astro";
 import Pdf from "@icons/Pdf.astro";
@@ -43,16 +43,19 @@ const {
     websiteUrl
 } = getJobById(id as JobId)
 
-const assets = JOBS.map((job) => {
-    return createAsset({
-        classNames: 'job',
-        href: url === job.href ? '#metadata' : job.href,
-        title: job.company,
-        logoSrc: job.logoSrc,
-        transitionName: url === job.href ? '' : job.transitionName,
-        alt: job.company
+const assets = JOBS
+    .filter((job) => url !== job.href)
+    .map((job): ExperienceAsset => {
+        return {
+            classNames: 'job',
+            href: job.href,
+            transitionName: job.transitionName,
+            title: job.roles.join(' & '),
+            company: job.company,
+            description: job.description,
+            startYear: job.startYear
+        }
     })
-})
 
 const carouselParams = {
     title: 'Experience',
@@ -99,6 +102,6 @@ const linkedinTooltipText = `${company}'s Linkedin`
                 </Button>
             </div>
         </Metadata>
-        <Carousel assets={assets} params={carouselParams}/>
+        <ExperienceCarousel assets={assets} params={carouselParams}/>
     </main>
 </Layout>

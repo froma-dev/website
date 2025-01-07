@@ -14,29 +14,5 @@ export interface ExperienceAsset {
     description: string,
     title: string,
     transitionName: string,
+    startYear: number,
 }
-
-export const createAsset = ({classNames, href, logoSrc, transitionName, alt, title}: Asset): Asset => ({
-    classNames,
-    href,
-    logoSrc,
-    transitionName,
-    title,
-    alt
-})
-
-export const createExperienceAsset = ({
-                                          classNames,
-                                          href,
-                                          description,
-                                          company,
-                                          title,
-                                          transitionName
-                                      }: ExperienceAsset): ExperienceAsset => ({
-    classNames,
-    href,
-    description,
-    company,
-    title,
-    transitionName,
-})

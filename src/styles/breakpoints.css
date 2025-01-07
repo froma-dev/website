@@ -35,6 +35,7 @@
     --asset-metadata-clamp: 4;
     --asset-metadata-text-align: center;
     --experience-asset-padding: 2rem 2rem;
+    --asset-metadata-tag-align-self: center;
 
     /* --breakpoint-xs */
     @media (width >= 375px) {
@@ -81,6 +82,7 @@
         --carousel-experience-flex-direction: row;
         --experience-asset-padding: 2rem 2rem 2rem 0;
         --asset-metadata-text-align: left;
+        --asset-metadata-tag-align-self: flex-start;
     }
 
     /* --breakpoint-l */

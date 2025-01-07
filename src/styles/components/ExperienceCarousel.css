@@ -29,6 +29,11 @@
                     backdrop-filter: blur(0.75rem);
                 }
 
+                &.selected {
+                    background: var(--color-overlay);
+                    backdrop-filter: blur(0.75rem);
+                }
+
                 &.job {
                     border: 1px solid var(--asset-background-overlay-hover);
                     border-radius: 0.5rem;
@@ -103,6 +108,10 @@
                             -webkit-line-clamp: var(--asset-metadata-clamp);
                             overflow: hidden;
                             text-overflow: ellipsis;
+                        }
+
+                        .tag {
+                            align-self: var(--asset-metadata-tag-align-self);
                         }
 
                         .button {
