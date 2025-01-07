@@ -4,6 +4,7 @@ import '@styles/components/Tooltip.css';
 import LinkedinLink from "@components/Links/Linkedin.astro";
 import GithubLink from "@components/Links/Github.astro";
 import EmailLink from "./Links/EmailLink.astro";
+import Thunda from '@icons/Thunda.astro'
 
 const emailLink = 'contact@froma.dev'
 const githubLink = 'https://github.com/froma-dev'
@@ -28,5 +29,5 @@ const {hasFooterContact} = Astro.props
                 <GithubLink href={githubLink} tooltipText={githubTooltipText}/>
             </div>
     )}
-    <span class="signature">Frank Romaña ⚡️ 2025</span>
+    <span class="signature">Frank Romaña <Thunda /> 2025</span>
 </footer>

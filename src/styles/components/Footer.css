@@ -40,9 +40,21 @@ footer {
     }
 
     .signature {
-        grid-row: 1;
-        grid-column: 2;
-        justify-self: flex-start;
         font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        svg {
+            width: 1.615rem;
+            transform: rotateZ(-10deg);
+            transition: transform 0.6s var(--smooth-transition-function);
+        }
+
+        &:hover {
+            svg {
+                transform: rotateZ(170deg);
+            }
+        }
     }
 }
