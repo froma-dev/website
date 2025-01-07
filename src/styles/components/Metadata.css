@@ -38,7 +38,7 @@ main {
             font-size: 1.5rem;
             color: var(--color-text-secondary);
             font-family: 'REM Variable', sans-serif;
-            gap: 0.5rem;
+            gap: 1.5rem;
             margin: var(--metadata-info-margin);
             position: relative;
             flex-wrap: wrap;
