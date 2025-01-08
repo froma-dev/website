@@ -26,6 +26,7 @@
     --color-text-muted: hsl(215, 8%, 48%);          /* #6B7280 */
 
     --color-overlay: hsla(215, 13%, 71%, 0.06);     /* #A1A9B8 with 6% opacity */
+    --color-overlay-values: 215deg 13% 71%;     /* #A1A9B8 with 6% opacity */
 
     /* Asset Styles */
     --asset-background-overlay: hsl(240deg 4.76% 4.12% / 86%);

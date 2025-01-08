@@ -26,7 +26,6 @@
         &:hover {
             transform: scale(1.05);
             background: var(--color-overlay);
-            backdrop-filter: blur(0.75rem);
         }
 
         &.job {

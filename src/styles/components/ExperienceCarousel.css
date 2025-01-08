@@ -22,32 +22,19 @@
                 backdrop-filter 0.25s var(--smooth-transition-function);
                 gap: 0.5rem;
                 align-items: center;
+                border: 1px solid var(--asset-background-overlay-hover);
+                padding: var(--experience-asset-padding);
 
                 &:hover {
                     transform: scale(1.015);
-                    background: var(--color-overlay);
-                    backdrop-filter: blur(0.75rem);
+                    background: hsla(var(--asset-background-overlay-hover-values) / 5%);
                 }
 
                 &.selected {
                     background: var(--color-overlay);
-                    backdrop-filter: blur(0.75rem);
                 }
 
                 &.job {
-                    border: 1px solid var(--asset-background-overlay-hover);
-                    border-radius: 0.5rem;
-                    padding: var(--experience-asset-padding);
-                    transition: background 0.25s var(--smooth-transition-function),
-                    transform 0.25s var(--smooth-transition-function),
-                    backdrop-filter 0.25s var(--smooth-transition-function),
-                    opacity 0.5s var(--smooth-transition-function),
-                    0.25s border-color ease-in-out;
-
-                    &:hover {
-                        background-color: var(--asset-background-overlay-hover);
-                    }
-
                     .company-info {
                         display: flex;
                         width: 14.375rem;
