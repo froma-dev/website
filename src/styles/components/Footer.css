@@ -14,7 +14,8 @@ footer {
     flex-direction: column;
     flex-wrap: wrap;
     background: var(--color-overlay);
-    backdrop-filter: blur(12px);
+    z-index: 1;
+
     color: var(--color-text-secondary);
 
     .contact {
@@ -41,19 +42,32 @@ footer {
 
     .signature {
         font-weight: bold;
+        font-size: 1.15rem;
         display: flex;
         align-items: center;
         gap: 0.5rem;
 
         svg {
+            transition: transform 0.3s var(--smooth-transition-function);
+        }
+
+        &>:first-child {
             width: 1.615rem;
-            transform: rotateZ(-10deg);
-            transition: transform 0.6s var(--smooth-transition-function);
+            transform: rotateY(0deg);
+        }
+
+        &>:last-child {
+            width: 1.615rem;
+            transform: rotateY(180deg);
         }
 
         &:hover {
-            svg {
-                transform: rotateZ(170deg);
+            &>:first-child {
+                transform: rotateY(180deg);
+            }
+
+            &>:last-child {
+                transform: rotateY(0deg);
             }
         }
     }
