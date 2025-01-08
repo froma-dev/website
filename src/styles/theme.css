@@ -30,6 +30,7 @@
 
     /* Asset Styles */
     --asset-background-overlay: hsl(240deg 4.76% 4.12% / 86%);
+    --asset-background-overlay-values: 240deg 4.76% 4.12%;
     --asset-background-overlay-hover: hsl(215deg 13% 71% / 13%);
     --asset-background-overlay-hover-values: 215deg 13% 71%;
 }

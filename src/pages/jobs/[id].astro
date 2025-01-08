@@ -3,7 +3,7 @@ import {JOBS, getJobById} from 'src/staticpaths/jobs';
 import Tag from "@components/Tag.astro";
 import Metadata from "@components/Metadata.astro";
 import Layout from "@layouts/Layout.astro";
-import {fade} from "astro:transitions";
+import {slide} from "astro:transitions";
 import ExperienceCarousel from "@components/ExperienceCarousel.astro";
 import Header from "@components/Header.astro";
 import type {JobId} from "../../types/Job";
@@ -13,6 +13,7 @@ import LinkedinLink from "@components/Links/Linkedin.astro";
 import WebsiteLink from "@components/Links/Website.astro";
 import Pdf from "@icons/Pdf.astro";
 import Button from "@components/Button.astro";
+import Thunda from "@icons/Thunda.astro";
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     return JOBS.map((job) => {
@@ -72,7 +73,7 @@ const linkedinTooltipText = `${company}'s Linkedin`
         bgSrc=`${backgroundUrl}`
         bgTitle={`Frank Romaña - Experience at ${company}`}
         hasFooterContact={true}>
-    <Header><h2 transition:name="brand-logo">Frank<br/>Romaña</h2></Header>
+    <Header><Thunda /><h2 transition:name="brand-logo">Frank<br/>Romaña</h2></Header>
     <main>
         <Metadata>
             <h1 transition:name={transitionName}
