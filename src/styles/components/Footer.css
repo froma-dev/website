@@ -47,27 +47,21 @@ footer {
         align-items: center;
         gap: 0.5rem;
 
-        svg {
-            transition: transform 0.3s var(--smooth-transition-function);
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
         }
 
-        &>:first-child {
+        svg {
+            transition: transform 0.5s ease-out;
             width: 1.615rem;
             transform: rotateY(0deg);
         }
 
-        &>:last-child {
-            width: 1.615rem;
-            transform: rotateY(180deg);
-        }
-
         &:hover {
-            &>:first-child {
-                transform: rotateY(180deg);
-            }
-
-            &>:last-child {
-                transform: rotateY(0deg);
+            svg {
+                transform: rotateY(720deg);
             }
         }
     }
