@@ -12,7 +12,7 @@ export const JOBS: Job[] = [
         linkedinUrl: 'https://www.linkedin.com/company/24i',
         websiteUrl: 'https://www.24i.com/',
         roles: ['JavaScript Developer', 'Team Leader'],
-        tags: ['Samsung Tizen', 'LG WebOS', 'AndroidTV', 'OTT'],
+        tags: ['Samsung Tizen', 'LG WebOS', 'AndroidTV', 'OTT', 'Shaka Player'],
         description: 'Frank Romaña, a front-end developer and dedicated team lead, brought a global touch to his work at 24i, captivating audiences across Europe, North America, and South America. Known for his technical expertise, leading initiatives that grew the client\'s user base. Frank’s approach seamlessly merges leadership with innovation, leaving a lasting impact on the streaming experience.',
         backgroundUrl: background24i,
         transitionName: '24i_logo',

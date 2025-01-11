@@ -8,8 +8,13 @@ const {title, history} = params
 ---
 <Carousel title={title} classNames="job">
     {assets.map(({classNames, company, title, description, href, transitionName, startYear}: ExperienceAsset) =>
-            <a class="asset-link" href={href}>
-                <article class=`asset ${classNames}` data-astro-history={history ?? 'auto'}>
+            <a
+                    class="asset-link"
+                    href={href}
+                    aria-label={`Learn more about Frank's experience at ${company}`}>
+                <article
+                        class=`asset ${classNames}`
+                        data-astro-history={history ?? 'auto'}>
                     <section class="company-info">
                         <h3 class="title">{company}</h3>
                     </section>

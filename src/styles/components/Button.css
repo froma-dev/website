@@ -28,6 +28,7 @@
     &.cta {
         font-size: var(--button-cta-font-size);
         background: hsla(var(--color-accent-primary-values),0.8);
+        gap: 0.45rem;
 
         &:hover {
             background: hsla(var(--color-accent-primary-values), 1);

@@ -3,7 +3,6 @@ import {JOBS, getJobById} from 'src/staticpaths/jobs';
 import Tag from "@components/Tag.astro";
 import Metadata from "@components/Metadata.astro";
 import Layout from "@layouts/Layout.astro";
-import {slide} from "astro:transitions";
 import ExperienceCarousel from "@components/ExperienceCarousel.astro";
 import Header from "@components/Header.astro";
 import type {JobId} from "../../types/Job";
@@ -11,9 +10,8 @@ import type {GetStaticPathsResult} from "astro";
 import {type ExperienceAsset} from "../../types/Asset";
 import LinkedinLink from "@components/Links/Linkedin.astro";
 import WebsiteLink from "@components/Links/Website.astro";
-import Pdf from "@icons/Pdf.astro";
-import Button from "@components/Button.astro";
 import Thunda from "@icons/Thunda.astro";
+import DownloadCV from "@components/Links/DownloadCV.astro";
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     return JOBS.map((job) => {
@@ -77,7 +75,6 @@ const linkedinTooltipText = `${company}'s Linkedin`
     <main>
         <Metadata>
             <h1 transition:name={transitionName}
-                transition:animate={fade({duration: 0.7})}
                 set:html={company.split(' ').join('<br>')}
             ></h1>
             <div class="info">
@@ -98,9 +95,11 @@ const linkedinTooltipText = `${company}'s Linkedin`
                 )}
             </div>
             <div class="buttons">
-                <Button text="Download CV" type="cta" id="download-cv" ariaLabel="Download CV">
-                    <Pdf/>
-                </Button>
+                <DownloadCV
+                        text="Download CV"
+                        type="cta"
+                        id="download-cv"
+                        ariaLabel="Download CV" />
             </div>
         </Metadata>
         <ExperienceCarousel assets={assets} params={carouselParams}/>

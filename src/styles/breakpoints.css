@@ -19,7 +19,7 @@
     --metadata-align-items: center;
     --metadata-tags-justify-content: center;
     --metadata-tag-font-size: 0.75rem;
-    --metadata-experience-tag-font-size: 0.65rem;
+    --metadata-experience-tag-font-size: 0.75rem;
     --metadata-text-size: 1rem;
     --metadata-text-line-height: 1.5rem;
     --metadata-text-align: center;
@@ -35,7 +35,10 @@
     --asset-metadata-clamp: 4;
     --asset-metadata-text-align: center;
     --experience-asset-padding: 2rem 2rem;
+    --experience-asset-metadata-padding: 0rem 1.5rem;
+    --experience-asset-description-font-size: 1rem;
     --asset-metadata-tag-align-self: center;
+    --carousel-strip-flex-direction: column;
 
     /* --breakpoint-xs */
     @media (width >= 375px) {
@@ -80,9 +83,10 @@
         --metadata-logo-size: 14.85rem;
         --button-cta-font-size: 1.5rem;
         --carousel-experience-flex-direction: row;
-        --experience-asset-padding: 2rem 2rem 2rem 0;
+        --experience-asset-padding: 0rem 2rem 0rem 0;
         --asset-metadata-text-align: left;
         --asset-metadata-tag-align-self: flex-start;
+        --experience-asset-metadata-padding: 1.5rem 0;
     }
 
     /* --breakpoint-l */
@@ -99,7 +103,6 @@
         --metadata-tag-font-size: 0.8rem;
         --metadata-logo-size: 14.85rem;
         --company-info-align-self: stretch;
-        --asset-metadata-clamp: 2;
     }
 
     /* --breakpoint-xl */
@@ -129,7 +132,6 @@
         --metadata-tags-justify-content: flex-start;
         --metadata-tag-font-size: 1rem;
         --metadata-text-size: 1.35rem;
-        --metadata-experience-tag-font-size: 1.25rem;
         --metadata-text-line-height: 2.025rem;
     }
 }
