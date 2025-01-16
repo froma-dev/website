@@ -26,6 +26,7 @@
     --metadata-buttons-justify-content: center;
     --metadata-links-flex-direction: column;
     --metadata-info-margin: 0;
+    --metadata-info-gap: 0.5rem;
     --button-cta-font-size: 1.25rem;
     --footer-justify-content: center;
     --metadata-tooltip-x-position: translateX(-50%);
@@ -39,6 +40,7 @@
     --experience-asset-description-font-size: 1rem;
     --asset-metadata-tag-align-self: center;
     --carousel-strip-flex-direction: column;
+
 
     /* --breakpoint-xs */
     @media (width >= 375px) {
@@ -62,6 +64,7 @@
         --metadata-h2-lineheight: 1.25rem;
         --metadata-logo-size: 14.85rem;
         --asset-metadata-clamp: 3;
+        --metadata-info-gap: 1rem;
     }
 
     /* --breakpoint-m */
@@ -81,7 +84,7 @@
         --metadata-buttons-justify-content: flex-start;
         --metadata-links-flex-direction: row;
         --metadata-logo-size: 14.85rem;
-        --button-cta-font-size: 1.5rem;
+        --button-cta-font-size: 1.35rem;
         --carousel-experience-flex-direction: row;
         --experience-asset-padding: 0rem 2rem 0rem 0;
         --asset-metadata-text-align: left;

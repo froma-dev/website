@@ -1,5 +1,6 @@
 :root {
     --smooth-transition-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+    --fade-in-transition: 1s opacity 0.35s var(--smooth-transition-function);
 }
 
 @keyframes slide-in-from-right-10 {
@@ -13,7 +14,7 @@
 
 @keyframes slide-in-from-right-5 {
     from {
-        transform: translateX(5%);
+        transform: translateX(50%);
     }
     to {
         transform: translateX(0);
@@ -40,7 +41,6 @@
         opacity: 1;
         width: inherit;
         height: inherit;
-        padding: 1rem;
     }
 }
 @keyframes fade-out {
@@ -48,7 +48,6 @@
         opacity: 1;
         width: inherit;
         height: inherit;
-        padding: 1rem;
     }
     to {
         opacity: 0;

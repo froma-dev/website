@@ -11,9 +11,11 @@
     --color-background-light-values: 217, 28%, 19%;   /* #1E293B */
     --color-background-neutral: hsl(0, 0%, 94%);   /* #F0F0F0 */
     --color-background-neutral-values: 0, 0%, 94%;   /* --color-background-neutral */
+    --color-background-cinema: hsl(0 0% 10%);   /* --color-background-cinema */
+    --color-background-cinema-values: 0 0% 10%;   /* --color-background-cinema-values */
 
     /* Border & Divider Colors */
-    --color-border: hsl(210, 22%, 30%);             /* #334155 */
+    --color-border: hsl(0 0% 26% / 1);             /* #334155 */
     --color-divider: hsl(211, 30%, 14%);            /* #1C2A3A */
 
     /* Shadow Color */

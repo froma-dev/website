@@ -14,7 +14,7 @@
 
             .asset {
                 display: flex;
-                background-color: hsla(var(--asset-background-overlay-values) / 33%);
+                background-color: hsla(var(--color-background-cinema-values) / 33%);
                 flex-direction: var(--carousel-experience-flex-direction);
                 border-radius: 0.5rem;
                 transition: background 0.25s var(--smooth-transition-function),
@@ -27,7 +27,7 @@
 
                 &:hover {
                     transform: scale(1.015);
-                    background: var(--asset-background-overlay);
+                    background: hsla(var(--color-background-cinema-values) / 95%);
                 }
 
                 &.selected {

@@ -3,11 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Tag from "../components/Tag.astro";
 import Metadata from "../components/Metadata.astro";
 import Button from "../components/Button.astro";
-import Pdf from "../icons/Pdf.astro";
 import PlayFilled from "../icons/PlayFilled.astro";
 import Volume from "../icons/Volume.astro";
 import VolumeOff from "../icons/VolumeOff.astro";
-import AssetCarousel from "@components/AssetCarousel.astro";
 import {JOBS} from "../staticpaths/jobs";
 import PauseFilled from "../icons/PauseFilled.astro";
 import LinkedinLink from "@components/Links/Linkedin.astro";
@@ -52,7 +50,7 @@ const backgroundSrc = getObjectUrl('frank_grayscale.webp').toString()
     </Header>
     <main>
         <Metadata>
-            <h1 transition:name="brand-logo">Frank<br/>Romaña</h1>
+            <h1>Frank<br/>Romaña</h1>
             <section class="info">
                 <h2>
                     <span class="role">Web Developer</span>

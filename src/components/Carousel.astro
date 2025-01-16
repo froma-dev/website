@@ -2,7 +2,7 @@
 import '@styles/components/Carousel.css'
 const {title, classNames} = Astro.props
 ---
-<section class="carousel-container">
+<section class=`carousel-container ${classNames}`>
     <h3>{title}</h3>
     <div class="carousel">
         <div class="strip">

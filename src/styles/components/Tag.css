@@ -7,11 +7,11 @@
 
     border-radius: 0.2rem;
     border: 0.0625rem solid var(--color-border);
-    background: hsla(var(--color-background-light-values), 0.5);
+    background: var(--color-background-cinema);
     color: var(--color-text-paragraph);
 
     font-family: 'REM Variable', sans-serif;
-    font-size: inherit;
+    font-size: 0.85rem;
     font-style: normal;
     line-height: normal;
 }

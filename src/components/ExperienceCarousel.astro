@@ -6,8 +6,8 @@ import Tag from "@components/Tag.astro";
 const {assets, params} = Astro.props
 const {title, history} = params
 ---
-<Carousel title={title} classNames="job">
-    {assets.map(({classNames, company, title, description, href, transitionName, startYear}: ExperienceAsset) =>
+<Carousel title={title} classNames="job loading">
+    {assets.map(({classNames, company, title, description, href, startYear}: ExperienceAsset) =>
             <a
                     class="asset-link"
                     href={href}
@@ -19,7 +19,7 @@ const {title, history} = params
                         <h3 class="title">{company}</h3>
                     </section>
                     <section class="metadata">
-                        <h2 transition:name={transitionName} class="role">{title}</h2>
+                        <h2 class="role">{title}</h2>
                         <p class="description">{description}</p>
                         <Tag text={`${startYear}`} className="year"/>
                     </section>

@@ -71,11 +71,10 @@ const linkedinTooltipText = `${company}'s Linkedin`
         bgSrc=`${backgroundUrl}`
         bgTitle={`Frank Romaña - Experience at ${company}`}
         hasFooterContact={true}>
-    <Header><Thunda /><h2 transition:name="brand-logo">Frank<br/>Romaña</h2></Header>
+    <Header><Thunda /><h2>Frank<br/>Romaña</h2></Header>
     <main>
         <Metadata>
-            <h1 transition:name={transitionName}
-                set:html={company.split(' ').join('<br>')}
+            <h1 set:html={company.split(' ').join('<br>')}
             ></h1>
             <div class="info">
                 <div class="experience-years">

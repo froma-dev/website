@@ -23,7 +23,7 @@ footer {
         justify-content: flex-end;
         align-items: center;
         align-content: center;
-        gap: 0.625rem;
+        gap: 0.1rem;
         flex-wrap: wrap;
         opacity: 0;
         animation: reveal 1s var(--smooth-transition-function) forwards;

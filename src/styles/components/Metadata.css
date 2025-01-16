@@ -1,14 +1,18 @@
-main {
+ main {
     >.metadata {
         display: flex;
         width: 100%;
-        height: 85dvh;
         min-height: 500px;
         flex-direction: column;
         align-items: var(--metadata-align-items);
         justify-content: center;
         gap: 0.25rem;
-        transition: opacity 1s var(--smooth-transition-function);
+        transition: var(--fade-in-transition);
+        margin: 5.5rem 0;
+
+        > * {
+            z-index: 1;
+        }
 
         &.loading {
             opacity: 0;
@@ -16,7 +20,6 @@ main {
 
         &.loaded {
             opacity: 1;
-            animation: slide-in-from-right-5 0.25s ease-in-out forwards;
         }
 
         .logo {
@@ -38,7 +41,7 @@ main {
             font-size: 1.5rem;
             color: var(--color-text-secondary);
             font-family: 'REM Variable', sans-serif;
-            gap: 1.5rem;
+            gap: var(--metadata-info-gap);
             margin: var(--metadata-info-margin);
             position: relative;
             flex-wrap: wrap;
@@ -51,18 +54,17 @@ main {
                 font-size: var(--metadata-text-size);
 
                 .tag {
-                    font-size: var(--metadata-experience-tag-font-size);
                     max-height: 2rem;
                 }
             }
 
             .links {
                 display: flex;
-                gap: 0.5rem;
+                gap: 0.1rem;
             }
 
             .tag {
-                background-color: var(--color-overlay);
+                background-color: var(--color-background-cinema);
             }
         }
         h2 {

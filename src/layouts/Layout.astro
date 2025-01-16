@@ -69,15 +69,34 @@ const { title, description, bgSrc, bgTitle, hasFooterContact } = Astro.props;
 	document.addEventListener('astro:page-load', () => {
 		window.scrollTo({top: 0, behavior: 'smooth'})
 		const $metadata = document.querySelector('.metadata')
+		const $carouselContainer = document.querySelector('.carousel-container')
+		const $header = document.querySelector('.header')
+
 		const showMetadata = () => {
 			$metadata?.classList.remove('loading')
 			$metadata?.classList.add('loaded')
+		}
+		const showCarouselContainer = () => {
+			$carouselContainer?.classList.remove('loading')
+			$carouselContainer?.classList.add('loaded')
+		}
+
+		const showHeader = () => {
+			$header?.classList.remove('loading')
+			$header?.classList.add('loaded')
 		}
 
 		if ($metadata) {
 			$playPauseButton = $metadata.querySelector('#play-pause-button') as HTMLButtonElement;
 			$volumeOnOffButton = $metadata.querySelector('#volume-on-off-button') as HTMLButtonElement;
 			showMetadata()
+
+			if ($carouselContainer) {
+				showCarouselContainer()
+			}
+			if ($header) {
+				showHeader()
+			}
 			addEventListeners()
 		}
 	})
