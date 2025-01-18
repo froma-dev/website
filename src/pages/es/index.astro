@@ -1,0 +1,100 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Tag from "@components/Tag.astro";
+import Metadata from "@components/Metadata.astro";
+import Button from "@components/Button.astro";
+import PlayFilled from "@icons/PlayFilled.astro";
+import Volume from "@icons/Volume.astro";
+import VolumeOff from "@icons/VolumeOff.astro";
+import {JOBS} from "@static-paths/jobs";
+import PauseFilled from "@icons/PauseFilled.astro";
+import LinkedinLink from "@components/Links/Linkedin.astro";
+import GithubLink from "@components/Links/Github.astro";
+import EmailLink from "@components/Links/EmailLink.astro";
+import Header from "@components/Header.astro";
+import {getObjectUrl} from "@services/cloud/cloud";
+import {type ExperienceAsset} from "../../types/Asset";
+import ExperienceCarousel from "@components/ExperienceCarousel.astro";
+import DownloadCV from "@components/Links/DownloadCV.astro";
+
+const assets = JOBS.map((job): ExperienceAsset => {
+    return {
+        classNames: 'job',
+        href: job.href,
+        transitionName: job.transitionName,
+        title: job.roles.join(' & '),
+        company: job.company,
+        description: job.description,
+        startYear: job.startYear,
+    }
+})
+const carouselParams = {
+    title: 'Experience',
+    history: 'auto'
+}
+const emailUrl = 'contact@froma.dev'
+const githubUrl = 'https://github.com/froma-dev'
+const linkedinUrl = 'https://www.linkedin.com/in/frankromana'
+const linkedinTooltipText = 'Frank\'s Linkedin'
+const githubTooltipText = 'Frank\'s Github'
+const backgroundSrc = getObjectUrl('frank_grayscale.webp').toString()
+---
+
+<Layout
+        title="Frank Romaña - Software Engineering | Front-End Developer"
+        description="Frank Romaña is a software engineer with nearly a decade of professional experience building user-friendly and high-performance web applications. He is passionate about crafting intuitive interfaces and delivering robust, scalable solutions."
+        bgSrc={backgroundSrc}
+        bgTitle="Frank Romaña - Software Engineering">
+    <Header classNames="hidden">
+        <h2>Frank<br/>Romaña</h2>
+    </Header>
+    <main>
+        <Metadata>
+            <h1>Frank<br/>Romaña</h1>
+            <section class="info">
+                <h2>
+                    <span class="role">Desarrollador Web</span>
+                    <span>/</span>
+                    <span>España</span>
+                </h2>
+                <div class="links">
+                    <LinkedinLink href={linkedinUrl} tooltipText={linkedinTooltipText}/>
+                    <EmailLink href={emailUrl} tooltipText={emailUrl}/>
+                    <GithubLink href={githubUrl} tooltipText={githubTooltipText}/>
+                </div>
+            </section>
+            <p>
+                Conoce a Frank Romaña.
+                Con más de 10 años como desarrollador front-end, Frank transforma pantallas en experiencias atractivas y
+                centradas en el usuario. Su habilidad para innovar y liderar combina diseño y tecnología, creando
+                aplicaciones que superan expectativas.
+                <br/>La historia sigue con cada línea de código.
+            </p>
+            <div class="tags">
+                <Tag text="SmartTV"/>
+                <Tag text="OTT"/>
+                <Tag text="IPTV"/>
+                <Tag text="Video Streaming"/>
+                <Tag text="Frontend"/>
+            </div>
+            <div class="buttons">
+                <DownloadCV text="Descargar CV" type="cta" id="download-cv" ariaLabel="Download CV"/>
+                <div class="playback-controls">
+                    <Button text="" type="round" id="play-pause-button" ariaLabel="Play/Pause">
+                        <div class="icon-left">
+                            <PlayFilled/>
+                            <PauseFilled/>
+                        </div>
+                    </Button>
+                    <Button text="" type="round" id="volume-on-off-button" ariaLabel="Volume On/Off">
+                        <div class="icon-left">
+                            <Volume/>
+                            <VolumeOff/>
+                        </div>
+                    </Button>
+                </div>
+            </div>
+        </Metadata>
+        <ExperienceCarousel assets={assets} params={carouselParams}/>
+    </main>
+</Layout>

@@ -10,7 +10,7 @@
       "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"],
       "@scripts/*": ["src/scripts/*"],
-      "@static-paths/*": ["src/statics/*"],
+      "@static-paths/*": ["src/staticpaths/*"],
       "@types/*": ["src/types/*"],
       "@config/*": ["src/config/*"],
       "@fontsource/*": ["node_modules/@fontsource/*"],

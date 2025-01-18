@@ -1,0 +1,59 @@
+---
+import {getObjectUrl} from "@services/cloud/cloud";
+import ErrorLayout from "@layouts/ErrorLayout.astro";
+import '@styles/components/Button.css';
+
+const backgroundSrc = getObjectUrl('SMPTE_Color_Bars.svg').toString()
+---
+
+<ErrorLayout
+        title="Frank Romaña - 404 Not Found"
+        description="404 Not Found - Frank Romaña is a software engineer with nearly a decade of professional experience building user-friendly and high-performance web applications. He is passionate about crafting intuitive interfaces and delivering robust, scalable solutions."
+        bgSrc={backgroundSrc}
+        bgTitle="SMPTE Color Bars">
+    <main>
+        <section class="error-container">
+            <div class="message-strip">
+                <h1>NO SIGNAL (404)</h1>
+            </div>
+            <a href="/" class="button">Back to home</a>
+        </section>
+    </main>
+</ErrorLayout>
+
+<style>
+    main {
+        z-index: 0;
+        padding: 0;
+    }
+    .error-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+
+        .message-strip {
+            background: var(--color-background-dark);
+            width: 100%;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            h1 {
+                font-size: 3rem;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 3rem;
+                text-align: center;
+                color: var(--color-text-secondary);
+                width: 100%;
+            }
+        }
+    }
+</style>
