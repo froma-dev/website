@@ -40,6 +40,7 @@
     --experience-asset-description-font-size: 1rem;
     --asset-metadata-tag-align-self: center;
     --carousel-strip-flex-direction: column;
+    --main-metadata-margin-y: 5.5rem;
 
 
     /* --breakpoint-xs */
@@ -90,6 +91,22 @@
         --asset-metadata-text-align: left;
         --asset-metadata-tag-align-self: flex-start;
         --experience-asset-metadata-padding: 1.5rem 0;
+    }
+
+    @media (height >= 840px) {
+        --main-metadata-margin-y: 6.5rem;
+    }
+
+    @media (height >= 980px) {
+        --main-metadata-margin-y: 10.5rem;
+    }
+
+    @media (height >= 1040px) {
+        --main-metadata-margin-y: 12.5rem;
+    }
+
+    @media (height >= 1300px) {
+        --main-metadata-margin-y: 19rem;
     }
 
     /* --breakpoint-l */
