@@ -4,13 +4,12 @@ import DownloadIcon from "@icons/DownloadIcon.astro";
 
 interface Props {
     type?: string;
-    text: string;
     disabled?: boolean;
     id: string;
     ariaLabel?: string;
     href?: string;
 }
-const {type, text, disabled, id, ariaLabel}: Props = Astro.props;
+const {type, disabled, id, ariaLabel}: Props = Astro.props;
 
 const href = "https://s3.eu-north-1.amazonaws.com/froma.dev/documents/FRANK_ROMANA_FRONTEND_CV_ENG.pdf"
 ---
@@ -21,5 +20,5 @@ const href = "https://s3.eu-north-1.amazonaws.com/froma.dev/documents/FRANK_ROMA
    download="FRANK_ROMANA_FRONTEND_CV_ENG.pdf"
    rel="noopener noreferrer">
     <DownloadIcon/>
-    {text}
+    <slot />
 </a>

@@ -9,6 +9,7 @@
       "@icons/*": ["src/icons/*"],
       "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"],
+      "@i18n/*": ["src/i18n/*"],
       "@scripts/*": ["src/scripts/*"],
       "@static-paths/*": ["src/staticpaths/*"],
       "@types/*": ["src/types/*"],

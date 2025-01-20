@@ -1,106 +1,76 @@
 ---
+import {getCollection} from 'astro:content'
 import {JOBS, getJobById} from 'src/staticpaths/jobs';
-import Tag from "@components/Tag.astro";
-import Metadata from "@components/Metadata.astro";
 import Layout from "@layouts/Layout.astro";
 import ExperienceCarousel from "@components/ExperienceCarousel.astro";
 import Header from "@components/Header.astro";
 import type {JobId} from "../../types/Job";
-import type {GetStaticPathsResult} from "astro";
 import {type ExperienceAsset} from "../../types/Asset";
-import LinkedinLink from "@components/Links/Linkedin.astro";
-import WebsiteLink from "@components/Links/Website.astro";
 import Thunda from "@icons/Thunda.astro";
-import DownloadCV from "@components/Links/DownloadCV.astro";
+import JobMetadata from "@components/JobMetadata.astro";
+import {getLangFromUrl, useTranslations} from "@i18n/utils";
 
-export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-    return JOBS.map((job) => {
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+export const getStaticPaths = async () => {
+    const experiences = await getCollection('experience')
+    console.log('asttro ', Astro.url)
+    const lang = getLangFromUrl(Astro.url)
+    const langRegEx = new RegExp(lang)
+
+    return experiences.filter(({id}) => langRegEx.test(id)).map(experience => {
+        const {id, href} = experience.data
+
         return {
             params: {
-                id: job.id
+                id: id
             },
             props: {
-                url: job.href
+                url: href
             }
         }
     })
 }
 
-const {id} = Astro.params
+const {id}: {id: JobId} = Astro.params
 const {url} = Astro.props
-const {
-    company,
-    backgroundUrl,
-    logoSrc,
-    roles,
-    tags,
-    description,
-    transitionName,
-    startYear,
-    endYear,
-    linkedinUrl,
-    websiteUrl
-} = getJobById(id as JobId)
+const job = getJobById(id)
+const {company, backgroundUrl} = job
 
-const assets = JOBS
-    .filter((job) => url !== job.href)
-    .map((job): ExperienceAsset => {
-        return {
-            classNames: 'job',
-            href: job.href,
-            transitionName: job.transitionName,
-            title: job.roles.join(' & '),
-            company: job.company,
-            description: job.description,
-            startYear: job.startYear
-        }
-    })
+const assets2 = await getCollection('experience')
+const langRegEx = new RegExp(lang)
+const assets = assets2.filter(({id, data}) => langRegEx.test(id) && url !== data.href).map((asset) => {
+    const job = asset.data
+
+    console.log(job)
+    return {
+        classNames: 'job',
+        href: job.href,
+        transitionName: job.transitionName,
+        title: job.roles.join(' & '),
+        company: job.company,
+        description: job.description,
+        startYear: job.startYear,
+    }
+})
 
 const carouselParams = {
     title: 'Experience',
     history: 'replace'
 }
-
-const websiteTooltipText = `${company}'s Website`
-const linkedinTooltipText = `${company}'s Linkedin`
 ---
-
 <Layout
-        title={`Frank Romaña - Experience at ${company}`}
-        description="Frank Romaña is a software engineer with nearly a decade of professional experience building user-friendly and high-performance web applications. He is passionate about crafting intuitive interfaces and delivering robust, scalable solutions."
+        title={`${t('experience.meta.title')}${company}`}
+        description={t('experience.meta.description')}
         bgSrc=`${backgroundUrl}`
-        bgTitle={`Frank Romaña - Experience at ${company}`}
+        bgTitle={`${t('experience.meta.background.alt')} ${company}`}
         hasFooterContact={true}>
-    <Header><Thunda /><h2>Frank<br/>Romaña</h2></Header>
+    <Header>
+        <Thunda/>
+        <h2>Frank<br/>Romaña</h2></Header>
     <main>
-        <Metadata>
-            <h1 set:html={company.split(' ').join('<br>')}
-            ></h1>
-            <div class="info">
-                <div class="experience-years">
-                    <Tag text={`${startYear}`} className="year"/>
-                    <Tag text={`${endYear - startYear} Seasons`}/>
-                </div>
-                <div class="links">
-                    <LinkedinLink href={linkedinUrl} tooltipText={linkedinTooltipText}/>
-                    <WebsiteLink href={websiteUrl} websiteTooltipText={websiteTooltipText}/>
-                </div>
-            </div>
-            <h2>{roles.join(' & ')}</h2>
-            <p>{description}</p>
-            <div class="tags">
-                {tags.map((tag) =>
-                        <Tag text={tag}/>
-                )}
-            </div>
-            <div class="buttons">
-                <DownloadCV
-                        text="Download CV"
-                        type="cta"
-                        id="download-cv"
-                        ariaLabel="Download CV" />
-            </div>
-        </Metadata>
+        <JobMetadata job={job} />
         <ExperienceCarousel assets={assets} params={carouselParams}/>
     </main>
 </Layout>

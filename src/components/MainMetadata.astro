@@ -1,0 +1,64 @@
+---
+import EmailLink from "./Links/EmailLink.astro";
+import Volume from "../icons/Volume.astro";
+import LinkedinLink from "./Links/Linkedin.astro";
+import VolumeOff from "../icons/VolumeOff.astro";
+import PlayFilled from "../icons/PlayFilled.astro";
+import Metadata from "./Metadata.astro";
+import Tag from "./Tag.astro";
+import PauseFilled from "../icons/PauseFilled.astro";
+import GithubLink from "./Links/Github.astro";
+import DownloadCV from "./Links/DownloadCV.astro";
+import Button from "./Button.astro";
+import {useTranslations, getLangFromUrl} from "@i18n/utils"
+
+const emailUrl = 'contact@froma.dev'
+const githubUrl = 'https://github.com/froma-dev'
+const linkedinUrl = 'https://www.linkedin.com/in/frankromana'
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Metadata>
+    <h1>Frank<br/>Romaña</h1>
+    <section class="info">
+        <h2>
+            <span class="role">{t('info.role')}</span>
+            <span>/</span>
+            <span>{t('info.location')}</span>
+        </h2>
+        <div class="links">
+            <LinkedinLink href={linkedinUrl} tooltipText={t('nav.link.tooltip.linkedin')}/>
+            <EmailLink href={emailUrl} tooltipText={t('nav.link.tooltip.email')}/>
+            <GithubLink href={githubUrl} tooltipText={t('nav.link.tooltip.github')}/>
+        </div>
+    </section>
+    <p>{t('main.metadata.description')}</p>
+    <div class="tags">
+        <Tag text="SmartTV"/>
+        <Tag text="OTT"/>
+        <Tag text="IPTV"/>
+        <Tag text="Video Streaming"/>
+        <Tag text="Frontend"/>
+    </div>
+    <div class="buttons">
+        <DownloadCV type="cta" id="download-cv" ariaLabel={t('main.metadata.button.downloadCv')}>
+            {t('main.metadata.button.downloadCv')}
+        </DownloadCV>
+        <div class="playback-controls">
+            <Button text="" type="round" id="play-pause-button" ariaLabel={t('main.metadata.button.playPause.ariaLabel')}>
+                <div class="icon-left">
+                    <PlayFilled/>
+                    <PauseFilled/>
+                </div>
+            </Button>
+            <Button text="" type="round" id="volume-on-off-button" ariaLabel={t('main.metadata.button.mute.ariaLabel')}>
+                <div class="icon-left">
+                    <Volume/>
+                    <VolumeOff/>
+                </div>
+            </Button>
+        </div>
+    </div>
+</Metadata>

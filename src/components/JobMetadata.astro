@@ -1,0 +1,53 @@
+---
+import LinkedinLink from "./Links/Linkedin.astro";
+import WebsiteLink from "./Links/Website.astro";
+import Metadata from "./Metadata.astro";
+import Tag from "./Tag.astro";
+import DownloadCV from "./Links/DownloadCV.astro";
+import {getLangFromUrl, useTranslations} from "@i18n/utils";
+import {type Job} from "../types/Job";
+
+const {job} = Astro.props
+const {
+    company,
+    roles,
+    tags,
+    description,
+    startYear,
+    endYear,
+    linkedinUrl,
+    websiteUrl
+} = job as Job
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const websiteTooltipText = websiteUrl
+const linkedinTooltipText = lang === 'en' ? `${company}'s LinkedIn` : `LinkedIn de ${company}`
+---
+<Metadata>
+    <h1 set:html={company.split(' ').join('<br>')}
+    ></h1>
+    <div class="info">
+        <div class="experience-years">
+            <Tag text={`${startYear}`} className="year"/>
+            <Tag text={`${endYear - startYear} ${t('experience.tag.seasons')}`}/>
+        </div>
+        <div class="links">
+            <LinkedinLink href={linkedinUrl} tooltipText={linkedinTooltipText}/>
+            <WebsiteLink href={websiteUrl} websiteTooltipText={websiteTooltipText}/>
+        </div>
+    </div>
+    <h2>{roles.join(' & ')}</h2>
+    <p>{description}</p>
+    <div class="tags">
+        {tags.map((tag) =>
+                <Tag text={tag}/>
+        )}
+    </div>
+    <div class="buttons">
+        <DownloadCV type="cta" id="download-cv" ariaLabel={t('main.metadata.button.downloadCv')}>
+            {t('main.metadata.button.downloadCv')}
+        </DownloadCV>
+    </div>
+</Metadata>

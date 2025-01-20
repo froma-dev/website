@@ -1,0 +1,14 @@
+{
+  "id": "nokia",
+  "company": "Nokia TECSS",
+  "linkedinUrl": "https://www.linkedin.com/company/nokia-tecss",
+  "websiteUrl": "https://www.nokia.com/",
+  "roles": ["Desarrollador Front-End"],
+  "tags": ["Samsung Tizen", "LG WebOS", "Arris STB", "IPTV"],
+  "description": "En Nokia TECSS, Frank Romaña formó parte de un equipo multidisciplinario dedicado al desarrollo de una aplicación personalizada de IPTV para plataformas como los decodificadores Arris, Samsung Tizen y LG WebOS. Sus contribuciones incluyeron el desarrollo de un innovador prototipo de videoconferencia para decodificadores, funcionalidades de control por voz, integraciones con aplicaciones de terceros y la expansión de las posibilidades futuras de los dispositivos conectados.",
+  "backgroundUrl": "nokia.webp",
+  "transitionName": "nokia_logo",
+  "href": "/es/jobs/nokia",
+  "startYear": 2014,
+  "endYear": 2020
+}
