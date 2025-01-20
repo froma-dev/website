@@ -11,6 +11,7 @@ import Footer from "@components/Footer.astro";
 import Background from "@components/Background.astro";
 import { ViewTransitions } from "astro:transitions";
 import Toast from "@components/Toast.astro";
+import { getLangFromUrl } from '@i18n/utils';
 interface Props {
 	title: string;
 	description: string;
@@ -19,11 +20,12 @@ interface Props {
 	hasFooterContact?: boolean;
 }
 
-const { title, description, bgSrc, bgTitle, hasFooterContact } = Astro.props;
+const { title, description, bgSrc, bgTitle, hasFooterContact } = Astro.props
+const lang = getLangFromUrl(Astro.url)
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
