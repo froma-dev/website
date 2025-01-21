@@ -14,7 +14,8 @@ const job = defineCollection({
         href: z.string(),
         startYear: z.number(),
         endYear: z.number()
-    })
+    }),
+
 })
 
 const main = defineCollection({

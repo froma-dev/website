@@ -1,9 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import {JOBS} from "@static-paths/jobs";
 import Header from "@components/Header.astro";
 import {getObjectUrl} from "@services/cloud/cloud";
-import {type ExperienceAsset} from "../types/Asset";
+import {type ExperienceAsset} from "../../types/Asset";
 import ExperienceCarousel from "@components/ExperienceCarousel.astro";
 import MainMetadata from "@components/MainMetadata.astro";
 import {getLangFromUrl, useTranslations} from "@i18n/utils";
@@ -12,22 +11,22 @@ import {getCollection} from 'astro:content'
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 const assets2 = await getCollection('experience')
-console.log(lang)
 const langRegEx = new RegExp(lang)
-const assets = assets2.filter(({id}) => langRegEx.test(id)).map((asset): ExperienceAsset => {
-    const job = asset.data
+const assets = assets2
+    .filter(({id}) => langRegEx.test(id))
+    .map(asset => {
+        const job = asset.data
 
-    console.log(job)
-    return {
-        classNames: 'job',
-        href: job.href,
-        transitionName: job.transitionName,
-        title: job.roles.join(' & '),
-        company: job.company,
-        description: job.description,
-        startYear: job.startYear,
-    }
-})
+        return {
+            classNames: 'job',
+            href: job.href,
+            transitionName: job.transitionName,
+            title: job.roles.join(' & '),
+            company: job.company,
+            description: job.description,
+            startYear: job.startYear,
+        } as ExperienceAsset
+    })
 const carouselParams = {
     title: 'Experience',
     history: 'auto'

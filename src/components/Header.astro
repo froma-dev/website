@@ -1,11 +1,15 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import {getLangFromUrl} from "@i18n/utils";
 const {classNames} = Astro.props
+const lang = getLangFromUrl(Astro.url)
+const href = getRelativeLocaleUrl(lang, '/')
 ---
 
 <header class={`header loading ${classNames}`}>
     <div class="container">
         <div class="logo">
-            <a href="/">
+            <a href={href}>
                 <slot />
             </a>
         </div>

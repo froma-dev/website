@@ -1,66 +1,66 @@
 ---
-import {getCollection} from 'astro:content'
-import {JOBS, getJobById} from 'src/staticpaths/jobs';
+import {getCollection, getEntry} from 'astro:content'
 import Layout from "@layouts/Layout.astro";
 import ExperienceCarousel from "@components/ExperienceCarousel.astro";
 import Header from "@components/Header.astro";
-import type {JobId} from "../../types/Job";
-import {type ExperienceAsset} from "../../types/Asset";
 import Thunda from "@icons/Thunda.astro";
 import JobMetadata from "@components/JobMetadata.astro";
-import {getLangFromUrl, useTranslations} from "@i18n/utils";
+import {getLangFromUrl, useTranslations, setCurrentUrl} from "@i18n/utils";
+import {getObjectUrl} from "@services/cloud/cloud";
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
-console.log('asttro ', Astro.url)
-
+setCurrentUrl(Astro.url)
 export async function getStaticPaths() {
+    const lang = getLangFromUrl(undefined)
     const experiences = await getCollection('experience')
     const langRegEx = new RegExp(lang)
 
-    return experiences.filter(({id}) => langRegEx.test(id)).map(experience => {
-        const {id, href} = experience.data
+    return experiences
+        .filter(({id}) => langRegEx.test(id))
+        .map(experience => {
+            const {data} = experience
+            const {id, href, backgroundUrl} = data
 
-        return {
-            params: {
-                id: id
-            },
-            props: {
-                url: href
+            return {
+                params: {
+                    id: id
+                },
+                props: {
+                    url: href,
+                    job: data,
+                    backgroundUrl: getObjectUrl(backgroundUrl),
+                }
             }
-        }
-    })
+        })
 }
 
-const {id}: {id: JobId} = Astro.params
-const {url} = Astro.props
-const job = getJobById(id)
-const {company, backgroundUrl} = job
+const {url, job, backgroundUrl} = Astro.props
+const {company} = job
 
 const assets2 = await getCollection('experience')
 const langRegEx = new RegExp(lang)
-const assets = assets2.filter(({id, data}) => langRegEx.test(id) && url !== data.href).map((asset) => {
-    const job = asset.data
 
-    console.log(job)
-    return {
-        classNames: 'job',
-        href: job.href,
-        transitionName: job.transitionName,
-        title: job.roles.join(' & '),
-        company: job.company,
-        description: job.description,
-        startYear: job.startYear,
-    }
-})
+const assets = assets2
+    .filter(({id, data}) => langRegEx.test(id) && !url.includes(data.href))
+    .map(asset => {
+        const job = asset.data
+
+        return {
+            classNames: 'job',
+            href: job.href,
+            transitionName: job.transitionName,
+            title: job.roles.join(' & '),
+            company: job.company,
+            description: job.description,
+            startYear: job.startYear,
+        }
+    })
 
 const carouselParams = {
     title: 'Experience',
     history: 'replace'
 }
-
-const lang = getLangFromUrl(Astro.url)
-const t = useTranslations(lang)
 ---
 <Layout
         title={`${t('experience.meta.title')}${company}`}
@@ -70,9 +70,10 @@ const t = useTranslations(lang)
         hasFooterContact={true}>
     <Header>
         <Thunda/>
-        <h2>Frank<br/>Romaña</h2></Header>
+        <h2>Frank<br/>Romaña</h2>
+    </Header>
     <main>
-        <JobMetadata job={job} />
+        <JobMetadata job={job}/>
         <ExperienceCarousel assets={assets} params={carouselParams}/>
     </main>
 </Layout>
