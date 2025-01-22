@@ -1,9 +1,9 @@
 ---
-import {getObjectUrl} from "@services/cloud/cloud";
+import {getImageUrl} from "@services/cloud/cloud";
 import ErrorLayout from "@layouts/ErrorLayout.astro";
 import '@styles/components/Button.css';
 
-const backgroundSrc = getObjectUrl('SMPTE_Color_Bars.svg').toString()
+const backgroundSrc = getImageUrl('SMPTE_Color_Bars.svg').toString()
 ---
 
 <ErrorLayout

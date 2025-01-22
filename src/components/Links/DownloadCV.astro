@@ -2,6 +2,7 @@
 import '@styles/components/Button.css';
 import DownloadIcon from "@icons/DownloadIcon.astro";
 import {getLangFromUrl} from "@i18n/utils";
+import {getDocumentUrl} from "../../services/cloud/s3";
 
 interface Props {
     type?: string;
@@ -13,7 +14,8 @@ interface Props {
 const {type, disabled, id, ariaLabel}: Props = Astro.props;
 
 const lang = getLangFromUrl(Astro.url)
-const href = `https://s3.eu-north-1.amazonaws.com/froma.dev/documents/FRANK_ROMANA_FRONTEND_CV_${lang.toUpperCase()}.pdf`
+const href = getDocumentUrl(`FRANK_ROMANA_FRONTEND_CV_${lang.toUpperCase()}.pdf`)
+//https://s3.eu-north-1.amazonaws.com/froma.dev/documents/FRANK_ROMANA_FRONTEND_CV_${lang.toUpperCase()}.pdf
 const downloadFileName = `FRANK_ROMANA_FRONTEND_CV_${lang.toUpperCase()}.pdf`
 ---
 <a class={`button ${type ?? 'default'} ${disabled ? 'disabled' : ''}`}

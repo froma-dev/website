@@ -6,7 +6,7 @@ import Header from "@components/Header.astro";
 import Thunda from "@icons/Thunda.astro";
 import JobMetadata from "@components/JobMetadata.astro";
 import {getLangFromUrl, useTranslations, setCurrentUrl} from "@i18n/utils";
-import {getObjectUrl} from "@services/cloud/cloud";
+import {getImageUrl} from "@services/cloud/cloud";
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
@@ -29,7 +29,7 @@ export async function getStaticPaths() {
                 props: {
                     url: href,
                     job: data,
-                    backgroundUrl: getObjectUrl(backgroundUrl),
+                    backgroundUrl: getImageUrl(backgroundUrl),
                 }
             }
         })
