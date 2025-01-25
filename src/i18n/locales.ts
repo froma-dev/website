@@ -28,6 +28,9 @@ export const locales = {
         'experience.link.tooltip.linkedin': '\'s LinkedIn',
         'experience.link.tooltip.website': '\'s Website',
         'experience.meta.background.alt': 'Workplace related to ',
+        'select.language.title': 'Language',
+        'select.language.en': 'English',
+        'select.language.es': 'Español'
     },
     es: {
         'main.metadata.description': `Con más de 10 años como desarrollador front-end, Frank transforma pantallas en experiencias atractivas y
@@ -51,5 +54,8 @@ export const locales = {
         'experience.link.tooltip.linkedin': 'LinkedIn de ',
         'experience.link.tooltip.website': 'Web de ',
         'experience.meta.background.alt': 'Lugar de trabajo relacionado a ',
+        'select.language.title': 'Idioma',
+        'select.language.en': 'English',
+        'select.language.es': 'Español'
     },
 } as const

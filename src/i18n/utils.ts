@@ -1,5 +1,9 @@
-import { locales, defaultLang } from './locales.ts';
+import { locales, defaultLang, languages } from './locales.ts';
 let currentUrl: URL | undefined
+
+export function getLanguages (){
+    return languages
+}
 
 export function getLangFromUrl(url: URL | undefined) {
     url = url ?? currentUrl
@@ -14,11 +18,7 @@ export function setCurrentUrl(url: URL | undefined) {
 }
 
 export function useTranslations(lang: keyof typeof locales) {
-    return function t(key: keyof typeof locales[typeof defaultLang]) {
+    return function (key: keyof typeof locales[typeof defaultLang]) {
         return locales[lang][key] || locales[defaultLang][key];
     }
-}
-
-export function isEnglish(lang: keyof typeof locales) {
-    if (lang in locales) return true
 }

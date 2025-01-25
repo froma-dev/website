@@ -1,0 +1,65 @@
+---
+import {getLangFromUrl, useTranslations, getLanguages} from "@i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const translation = useTranslations(lang)
+const availableLanguages = getLanguages()
+const languages = Object.entries(availableLanguages).map(([language, label]) => language as typeof lang)
+const currentLanguage = availableLanguages[lang]
+const currentUrl = Astro.url
+
+console.log('----', currentUrl)
+---
+<section class="language-select hidden">
+    <h3 class="title">{translation('select.language.title')}</h3>
+    <ul class="language-list">
+        {languages.map((key) => {
+            return (
+                    <li class="language-item">
+                        <a class="language-link" href="">{availableLanguages[key]}</a>
+                    </li>)
+        })}
+    </ul>
+</section>
+
+<style>
+    .language-select {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 100vw;
+        height: 100dvh;
+        background-color: hsla(var(--color-background-dark-values), 95%);
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+
+        .title {
+            font-family: 'Aldrich', sans-serif;
+            font-weight: 400;
+            font-size: 5.25rem;
+            color: var(--color-text-secondary)
+        }
+
+        .language-list {
+            display: flex;
+            padding: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-family: 'REM Variable', sans-serif;
+            font-size: 2.25rem;
+            list-style: none;
+
+            .language-link {
+                text-decoration: none;
+                color: var(--color-text-paragraph);
+
+                &:hover {
+                    color: var(--color-accent-primary)
+                }
+            }
+        }
+    }
+</style>

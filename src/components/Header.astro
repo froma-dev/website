@@ -6,7 +6,6 @@ const {classNames} = Astro.props
 const lang = getLangFromUrl(Astro.url)
 const href = getRelativeLocaleUrl(lang, '/')
 ---
-
 <header class={`header loading ${classNames}`}>
     <div class="container">
         <div class="logo">
@@ -14,7 +13,9 @@ const href = getRelativeLocaleUrl(lang, '/')
                 <slot />
             </a>
         </div>
-        <LanguageIcon/>
+        <div class="languages">
+            <LanguageIcon/>
+        </div>
     </div>
 </header>
 
@@ -33,6 +34,36 @@ const href = getRelativeLocaleUrl(lang, '/')
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
+
+        .languages {
+            display: inline-flex;
+            padding: 0.375rem 0.625rem;
+            justify-content: center;
+            align-items: center;
+            gap: 0.625rem;
+
+            border-radius: 0.2rem;
+            border: 0.0625rem solid var(--color-border);
+            background: var(--color-background-cinema);
+            color: var(--color-text-paragraph);
+
+            font-family: 'REM Variable', sans-serif;
+            font-size: 0.85rem;
+            font-style: normal;
+            line-height: normal;
+
+            transition: all 0.3s var(--smooth-transition-function);
+
+            svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            &:hover {
+                background:var(--color-text-paragraph);
+                color: var(--color-background-cinema);
+            }
+        }
     }
 
     & .hidden {
