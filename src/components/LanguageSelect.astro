@@ -1,5 +1,6 @@
 ---
 import {getLangFromUrl, useTranslations, getLanguages} from "@i18n/utils"
+import CheckCircle from "../icons/CheckCircle.astro";
 
 const lang = getLangFromUrl(Astro.url)
 const translation = useTranslations(lang)
@@ -8,7 +9,6 @@ const languages = Object.entries(availableLanguages).map(([language, label]) => 
 const currentLanguage = availableLanguages[lang]
 const currentUrl = Astro.url
 
-console.log('----', currentUrl)
 ---
 <section class="language-select hidden">
     <h3 class="title">{translation('select.language.title')}</h3>
@@ -16,6 +16,7 @@ console.log('----', currentUrl)
         {languages.map((key) => {
             return (
                     <li class="language-item">
+                        <span class="selected">{lang === key && (<CheckCircle/>)}</span>
                         <a class="language-link" href="">{availableLanguages[key]}</a>
                     </li>)
         })}
@@ -37,7 +38,7 @@ console.log('----', currentUrl)
         .title {
             font-family: 'Aldrich', sans-serif;
             font-weight: 400;
-            font-size: 5.25rem;
+            font-size: 3.25rem;
             color: var(--color-text-secondary)
         }
 
@@ -46,18 +47,30 @@ console.log('----', currentUrl)
             padding: 10px;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             gap: 8px;
             font-family: 'REM Variable', sans-serif;
-            font-size: 2.25rem;
+            font-size: 2rem;
             list-style: none;
 
-            .language-link {
-                text-decoration: none;
-                color: var(--color-text-paragraph);
+            .language-item {
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
 
-                &:hover {
-                    color: var(--color-accent-primary)
+                .selected {
+                    display: inline-block;
+                    width: 32px;
+                    height: 32px;
+                }
+
+                .language-link {
+                    text-decoration: none;
+                    color: var(--color-text-paragraph);
+
+                    &:hover {
+                        color: var(--color-accent-primary)
+                    }
                 }
             }
         }
