@@ -1,4 +1,5 @@
-import {defaultLang, languages, locales} from './locales.ts';
+import {defaultLang, languages, locales} from './locales.ts'
+import { getRelativeLocaleUrl, pathHasLocale } from 'astro:i18n'
 
 let currentUrl: URL | undefined
 
@@ -6,22 +7,17 @@ export function getLanguages() {
     return languages
 }
 
-export function getTranslatedUrl(fromLanguage: string, toLanguage: string, url: URL) {
-    const isCurrentLanguage = fromLanguage === toLanguage
-    const {pathname, origin} = url
-    let path = pathname
-    const parts = pathname?.split('/')
+export function getLocaleUrlRelative(locale: string, path?: string) {
+    let rawPath = path
 
-    console.log(pathname, fromLanguage, toLanguage, defaultLang)
-    if (fromLanguage !== defaultLang) {
-        parts.shift() || parts.shift()
-        path = `/${toLanguage}${parts.join('/')}`
+    if (path && pathHasLocale(path)) {
+        let splitPath = path.split('/')
+        let pathLocale = splitPath.shift() || splitPath.shift()
 
-
-        console.log('-EEEE-------', new URL(path, origin).href)
+        if (pathLocale) rawPath = path.replace(`/${pathLocale}`, '')
     }
 
-    return new URL(path, origin)
+    return getRelativeLocaleUrl(locale, rawPath)
 }
 
 export function getLangFromUrl(url: URL | undefined) {

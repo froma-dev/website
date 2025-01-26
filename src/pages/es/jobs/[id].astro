@@ -5,7 +5,7 @@ import ExperienceCarousel from "@components/ExperienceCarousel.astro";
 import Header from "@components/Header.astro";
 import Thunda from "@icons/Thunda.astro";
 import JobMetadata from "@components/JobMetadata.astro";
-import {getLangFromUrl, useTranslations, setCurrentUrl} from "@i18n/utils";
+import {getLangFromUrl, useTranslations, setCurrentUrl, getLocaleUrlRelative} from "@i18n/utils";
 import {getImageUrl} from "@services/cloud/cloud";
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -48,7 +48,7 @@ const assets = assets2
 
         return {
             classNames: 'job',
-            href: job.href,
+            href: getLocaleUrlRelative(lang, job.href),
             transitionName: job.transitionName,
             title: job.roles.join(' & '),
             company: job.company,

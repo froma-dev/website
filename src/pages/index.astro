@@ -5,7 +5,7 @@ import {getImageUrl} from "@services/cloud/cloud";
 import {type ExperienceAsset} from "../types/Asset";
 import ExperienceCarousel from "@components/ExperienceCarousel.astro";
 import MainMetadata from "@components/MainMetadata.astro";
-import {getLangFromUrl, useTranslations} from "@i18n/utils";
+import {getLangFromUrl, getLocaleUrlRelative, useTranslations} from "@i18n/utils";
 import {getCollection} from 'astro:content'
 
 const lang = getLangFromUrl(Astro.url)
@@ -19,7 +19,7 @@ const assets = assets2
 
         return {
             classNames: 'job',
-            href: job.href,
+            href: getLocaleUrlRelative(lang, job.href),
             transitionName: job.transitionName,
             title: job.roles.join(' & '),
             company: job.company,

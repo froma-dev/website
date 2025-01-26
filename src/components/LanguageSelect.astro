@@ -5,22 +5,20 @@ import {
     getLanguages
 } from "@i18n/utils"
 import CheckCircle from "@icons/CheckCircle.astro";
-import {getTranslatedUrl} from "@i18n/utils";
+import {getLocaleUrlRelative} from "@i18n/utils";
 
 const currentLanguage = getLangFromUrl(Astro.url)
 const translation = useTranslations(currentLanguage)
 const availableLanguages = getLanguages()
 const languages = Object.entries(availableLanguages)
 const currentUrl = Astro.url
-
-console.log('-->', currentUrl)
 ---
 <section class="language-select hidden">
     <h3 class="title">{translation('select.language.title')}</h3>
     <ul class="language-list">
         {languages.map(([language, label]) => {
             const isCurrentLanguage = language === currentLanguage
-            let languageHref = getTranslatedUrl(currentLanguage, language, currentUrl).href
+            let languageHref = getLocaleUrlRelative(language, currentUrl.pathname)
 
             return (
                     <li class="language-item">
@@ -36,8 +34,8 @@ console.log('-->', currentUrl)
         display: flex;
         flex-direction: column;
         position: absolute;
-        width: 100vw;
-        height: 100dvh;
+        width: 100%;
+        height: 100%;
         background-color: hsla(var(--color-background-dark-values), 95%);
         justify-content: center;
         align-items: center;
