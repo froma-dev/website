@@ -20,10 +20,11 @@ const currentUrl = Astro.url
         {languages.map(([language, label]) => {
             const isCurrentLanguage = language === currentLanguage
             let languageHref = getLocaleUrlRelative(language, currentUrl.pathname)
+            const selectedItemClassnames = isCurrentLanguage ? 'selected' : '';
 
             return (
-                    <li class="language-item">
-                        <span class="selected">{isCurrentLanguage && <CheckCircle/>}</span>
+                    <li class={`language-item ${selectedItemClassnames}`}>
+                        <span class="selected-icon">{isCurrentLanguage && <CheckCircle/>}</span>
                         <a class="language-link" href={languageHref}>{label}</a>
                     </li>)
         })}
@@ -33,6 +34,7 @@ const currentUrl = Astro.url
 <style>
     .language-select {
         display: flex;
+        opacity: 0;
         flex-direction: column;
         position: absolute;
         width: 100%;
@@ -40,14 +42,12 @@ const currentUrl = Astro.url
         background-color: hsla(var(--color-background-dark-values), 95%);
         justify-content: center;
         align-items: center;
+        transition: opacity 0.8s var(--smooth-transition-function);
         z-index: -1;
 
-        .hidden {
-            animation: 1s fade-out-modal;
-        }
-
-        .show {
-            animation: 1s fade-in-modal;
+        &.show {
+            opacity: 1;
+            z-index: 2;
         }
 
         .title {
@@ -72,8 +72,13 @@ const currentUrl = Astro.url
                 display: flex;
                 gap: 0.5rem;
                 align-items: center;
+                color: var(--color-text-paragraph);
 
-                .selected {
+                &.selected {
+                    color: var(--color-background-neutral);
+                }
+
+                .selected-icon {
                     display: inline-block;
                     width: 32px;
                     height: 32px;
@@ -81,7 +86,7 @@ const currentUrl = Astro.url
 
                 .language-link {
                     text-decoration: none;
-                    color: var(--color-text-paragraph);
+                    color: inherit;
 
                     &:hover {
                         color: var(--color-accent-primary)

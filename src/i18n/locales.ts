@@ -12,7 +12,7 @@ export const locales = {
                 blends design with technology, creating applications that continually elevate user expectations.
                 The journey continues with every new line of code.`,
         'nav.link.tooltip.linkedin': 'Frank\'s LinkedIn',
-        'nav.link.tooltip.github': 'Frank\'s LinkedIn',
+        'nav.link.tooltip.github': 'Frank\'s Github',
         'nav.link.tooltip.email': 'contact@froma.dev',
         'info.role': 'Web Developer',
         'info.location': 'Spain',
@@ -30,7 +30,8 @@ export const locales = {
         'experience.meta.background.alt': 'Workplace related to ',
         'select.language.title': 'Language',
         'select.language.en': 'English',
-        'select.language.es': 'Español'
+        'select.language.es': 'Español',
+        'select.language.arialabel': 'change language'
     },
     es: {
         'main.metadata.description': `Con más de 10 años como desarrollador front-end, Frank transforma pantallas en experiencias atractivas y
@@ -56,6 +57,7 @@ export const locales = {
         'experience.meta.background.alt': 'Lugar de trabajo relacionado a ',
         'select.language.title': 'Idioma',
         'select.language.en': 'English',
-        'select.language.es': 'Español'
+        'select.language.es': 'Español',
+        'select.language.arialabel': 'change language'
     },
 } as const
