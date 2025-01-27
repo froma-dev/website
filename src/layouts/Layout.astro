@@ -54,6 +54,8 @@ const lang = getLangFromUrl(Astro.url)
 	let $playPauseButton: HTMLButtonElement
 	let $volumeOnOffButton: HTMLButtonElement
 	let $languageButton: HTMLButtonElement
+	let $languageSelectModal: HTMLElement
+	let $body: HTMLBodyElement
 
 	const onPlayPauseButtonClick = () => {
 		$playPauseButton.classList.toggle('playing')
@@ -71,11 +73,42 @@ const lang = getLangFromUrl(Astro.url)
 		$volumeOnOffButton.classList.toggle('visible')
 	}
 
+	const onLanguageButtonClick = () => {
+		$languageSelectModal.classList.add('show')
+		$body.classList.add('modal-opened')
+		document.addEventListener('click', onModalClick)
+		document.addEventListener('keydown', onModalKeyDown)
+	}
+
+	const onModalClick = (ev: MouseEvent) => {
+		const {target} = ev
+
+		if (target === $languageSelectModal) {
+			closeLanguageModal()
+			document.removeEventListener('click', onModalClick)
+			document.removeEventListener('keydown', onModalKeyDown)
+		}
+	}
+
+	const onModalKeyDown = (ev: KeyboardEvent) => {
+		if (ev.key === 'Escape') {
+			closeLanguageModal()
+		}
+	}
+
+	const closeLanguageModal = () => {
+		$languageSelectModal.classList.remove('show')
+		$body.classList.remove('modal-opened')
+	}
+
 	document.addEventListener('astro:page-load', () => {
 		window.scrollTo({top: 0, behavior: 'smooth'})
 		const $metadata = document.querySelector('.metadata')
 		const $carouselContainer = document.querySelector('.carousel-container')
 		const $header = document.querySelector('.header')
+		$languageSelectModal = document.querySelector('.language-select') as HTMLElement
+		$languageButton = document.getElementById('select-language') as HTMLButtonElement
+		$body = document.body as HTMLBodyElement
 
 		const showMetadata = () => {
 			$metadata?.classList.remove('loading')
@@ -85,15 +118,13 @@ const lang = getLangFromUrl(Astro.url)
 			$carouselContainer?.classList.remove('loading')
 			$carouselContainer?.classList.add('loaded')
 		}
-
 		const showHeader = () => {
 			$header?.classList.remove('loading')
 			$header?.classList.add('loaded')
 		}
-
-		if ($metadata) {
-			$playPauseButton = $metadata.querySelector('#play-pause-button') as HTMLButtonElement;
-			$volumeOnOffButton = $metadata.querySelector('#volume-on-off-button') as HTMLButtonElement;
+		const initialize = () => {
+			$playPauseButton = $metadata?.querySelector('#play-pause-button') as HTMLButtonElement;
+			$volumeOnOffButton = $metadata?.querySelector('#volume-on-off-button') as HTMLButtonElement;
 			showMetadata()
 
 			if ($carouselContainer) {
@@ -104,6 +135,10 @@ const lang = getLangFromUrl(Astro.url)
 			}
 			addEventListeners()
 		}
+
+		if ($metadata) {
+			initialize()
+		}
 	})
 
 	document.addEventListener('astro:before-preparation', () => {
@@ -113,12 +148,14 @@ const lang = getLangFromUrl(Astro.url)
 	function addEventListeners() {
 		$playPauseButton?.addEventListener('click', onPlayPauseButtonClick)
 		$volumeOnOffButton?.addEventListener('click', onVolumeOnOffButtonClick)
+		$languageButton?.addEventListener('click', onLanguageButtonClick)
 		document.addEventListener('playback-ended', onPlaybackEnded)
 	}
 
 	function removeEventListeners() {
 		$playPauseButton?.removeEventListener('click', onPlayPauseButtonClick)
 		$volumeOnOffButton?.removeEventListener('click', onVolumeOnOffButtonClick)
+		$languageButton?.removeEventListener('click', onLanguageButtonClick)
 		document.removeEventListener('playback-ended', onPlaybackEnded)
 	}
 </script>
