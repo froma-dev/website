@@ -1,4 +1,5 @@
 ---
+import '@styles/animations.css';
 import {
     getLangFromUrl,
     useTranslations,
@@ -13,7 +14,7 @@ const availableLanguages = getLanguages()
 const languages = Object.entries(availableLanguages)
 const currentUrl = Astro.url
 ---
-<section class="language-select hidden">
+<section class="language-select">
     <h3 class="title">{translation('select.language.title')}</h3>
     <ul class="language-list">
         {languages.map(([language, label]) => {
@@ -39,7 +40,15 @@ const currentUrl = Astro.url
         background-color: hsla(var(--color-background-dark-values), 95%);
         justify-content: center;
         align-items: center;
-        z-index: 1;
+        z-index: -1;
+
+        .hidden {
+            animation: 1s fade-out-modal;
+        }
+
+        .show {
+            animation: 1s fade-in-modal;
+        }
 
         .title {
             font-family: 'Aldrich', sans-serif;
