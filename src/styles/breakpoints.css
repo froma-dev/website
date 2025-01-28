@@ -41,6 +41,7 @@
     --asset-metadata-tag-align-self: center;
     --carousel-strip-flex-direction: column;
     --main-metadata-margin-y: 2.5rem;
+    --footer-align-items: center;
 
 
     /* --breakpoint-xs */
@@ -91,6 +92,7 @@
         --asset-metadata-text-align: left;
         --asset-metadata-tag-align-self: flex-start;
         --experience-asset-metadata-padding: 1.5rem 0;
+        --footer-align-items: flex-start;
     }
 
     @media (height >= 720px) {
