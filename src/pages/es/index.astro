@@ -32,13 +32,15 @@ const carouselParams = {
     history: 'auto'
 }
 const backgroundSrc = getImageUrl('frank_grayscale.webp').toString()
+const canonicalUrl = Astro.url.href
 ---
 
 <Layout
         title={translations('meta.title')}
         description={translations('meta.description')}
         bgSrc={backgroundSrc}
-        bgTitle={translations('main.background.alt')}>
+        bgTitle={translations('main.background.alt')}
+        canonicalURL={canonicalUrl}>
     <Header classNames="hidden">
         <h2>Frank<br/>Romaña</h2>
     </Header>

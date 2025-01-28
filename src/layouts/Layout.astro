@@ -9,132 +9,141 @@ import '@fontsource/aldrich';
 import '@fontsource-variable/rem';
 import Footer from "@components/Footer.astro";
 import Background from "@components/Background.astro";
-import { ViewTransitions } from "astro:transitions";
+import {ViewTransitions} from "astro:transitions";
 import Toast from "@components/Toast.astro";
-import { getLangFromUrl } from '@i18n/utils';
+import {getLangFromUrl} from '@i18n/utils';
 import LanguageSelect from "@components/LanguageSelect.astro";
 interface Props {
-	title: string;
-	description: string;
-	bgSrc: string;
-	bgTitle: string;
-	hasFooterContact?: boolean;
+    title: string;
+    description: string;
+    bgSrc: string;
+    bgTitle: string;
+    hasFooterContact?: boolean;
+    canonicalURL?: string;
 }
 
-const { title, description, bgSrc, bgTitle, hasFooterContact } = Astro.props
+const {
+    title,
+    description,
+    bgSrc,
+    bgTitle,
+    hasFooterContact,
+    canonicalURL = 'https://froma.dev/'
+} = Astro.props
 const lang = getLangFromUrl(Astro.url)
 ---
 
 <!doctype html>
 <html lang={lang}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="manifest" href="/site.webmanifest">
-		<title>{title}</title>
-		<ViewTransitions />
-	</head>
-	<body>
-		<Toast/>
-		<Background src={bgSrc} alt={bgTitle}/>
-		<slot />
-		<Footer hasFooterContact={hasFooterContact}/>
-		<LanguageSelect />
-	</body>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content={description}/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="canonical" href={canonicalURL} />
+    <title>{title}</title>
+    <ViewTransitions/>
+</head>
+<body>
+<Toast/>
+<Background src={bgSrc} alt={bgTitle}/>
+<slot/>
+<Footer hasFooterContact={hasFooterContact}/>
+<LanguageSelect/>
+</body>
 </html>
 
 <script>
-	import {playPauseVideo} from "@scripts/backgroundManager";
-	import {toggleMute} from "@scripts/videoManager";
+    import {playPauseVideo} from "@scripts/backgroundManager";
+    import {toggleMute} from "@scripts/videoManager";
 
-	let $playPauseButton: HTMLButtonElement
-	let $volumeOnOffButton: HTMLButtonElement
-	let $languageButton: HTMLButtonElement
-	let $languageSelectModal: HTMLElement
-	let $body: HTMLBodyElement
+    let $playPauseButton: HTMLButtonElement
+    let $volumeOnOffButton: HTMLButtonElement
+    let $languageButton: HTMLButtonElement
+    let $languageSelectModal: HTMLElement
+    let $body: HTMLBodyElement
 
-	const onPlayPauseButtonClick = () => {
-		$playPauseButton.classList.toggle('playing')
-		$volumeOnOffButton.classList.toggle('visible')
-		playPauseVideo()
-	}
+    const onPlayPauseButtonClick = () => {
+        $playPauseButton.classList.toggle('playing')
+        $volumeOnOffButton.classList.toggle('visible')
+        playPauseVideo()
+    }
 
-	const onVolumeOnOffButtonClick = () => {
-		$volumeOnOffButton.classList.toggle('muted')
-		toggleMute()
-	}
+    const onVolumeOnOffButtonClick = () => {
+        $volumeOnOffButton.classList.toggle('muted')
+        toggleMute()
+    }
 
-	const onPlaybackEnded = () => {
-		$playPauseButton.classList.toggle('playing')
-		$volumeOnOffButton.classList.toggle('visible')
-	}
+    const onPlaybackEnded = () => {
+        $playPauseButton.classList.toggle('playing')
+        $volumeOnOffButton.classList.toggle('visible')
+    }
 
-	const onLanguageButtonClick = () => {
-		$languageSelectModal.classList.add('show')
-		$body.classList.add('modal-opened')
-		document.addEventListener('click', onModalClick)
-		document.addEventListener('keydown', onModalKeyDown)
-	}
+    const onLanguageButtonClick = () => {
+        $languageSelectModal.classList.add('show')
+        $body.classList.add('modal-opened')
+        document.addEventListener('click', onModalClick)
+        document.addEventListener('keydown', onModalKeyDown)
+    }
 
-	const onModalClick = (ev: MouseEvent) => {
-		const {target} = ev
+    const onModalClick = (ev: MouseEvent) => {
+        const {target} = ev
 
-		if (target === $languageSelectModal) {
-			closeLanguageModal()
-			document.removeEventListener('click', onModalClick)
-			document.removeEventListener('keydown', onModalKeyDown)
-		}
-	}
+        if (target === $languageSelectModal) {
+            closeLanguageModal()
+            document.removeEventListener('click', onModalClick)
+            document.removeEventListener('keydown', onModalKeyDown)
+        }
+    }
 
-	const onModalKeyDown = (ev: KeyboardEvent) => {
-		if (ev.key === 'Escape') {
-			closeLanguageModal()
-		}
-	}
+    const onModalKeyDown = (ev: KeyboardEvent) => {
+        if (ev.key === 'Escape') {
+            closeLanguageModal()
+        }
+    }
 
-	const closeLanguageModal = () => {
-		$languageSelectModal.classList.remove('show')
-		$body.classList.remove('modal-opened')
-	}
+    const closeLanguageModal = () => {
+        $languageSelectModal.classList.remove('show')
+        $body.classList.remove('modal-opened')
+    }
 
-	document.addEventListener('astro:page-load', () => {
-		window.scrollTo({top: 0, behavior: 'smooth'})
-		const $metadata = document.querySelector('.metadata')
-		$languageSelectModal = document.querySelector('.language-select') as HTMLElement
-		$languageButton = document.getElementById('select-language') as HTMLButtonElement
-		$body = document.body as HTMLBodyElement
+    document.addEventListener('astro:page-load', () => {
+        window.scrollTo({top: 0, behavior: 'smooth'})
+        const $metadata = document.querySelector('.metadata')
+        $languageSelectModal = document.querySelector('.language-select') as HTMLElement
+        $languageButton = document.getElementById('select-language') as HTMLButtonElement
+        $body = document.body as HTMLBodyElement
 
-		const initialize = () => {
-			$playPauseButton = $metadata?.querySelector('#play-pause-button') as HTMLButtonElement;
-			$volumeOnOffButton = $metadata?.querySelector('#volume-on-off-button') as HTMLButtonElement;
+        const initialize = () => {
+            $playPauseButton = $metadata?.querySelector('#play-pause-button') as HTMLButtonElement;
+            $volumeOnOffButton = $metadata?.querySelector('#volume-on-off-button') as HTMLButtonElement;
 
-			addEventListeners()
-		}
+            addEventListeners()
+        }
 
-		if ($metadata) {
-			initialize()
-		}
-	})
+        if ($metadata) {
+            initialize()
+        }
+    })
 
-	document.addEventListener('astro:before-preparation', () => {
-		removeEventListeners()
-	})
+    document.addEventListener('astro:before-preparation', () => {
+        removeEventListeners()
+    })
 
-	function addEventListeners() {
-		$playPauseButton?.addEventListener('click', onPlayPauseButtonClick)
-		$volumeOnOffButton?.addEventListener('click', onVolumeOnOffButtonClick)
-		$languageButton?.addEventListener('click', onLanguageButtonClick)
-		document.addEventListener('playback-ended', onPlaybackEnded)
-	}
+    function addEventListeners() {
+        $playPauseButton?.addEventListener('click', onPlayPauseButtonClick)
+        $volumeOnOffButton?.addEventListener('click', onVolumeOnOffButtonClick)
+        $languageButton?.addEventListener('click', onLanguageButtonClick)
+        document.addEventListener('playback-ended', onPlaybackEnded)
+    }
 
-	function removeEventListeners() {
-		$playPauseButton?.removeEventListener('click', onPlayPauseButtonClick)
-		$volumeOnOffButton?.removeEventListener('click', onVolumeOnOffButtonClick)
-		$languageButton?.removeEventListener('click', onLanguageButtonClick)
-		document.removeEventListener('playback-ended', onPlaybackEnded)
-	}
+    function removeEventListeners() {
+        $playPauseButton?.removeEventListener('click', onPlayPauseButtonClick)
+        $volumeOnOffButton?.removeEventListener('click', onVolumeOnOffButtonClick)
+        $languageButton?.removeEventListener('click', onLanguageButtonClick)
+        document.removeEventListener('playback-ended', onPlaybackEnded)
+    }
 </script>

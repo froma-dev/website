@@ -60,13 +60,15 @@ const carouselParams = {
     title: 'Experience',
     history: 'replace'
 }
+const canonicalUrl = Astro.url.href
 ---
 <Layout
         title={`${t('experience.meta.title')}${company}`}
         description={t('experience.meta.description')}
         bgSrc=`${backgroundUrl}`
         bgTitle={`${t('experience.meta.background.alt')} ${company}`}
-        hasFooterContact={true}>
+        hasFooterContact={true}
+        canonicalURL={canonicalUrl}>
     <Header>
         <Thunda/>
         <h2>Frank<br/>Romaña</h2>

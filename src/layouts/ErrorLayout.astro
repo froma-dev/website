@@ -9,35 +9,43 @@ import '@fontsource-variable/rem';
 import '@styles/components/IconButton.css';
 import Footer from "@components/Footer.astro";
 import Background from "@components/Background.astro";
-import { ViewTransitions } from "astro:transitions";
+import {ViewTransitions} from "astro:transitions";
 import {getLangFromUrl} from "@i18n/utils";
 interface Props {
     title: string;
     description: string;
     bgSrc: string;
     bgTitle: string;
+    canonicalUrl?: string;
 }
-
-const { title, description, bgSrc, bgTitle } = Astro.props;
 const lang = getLangFromUrl(Astro.url)
+const defaultCanonicalUrl = `${Astro.url.hostname}/${lang}/404`
+const {
+    title,
+    description,
+    bgSrc,
+    bgTitle,
+    canonicalUrl = defaultCanonicalUrl
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang}>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8"/>
+    <meta name="description" content={description}/>
+    <meta name="viewport" content="width=device-width"/>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <link rel="canonical" href={canonicalUrl}/>
     <title>{title}</title>
-    <ViewTransitions />
+    <ViewTransitions/>
 </head>
 <body>
 <Background src={bgSrc} alt={bgTitle}/>
-<slot />
+<slot/>
 <Footer/>
 </body>
 </html>
