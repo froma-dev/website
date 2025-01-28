@@ -104,35 +104,14 @@ const lang = getLangFromUrl(Astro.url)
 	document.addEventListener('astro:page-load', () => {
 		window.scrollTo({top: 0, behavior: 'smooth'})
 		const $metadata = document.querySelector('.metadata')
-		const $carouselContainer = document.querySelector('.carousel-container')
-		const $header = document.querySelector('.header')
 		$languageSelectModal = document.querySelector('.language-select') as HTMLElement
 		$languageButton = document.getElementById('select-language') as HTMLButtonElement
 		$body = document.body as HTMLBodyElement
 
-		const showMetadata = () => {
-			$metadata?.classList.remove('loading')
-			$metadata?.classList.add('loaded')
-		}
-		const showCarouselContainer = () => {
-			$carouselContainer?.classList.remove('loading')
-			$carouselContainer?.classList.add('loaded')
-		}
-		const showHeader = () => {
-			$header?.classList.remove('loading')
-			$header?.classList.add('loaded')
-		}
 		const initialize = () => {
 			$playPauseButton = $metadata?.querySelector('#play-pause-button') as HTMLButtonElement;
 			$volumeOnOffButton = $metadata?.querySelector('#volume-on-off-button') as HTMLButtonElement;
-			showMetadata()
 
-			if ($carouselContainer) {
-				showCarouselContainer()
-			}
-			if ($header) {
-				showHeader()
-			}
 			addEventListeners()
 		}
 

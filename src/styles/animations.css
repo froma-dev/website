@@ -1,6 +1,7 @@
 :root {
     --smooth-transition-function: cubic-bezier(0.4, 0.0, 0.2, 1);
-    --fade-in-transition: 1s opacity 0.35s var(--smooth-transition-function);
+    --fade-in-transition: 1s opacity 5s var(--smooth-transition-function);
+    --reveal-animation: 1s reveal 0.25s var(--smooth-transition-function) forwards
 }
 
 @keyframes slide-in-from-right-10 {

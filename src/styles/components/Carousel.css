@@ -7,7 +7,7 @@
     align-items: flex-start;
     gap: 1rem;
     border-radius: 0.5rem;
-    transition: var(--fade-in-transition);
+    animation: var(--reveal-animation);
 
     >h3 {
         font-family: 'REM Variable', sans-serif;
