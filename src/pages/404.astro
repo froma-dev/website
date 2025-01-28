@@ -2,21 +2,25 @@
 import {getImageUrl} from "@services/cloud/cloud";
 import ErrorLayout from "@layouts/ErrorLayout.astro";
 import '@styles/components/Button.css';
+import {getLangFromUrl, useTranslations} from "@i18n/utils";
+const lang = getLangFromUrl(Astro.url)
+const translations = useTranslations(lang)
 
 const backgroundSrc = getImageUrl('SMPTE_Color_Bars.svg').toString()
+const backToHomeHref = lang === 'es' ? '/es' : '/'
 ---
 
 <ErrorLayout
-        title="Frank Romaña - 404 Not Found"
-        description="404 Not Found - Frank Romaña is a software engineer with over a decade of professional experience building user-friendly and high-performance web applications. He is passionate about crafting intuitive interfaces and delivering robust, scalable solutions."
+        title=`Frank Romaña - ${translations('not.found.404.title')}`
+        description={translations('not.found.404.description')}
         bgSrc={backgroundSrc}
         bgTitle="SMPTE Color Bars">
     <main>
         <section class="error-container">
             <div class="message-strip">
-                <h1>NO SIGNAL (404)</h1>
+                <h1>{translations('not.found.404.message.title')}</h1>
             </div>
-            <a href="/" class="button">Back to home</a>
+            <a href={backToHomeHref} class="button">{translations('not.found.404.home.button.text')}</a>
         </section>
     </main>
 </ErrorLayout>

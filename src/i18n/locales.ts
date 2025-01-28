@@ -32,7 +32,11 @@ export const locales = {
         'select.language.en': 'English',
         'select.language.es': 'Español',
         'select.language.arialabel': 'change language',
-        'asset.link.arialabel': 'Learn more about Frank\'s experience at'
+        'asset.link.arialabel': 'Learn more about Frank\'s experience at',
+        'not.found.404.title': '404 Not Found',
+        'not.found.404.description': '404 Not Found - Frank Romaña is a software engineer with over a decade of professional experience building user-friendly and high-performance web applications. He is passionate about crafting intuitive interfaces and delivering robust, scalable solutions.',
+        'not.found.404.message.title': 'No Signal (404)',
+        'not.found.404.home.button.text': 'Back to Home',
     },
     es: {
         'main.metadata.description': `Con más de 10 años como desarrollador front-end, Frank transforma pantallas en experiencias atractivas y
@@ -60,6 +64,10 @@ export const locales = {
         'select.language.en': 'English',
         'select.language.es': 'Español',
         'select.language.arialabel': 'cambiar idioma',
-        'asset.link.arialabel': 'Más información acerca de la experiencia de Frank en'
+        'asset.link.arialabel': 'Más información acerca de la experiencia de Frank en',
+        'not.found.404.title': '404 No Encontrado',
+        'not.found.404.description': 'Frank Romaña es un ingeniero de software con más de una década de experiencia profesional en el desarrollo de aplicaciones web de alto rendimiento y orientadas al usuario. Su pasión radica en la creación de interfaces intuitivas y en la entrega de soluciones robustas y escalables que cumplen con los más altos estándares de calidad.',
+        'not.found.404.message.title': 'Sin Señal (404)',
+        'not.found.404.home.button.text': 'Ir al Inicio',
     },
 } as const
