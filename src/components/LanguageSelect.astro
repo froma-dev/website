@@ -1,0 +1,98 @@
+---
+import '@styles/animations.css';
+import {
+    getLangFromUrl,
+    useTranslations,
+    getLanguages
+} from "@i18n/utils"
+import CheckCircle from "@icons/CheckCircle.astro";
+import {getLocaleUrlRelative} from "@i18n/utils";
+
+const currentLanguage = getLangFromUrl(Astro.url)
+const translation = useTranslations(currentLanguage)
+const availableLanguages = getLanguages()
+const languages = Object.entries(availableLanguages)
+const currentUrl = Astro.url
+---
+<section class="language-select">
+    <h3 class="title">{translation('select.language.title')}</h3>
+    <ul class="language-list">
+        {languages.map(([language, label]) => {
+            const isCurrentLanguage = language === currentLanguage
+            let languageHref = getLocaleUrlRelative(language, currentUrl.pathname)
+            const selectedItemClassnames = isCurrentLanguage ? 'selected' : '';
+
+            return (
+                    <li class={`language-item ${selectedItemClassnames}`}>
+                        <span class="selected-icon">{isCurrentLanguage && <CheckCircle/>}</span>
+                        <a class="language-link" href={languageHref}>{label}</a>
+                    </li>)
+        })}
+    </ul>
+</section>
+
+<style>
+    .language-select {
+        display: flex;
+        opacity: 0;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: hsla(var(--color-background-dark-values), 95%);
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.8s var(--smooth-transition-function);
+        z-index: -1;
+
+        &.show {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .title {
+            font-family: 'Aldrich', sans-serif;
+            font-weight: 400;
+            font-size: 3.25rem;
+            color: var(--color-text-secondary)
+        }
+
+        .language-list {
+            display: flex;
+            padding: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 8px;
+            font-family: 'REM Variable', sans-serif;
+            font-size: 2rem;
+            list-style: none;
+
+            .language-item {
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
+                color: var(--color-text-paragraph);
+
+                &.selected {
+                    color: var(--color-background-neutral);
+                }
+
+                .selected-icon {
+                    display: inline-block;
+                    width: 32px;
+                    height: 32px;
+                }
+
+                .language-link {
+                    text-decoration: none;
+                    color: inherit;
+
+                    &:hover {
+                        color: var(--color-accent-primary)
+                    }
+                }
+            }
+        }
+    }
+</style>

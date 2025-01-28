@@ -1,9 +1,7 @@
 import type {Job} from "../types/Job.ts";
-import {getObjectUrl} from "@services/cloud/cloud.ts";
-// const logo24i = getObjectUrl('24i_logo.svg').toString()
-const background24i = getObjectUrl('ams_canals.webp').toString()
-// const logoNokia = getObjectUrl('nokia_logo.svg').toString()
-const backgroundNokia = getObjectUrl('nokia.webp').toString()
+import {getImageUrl} from "@services/cloud/cloud.ts";
+const background24i = getImageUrl('ams_canals.webp').toString()
+const backgroundNokia = getImageUrl('nokia.webp').toString()
 
 export const JOBS: Job[] = [
     {

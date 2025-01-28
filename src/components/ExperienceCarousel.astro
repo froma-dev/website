@@ -3,15 +3,18 @@ import Carousel from '@components/Carousel.astro'
 import '@styles/components/ExperienceCarousel.css'
 import {type ExperienceAsset} from "../types/Asset";
 import Tag from "@components/Tag.astro";
+import {getLangFromUrl, useTranslations} from "@i18n/utils";
 const {assets, params} = Astro.props
 const {title, history} = params
+const lang = getLangFromUrl(Astro.url)
+const translations = useTranslations(lang)
 ---
 <Carousel title={title} classNames="job loading">
     {assets.map(({classNames, company, title, description, href, startYear}: ExperienceAsset) =>
             <a
                     class="asset-link"
                     href={href}
-                    aria-label={`Learn more about Frank's experience at ${company}`}>
+                    aria-label={`${translations('asset.link.arialabel')} ${company}`}>
                 <article
                         class=`asset ${classNames}`
                         data-astro-history={history ?? 'auto'}>

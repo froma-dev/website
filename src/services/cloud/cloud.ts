@@ -3,4 +3,4 @@ import * as s3 from "@services/cloud/s3.ts";
 
 const cloudService = s3
 
-export const {getObjectUrl} = cloudService
+export const {getImageUrl} = cloudService

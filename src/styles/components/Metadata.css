@@ -8,7 +8,7 @@
         justify-content: center;
         gap: 0.25rem;
         transition: var(--fade-in-transition);
-        margin: 5.5rem 0;
+        margin: var(--main-metadata-margin-y) 0;
 
         > * {
             z-index: 1;

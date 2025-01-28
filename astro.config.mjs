@@ -6,5 +6,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://froma.dev',
   devToolbar: {enabled: false},
-  integrations: [sitemap()]
+  integrations: [sitemap()],
+  i18n: {
+    locales: ["es", "en"],
+    defaultLocale: "en",
+  }
 });
