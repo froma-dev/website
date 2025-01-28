@@ -9,7 +9,7 @@ import {getLangFromUrl, useTranslations, getLocaleUrlRelative} from "@i18n/utils
 import {getCollection} from 'astro:content'
 
 const lang = getLangFromUrl(Astro.url)
-const t = useTranslations(lang)
+const translations = useTranslations(lang)
 const assets2 = await getCollection('experience')
 const langRegEx = new RegExp(lang)
 const assets = assets2
@@ -35,10 +35,10 @@ const backgroundSrc = getImageUrl('frank_grayscale.webp').toString()
 ---
 
 <Layout
-        title={t('meta.title')}
-        description={t('meta.description')}
+        title={translations('meta.title')}
+        description={translations('meta.description')}
         bgSrc={backgroundSrc}
-        bgTitle={t('main.background.alt')}>
+        bgTitle={translations('main.background.alt')}>
     <Header classNames="hidden">
         <h2>Frank<br/>Romaña</h2>
     </Header>
