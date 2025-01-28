@@ -31,7 +31,8 @@ export const locales = {
         'select.language.title': 'Language',
         'select.language.en': 'English',
         'select.language.es': 'Español',
-        'select.language.arialabel': 'change language'
+        'select.language.arialabel': 'change language',
+        'asset.link.arialabel': 'Learn more about Frank\'s experience at'
     },
     es: {
         'main.metadata.description': `Con más de 10 años como desarrollador front-end, Frank transforma pantallas en experiencias atractivas y
@@ -58,6 +59,7 @@ export const locales = {
         'select.language.title': 'Idioma',
         'select.language.en': 'English',
         'select.language.es': 'Español',
-        'select.language.arialabel': 'change language'
+        'select.language.arialabel': 'cambiar idioma',
+        'asset.link.arialabel': 'Más información acerca de la experiencia de Frank en'
     },
 } as const
