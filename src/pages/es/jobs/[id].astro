@@ -1,5 +1,5 @@
 ---
-import {getCollection, getEntry} from 'astro:content'
+import {getCollection} from 'astro:content'
 import Layout from "@layouts/Layout.astro";
 import ExperienceCarousel from "@components/ExperienceCarousel.astro";
 import Header from "@components/Header.astro";
@@ -12,7 +12,7 @@ const t = useTranslations(lang)
 
 setCurrentUrl(Astro.url)
 export async function getStaticPaths() {
-    const lang = getLangFromUrl(undefined)
+    const lang = 'es'
     const experiences = await getCollection('experience')
     const langRegEx = new RegExp(lang)
 
@@ -61,6 +61,8 @@ const carouselParams = {
     title: 'Experience',
     history: 'replace'
 }
+
+console.log('espg: ', job.roles)
 ---
 <Layout
         title={`${t('experience.meta.title')}${company}`}

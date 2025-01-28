@@ -1,11 +1,10 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import {getLangFromUrl, useTranslations} from "@i18n/utils";
+import {getLangFromUrl, useTranslations, getLocaleUrlRelative} from "@i18n/utils";
 import LanguageIcon from '@icons/Language.astro'
 import Button from "@components/Button.astro";
 const {classNames} = Astro.props
 const lang = getLangFromUrl(Astro.url)
-const href = getRelativeLocaleUrl(lang, '/')
+const href = getLocaleUrlRelative(lang, '/')
 const translations = useTranslations(lang)
 ---
 <header class={`header loading ${classNames}`}>
@@ -15,7 +14,7 @@ const translations = useTranslations(lang)
                 <slot />
             </a>
         </div>
-        <Button id="select-language" type="languages" text="" ariaLabel={translations('')}>
+        <Button id="select-language" type="languages" text="" ariaLabel={translations('select.language.arialabel')}>
             <LanguageIcon/>
         </Button>
     </div>
