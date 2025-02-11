@@ -1,11 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/images/:path*",
+      "source": "/frankromana-dev/images/:path*",
       "destination": "https://frankromana-dev.s3.eu-north-1.amazonaws.com/images/:path*"
     },
     {
-      "source": "/documents/:path*",
+      "source": "/frankromana-dev/documents/:path*",
       "destination": "https://frankromana-dev.s3.eu-north-1.amazonaws.com/documents/:path*"
     }
   ]
