@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://froma.dev
+Host: https://frankromana.dev
 
 # Sitemaps
-Sitemap: https://froma.dev/sitemap-index.xml
+Sitemap: https://frankromana.dev/sitemap-index.xml

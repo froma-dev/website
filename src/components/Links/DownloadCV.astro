@@ -15,7 +15,6 @@ const {type, disabled, id, ariaLabel}: Props = Astro.props;
 
 const lang = getLangFromUrl(Astro.url)
 const href = getDocumentUrl(`FRANK_ROMANA_FRONTEND_CV_${lang.toUpperCase()}.pdf`)
-//https://s3.eu-north-1.amazonaws.com/froma.dev/documents/FRANK_ROMANA_FRONTEND_CV_${lang.toUpperCase()}.pdf
 const downloadFileName = `FRANK_ROMANA_FRONTEND_CV_${lang.toUpperCase()}.pdf`
 ---
 <a class={`button ${type ?? 'default'} ${disabled ? 'disabled' : ''}`}

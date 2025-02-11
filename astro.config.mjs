@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://froma.dev',
+  site: 'https://frankromana.dev',
   devToolbar: {enabled: false},
   integrations: [sitemap()],
   i18n: {
