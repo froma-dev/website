@@ -33,7 +33,3 @@ export const JOBS: Job[] = [
         endYear: 2020
     }
 ]
-
-export function getJobById(id: string): Job {
-    return JOBS.filter((job) => job.id === id)[0]
-}
