@@ -30,7 +30,7 @@
     --button-cta-font-size: 1.25rem;
     --footer-justify-content: center;
     --metadata-tooltip-x-position: translateX(-50%);
-    --carousel-h3: 1.5rem;
+    --carousel-h3: 1.9rem;
     --carousel-experience-flex-direction: column;
     --company-info-align-self: center;
     --asset-metadata-clamp: 4;
@@ -148,7 +148,7 @@
         --metadata-experience-tag-font-size: 1.15rem;
         --metadata-text-line-height: 1.875rem;
         --metadata-logo-size: 14.85rem;
-        --carousel-h3: 1.9rem;
+        --carousel-h3: 2.25rem;
     }
 
     /* --breakpoint-xl */
