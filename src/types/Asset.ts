@@ -12,7 +12,9 @@ export interface ExperienceAsset {
     href: string,
     company: string,
     description: string,
+    shortDescription: string,
     title: string,
     transitionName: string,
     startYear: number,
+    thumbnailUrl: string
 }
