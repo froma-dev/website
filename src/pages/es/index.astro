@@ -6,6 +6,7 @@ import ExperienceCarousel from "@components/ExperienceCarousel.astro";
 import MainMetadata from "@components/MainMetadata.astro";
 import {getLangFromUrl, useTranslations} from "@i18n/utils";
 import {getExperienceCollection} from "@scripts/collectionManager";
+import Thunda from "@icons/Thunda.astro";
 
 const lang = getLangFromUrl(Astro.url)
 const translations = useTranslations(lang)
@@ -25,6 +26,7 @@ const assets = await getExperienceCollection(lang)
         bgTitle={translations('main.background.alt')}
         canonicalURL={canonicalUrl}>
     <Header classNames="hidden">
+        <Thunda />
         <h2>Frank<br/>Romaña</h2>
     </Header>
     <main>
