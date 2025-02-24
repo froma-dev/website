@@ -6,7 +6,6 @@
         flex-direction: column;
         align-items: var(--metadata-align-items);
         justify-content: center;
-        gap: 0.25rem;
         animation: var(--reveal-animation);
         margin: var(--main-metadata-margin-y) 0;
 

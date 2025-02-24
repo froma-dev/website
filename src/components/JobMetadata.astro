@@ -38,7 +38,7 @@ const linkedinTooltipText = lang === 'en' ? `${company}'s LinkedIn` : `LinkedIn 
             <WebsiteLink href={websiteUrl} websiteTooltipText={websiteTooltipText}/>
         </div>
     </div>
-    <h2>{roles.join(' & ')}</h2>
+    <h2>{roles.join(' && ')}</h2>
     <p>{description}</p>
     <div class="tags">
         {tags.map((tag) =>

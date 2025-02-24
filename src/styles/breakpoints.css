@@ -30,7 +30,7 @@
     --button-cta-font-size: 1.25rem;
     --footer-justify-content: center;
     --metadata-tooltip-x-position: translateX(-50%);
-    --carousel-h3: 1.5rem;
+    --carousel-h3: 1.9rem;
     --carousel-experience-flex-direction: column;
     --company-info-align-self: center;
     --asset-metadata-clamp: 4;
@@ -148,7 +148,7 @@
         --metadata-experience-tag-font-size: 1.15rem;
         --metadata-text-line-height: 1.875rem;
         --metadata-logo-size: 14.85rem;
-        --carousel-h3: 1.9rem;
+        --carousel-h3: 2.25rem;
     }
 
     /* --breakpoint-xl */
@@ -157,8 +157,8 @@
         --layout-padding-x: 16rem;
         --metadata-h1: 6rem;
         --metadata-h1-lineheight: 5rem;
-        --metadata-h2: 1.85rem;
-        --metadata-h2-lineheight: 1.85rem;
+        --metadata-h2: 1.6rem;
+        --metadata-h2-lineheight: 1.6rem;
         --metadata-tags-justify-content: flex-start;
         --metadata-tag-font-size: 1rem;
         --metadata-text-size: 1.35rem;
