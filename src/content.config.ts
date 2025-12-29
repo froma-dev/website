@@ -1,6 +1,15 @@
-import { defineCollection, z } from 'astro:content'
+// 1. Import utilities from `astro:content`
+import { defineCollection } from 'astro:content';
 
-const job = defineCollection({
+// 2. Import loader(s)
+import { glob } from 'astro/loaders';
+
+// 3. Import Zod
+import { z } from 'astro/zod';
+
+// 4. Define your collection(s)
+const experience = defineCollection({
+    loader: glob({ pattern: '**/*.json', base: "./src/content/experience/" }),
     schema: z.object({
         id: z.string(),
         company: z.string(),
@@ -9,16 +18,17 @@ const job = defineCollection({
         roles: z.array(z.string()),
         tags: z.array(z.string()),
         description: z.string(),
+        shortDescription: z.string().optional(),
         backgroundUrl: z.string(),
         transitionName: z.string(),
         href: z.string(),
         startYear: z.number(),
         endYear: z.number()
     }),
-
-})
+});
 
 const main = defineCollection({
+    loader: glob({ pattern: '**/*.json', base: "./src/content/index/" }),
     schema: z.object({
         role: z.string(),
         location: z.string(),
@@ -39,6 +49,7 @@ const main = defineCollection({
             ariaLabel: z.string()
         })
     })
-})
+});
 
-export const collections = {job, main}
+// 5. Export a single `collections` object to register your collection(s)
+export const collections = { experience, main };
