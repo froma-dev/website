@@ -9,7 +9,7 @@ import '@fontsource/aldrich';
 import '@fontsource-variable/rem';
 import Footer from "@components/Footer.astro";
 import Background from "@components/Background.astro";
-import {ViewTransitions} from "astro:transitions";
+import {ClientRouter} from "astro:transitions";
 import Toast from "@components/Toast.astro";
 import {getLangFromUrl} from '@i18n/utils';
 import LanguageSelect from "@components/LanguageSelect.astro";
@@ -45,7 +45,7 @@ const lang = getLangFromUrl(Astro.url)
     <link rel="manifest" href="/site.webmanifest">
     <link rel="canonical" href={canonicalURL} />
     <title>{title}</title>
-    <ViewTransitions/>
+    <ClientRouter/>
 </head>
 <body>
 <Toast/>
