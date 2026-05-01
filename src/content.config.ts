@@ -4,9 +4,6 @@ import { defineCollection } from 'astro:content';
 // 2. Import loader(s)
 import { glob } from 'astro/loaders';
 
-// 3. Import Zod
-import { z } from 'astro/zod';
-
 // 4. Define your collection(s)
 const experience = defineCollection({
     loader: glob({ pattern: '**/*.json', base: "./src/content/experience/" }),
