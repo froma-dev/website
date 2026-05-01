@@ -20,7 +20,8 @@
   },
   "pnpm": {
     "overrides": {
-      "css-parser": "https://github.com/ramya-rao-a/css-parser.git"
+      "css-parser": "https://github.com/ramya-rao-a/css-parser.git",
+      "ajv": "8.18.0"
     }
   }
 }
