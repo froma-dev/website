@@ -4,6 +4,7 @@ import WebsiteLink from "./Links/Website.astro";
 import Metadata from "./Metadata.astro";
 import Tag from "./Tag.astro";
 import DownloadCV from "./Links/DownloadCV.astro";
+import NowStreamingBadge from "./NowStreamingBadge.astro";
 import {getLangFromUrl, useTranslations} from "@i18n/utils";
 import {type Job} from "../types/Job";
 
@@ -22,32 +23,41 @@ const {
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
+const duration = endYear - startYear
 const websiteTooltipText = websiteUrl
 const linkedinTooltipText = lang === 'en' ? `${company}'s LinkedIn` : `LinkedIn de ${company}`
 ---
 <Metadata>
-    <h1 set:html={company.split(' ').join('<br>')}
-    ></h1>
+    <NowStreamingBadge />
+    <h1 set:html={company.split(' ').join('<br>')}></h1>
     <div class="info">
         <div class="experience-years">
-            <Tag text={`${startYear}`} className="year"/>
-            <Tag text={`${endYear - startYear} ${t('experience.tag.seasons')}`}/>
+            <Tag text={`${startYear}–${endYear}`} className="year"/>
+            <Tag text={`${duration} ${t('experience.tag.seasons')}`} className="duration"/>
         </div>
         <div class="links">
             <LinkedinLink href={linkedinUrl} tooltipText={linkedinTooltipText}/>
             <WebsiteLink href={websiteUrl} websiteTooltipText={websiteTooltipText}/>
         </div>
     </div>
-    <h2>{roles.join(' && ')}</h2>
+    <div class="credits">
+        <span class="credits-label">{t('experience.credits.label')}</span>
+        <div class="credits-roles">
+            {roles.map((role) => <span class="credit-role">{role}</span>)}
+        </div>
+    </div>
     <p>{description}</p>
     <div class="tags">
-        {tags.map((tag) =>
-                <Tag text={tag}/>
-        )}
+        <span class="tags-label">{t('experience.available.label')}</span>
+        <div class="tags-list">
+            {tags.map((tag) => <Tag text={tag}/>)}
+        </div>
     </div>
     <div class="buttons">
-        <DownloadCV type="cta" id="download-cv" ariaLabel={t('main.metadata.button.downloadCv')}>
-            {t('main.metadata.button.downloadCv')}
-        </DownloadCV>
+        <div class="primary-actions">
+            <DownloadCV type="cta" id="download-cv" ariaLabel={t('main.metadata.button.downloadCv')}>
+                {t('main.metadata.button.downloadCv')}
+            </DownloadCV>
+        </div>
     </div>
 </Metadata>

@@ -1,115 +1,403 @@
-.carousel-container {
+/* ─── Experience Carousel ─────────────────────────────────────────────────── */
+/* Full-width hero cards, one at a time, modern streaming-platform style.      */
+/* Cards are 16:9 landscape; metadata overlays on hover.                       */
+
+.carousel-container.job {
+    overflow: visible;
+
+    > h3 {
+        padding-left: 0;
+    }
+
     .carousel {
         max-width: 100%;
+        overflow: hidden;
+    }
 
-        .strip {
+    .strip {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--carousel-card-gap);
+        width: 100%;
+
+        .asset-link {
+            text-decoration: none;
             display: flex;
-            flex-direction: var(--carousel-strip-flex-direction);
-            gap: 1rem;
+            flex-shrink: 0;
+            width: var(--landscape-card-width);
+            min-width: var(--landscape-card-width);
+            /* This wrapper handles overflow clipping */
+            border-radius: var(--card-border-radius);
+            overflow: hidden;
+        }
 
-            .asset-link {
-                text-decoration: none;
-                display: inline-flex;
+        /* ── Full-width hero card ── */
+        .asset.job {
+            position: relative;
+            width: 100%;
+            min-width: 100%;
+            aspect-ratio: var(--card-aspect-ratio);
+            border-radius: var(--card-border-radius);
+            border: 1px solid hsla(var(--color-accent-primary-values), 0.1);
+            background: var(--color-background-light);
+            cursor: pointer;
+            /* Ensure border-radius is preserved during transform */
+            will-change: transform;
+
+            transition:
+                transform 0.4s var(--smooth-transition-function),
+                border-color 0.4s var(--smooth-transition-function),
+                box-shadow 0.4s var(--smooth-transition-function);
+
+            /* ── Thumbnail fills the whole card ── */
+            .company-info {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                gap: 0;
+                border-radius: var(--card-border-radius);
+                overflow: hidden;
+
+                .thumbnail-wrapper {
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    aspect-ratio: unset;
+                    border-radius: var(--card-border-radius);
+                    overflow: hidden;
+
+                    .thumbnail {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
+                        filter: brightness(0.85) saturate(0.7) contrast(1.1);
+                        transition: transform 0.6s var(--smooth-transition-function),
+                                    filter 0.6s var(--smooth-transition-function);
+                    }
+
+                    /* Strong gradient for text legibility */
+                    .thumbnail-overlay {
+                        background: linear-gradient(
+                            to top,
+                            hsl(0 0% 3% / 0.95) 0%,
+                            hsl(0 0% 3% / 0.85) 20%,
+                            hsl(0 0% 4% / 0.6) 40%,
+                            hsl(0 0% 5% / 0.3) 60%,
+                            transparent 80%
+                        );
+                        transition: opacity 0.4s var(--smooth-transition-function);
+                    }
+
+                    .season-badge {
+                        top: var(--card-badge-inset);
+                        left: var(--card-badge-inset);
+                        right: auto;
+                        padding: 0.35rem 0.7rem;
+                        font-size: var(--card-badge-size);
+                        font-weight: 700;
+                        letter-spacing: 0.08em;
+                        border-radius: 0.3rem;
+                    }
+                }
+
+                /* Company name pinned to bottom-left */
+                .title {
+                    position: absolute;
+                    bottom: var(--card-content-inset);
+                    left: var(--card-content-inset);
+                    right: var(--card-content-inset);
+                    text-align: left;
+                    font-size: var(--card-title-size);
+                    line-height: 1.15;
+                    color: var(--color-text-primary);
+                    z-index: 3;
+                    text-shadow: 
+                        0 1px 3px hsl(0 0% 0% / 1),
+                        0 2px 6px hsl(0 0% 0% / 0.8),
+                        0 4px 12px hsl(0 0% 0% / 0.6);
+                    -webkit-text-stroke: 0.5px hsl(0 0% 0% / 0.3);
+                    transition: opacity 0.3s var(--smooth-transition-function),
+                                transform 0.3s var(--smooth-transition-function);
+                }
             }
 
-            .asset {
+            /* ── Metadata overlay — fades in on hover ── */
+            .metadata {
+                position: absolute;
+                inset: 0;
                 display: flex;
-                background-color: hsla(var(--color-background-cinema-values) / 33%);
-                flex-direction: var(--carousel-experience-flex-direction);
-                border-radius: 0.5rem;
-                transition: background 0.25s var(--smooth-transition-function),
-                transform 0.25s var(--smooth-transition-function),
-                backdrop-filter 0.25s var(--smooth-transition-function);
-                gap: 0.5rem;
-                align-items: center;
-                border: 1px solid var(--asset-background-overlay-hover);
-                padding: var(--experience-asset-padding);
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: var(--card-metadata-padding);
+                text-align: left;
+                background: linear-gradient(
+                    to top,
+                    hsl(216 25% 4% / 0.98) 0%,
+                    hsl(216 25% 5% / 0.92) 30%,
+                    hsl(216 25% 7% / 0.75) 50%,
+                    hsl(216 25% 9% / 0.4) 70%,
+                    transparent 100%
+                );
+                opacity: 0;
+                transition: opacity 0.4s var(--smooth-transition-function);
+                z-index: 4;
+                pointer-events: none;
+                border-radius: inherit;
 
-                &:hover {
-                    transform: scale(1.015);
-                    background: hsla(var(--color-background-cinema-values) / 95%);
-                }
+                .season-info {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.45rem;
+                    margin-bottom: 0.5rem;
+                    justify-content: flex-start;
 
-                &.selected {
-                    background: var(--color-overlay);
-                }
-
-                &.job {
-                    .company-info {
-                        display: flex;
-                        width: 11.375rem;
-                        padding: 10px;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 10px;
-                        flex-shrink: 0;
-                        align-self: var(--company-info-align-self);
-
-                        .title {
-                            font-family: 'Aldrich', sans-serif;
-                            font-size: 2rem;
-                            text-align: center;
-                            font-weight: 800;
-                            line-height: 2rem;
-                            color: var(--color-text-primary);
-                        }
-
-                        img {
-                            object-fit: contain;
-                            width: inherit;
-                            height: inherit;
-                        }
+                    .season-label {
+                        font-family: 'REM Variable', sans-serif;
+                        font-size: var(--card-season-label-size);
+                        font-weight: 700;
+                        letter-spacing: 0.12em;
+                        text-transform: uppercase;
+                        color: var(--color-accent-primary);
+                        text-shadow: 0 1px 4px hsl(0 0% 0% / 0.5);
                     }
 
-                    .metadata {
-                        display: flex;
-                        flex-direction: column;
-                        text-align: var(--asset-metadata-text-align);
-                        font-size: inherit;
-                        padding: var(--experience-asset-metadata-padding);
+                    .season-divider {
+                        color: var(--color-text-muted);
+                        font-size: var(--card-season-label-size);
+                    }
 
-                        h2 {
-                            max-width: 25rem;
-                            font-family: 'REM Variable', sans-serif;
-                            color: var(--color-text-secondary);
-                            font-size: var(--metadata-h2);
-                            line-height: var(--metadata-h2-lineheight);
-                            font-style: normal;
-                            font-weight: 400;
-                            gap: 0.5rem;
-                        }
-
-                        .description {
-                            color: var(--color-text-paragraph);
-                            text-shadow: 2px 2px 0.2rem var(--color-background-dark);
-                            max-width: 80ch;
-                            text-wrap: balance;
-                            font-size: var(--experience-asset-description-font-size);
-                            font-style: normal;
-                            font-weight: 400;
-                            font-family: 'B612', sans-serif;
-                            margin: 0.5rem 0 0.5rem 0;
-
-                            /*clamp*/
-                            display: -webkit-box;
-                            -webkit-box-orient: vertical;
-                            -webkit-line-clamp: var(--asset-metadata-clamp);
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                        }
-
-                        .tag {
-                            align-self: var(--asset-metadata-tag-align-self);
-                        }
-
-                        .button {
-                            align-self: flex-start;
-                        }
+                    .season-years {
+                        font-family: 'REM Variable', sans-serif;
+                        font-size: var(--card-season-label-size);
+                        color: var(--color-text-muted);
+                        letter-spacing: 0.04em;
                     }
                 }
 
+                h2.role {
+                    font-family: 'REM Variable', sans-serif;
+                    color: var(--color-text-secondary);
+                    font-size: var(--card-role-size);
+                    line-height: 1.3;
+                    font-weight: 500;
+                    margin-bottom: 0.6rem;
+                    max-width: 100%;
+                    text-shadow: 0 2px 6px hsl(0 0% 0% / 0.5);
+                }
+
+                .description {
+                    color: var(--color-text-paragraph);
+                    font-family: 'B612', sans-serif;
+                    font-size: var(--card-description-size);
+                    line-height: 1.5;
+                    font-weight: 400;
+                    margin-bottom: 0.85rem;
+                    max-width: var(--card-description-max-width);
+                    text-shadow: 0 1px 4px hsl(0 0% 0% / 0.6);
+
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: var(--card-description-clamp);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .card-tags {
+                    display: flex;
+                    gap: 0.45rem;
+                    flex-wrap: wrap;
+
+                    .tag {
+                        font-size: var(--card-tag-size);
+                        padding: 0.35rem 0.7rem;
+                        background: hsla(var(--color-accent-primary-values), 0.15);
+                        border-color: hsla(var(--color-accent-primary-values), 0.35);
+                        color: var(--color-accent-primary);
+                        backdrop-filter: blur(4px);
+                    }
+                }
+            }
+
+            /* ── Hover state ── */
+            &:hover,
+            &:focus-within {
+                transform: scale(1.02) translateY(-4px);
+                border-color: hsla(var(--color-accent-primary-values), 0.6);
+                box-shadow:
+                    0 0 0 1px hsla(var(--color-accent-primary-values), 0.3),
+                    0 16px 64px 0 hsl(0 0% 0% / 0.7),
+                    0 0 40px 6px hsla(var(--color-accent-primary-values), 0.15);
+                z-index: 2;
+
+                .company-info {
+                    .thumbnail-wrapper .thumbnail {
+                        transform: scale(1.08);
+                        filter: brightness(0.75) saturate(0.6) contrast(1.2);
+                    }
+
+                    .title {
+                        opacity: 0;
+                        transform: translateY(8px);
+                    }
+                }
+
+                .metadata {
+                    opacity: 1;
+                }
             }
         }
+    }
+}
+
+/* ── Card sizing by breakpoint ────────────────────────────────────────────── */
+:root {
+    /* Mobile: full-width cards, one per row */
+    --landscape-card-width: 100%;
+    --carousel-card-gap: 1rem;
+    --card-aspect-ratio: 4 / 5;
+    --card-border-radius: 0.5rem;
+    --card-content-inset: 1.25rem;
+    --card-badge-inset: 1rem;
+    --card-badge-size: 0.7rem;
+    --card-title-size: 1.5rem;
+    --card-season-label-size: 0.7rem;
+    --card-role-size: 1rem;
+    --card-description-size: 0.85rem;
+    --card-description-clamp: 3;
+    --card-description-max-width: 100%;
+    --card-tag-size: 0.72rem;
+    --card-metadata-padding: 1.5rem;
+
+    /* Small tablets: still one per row */
+    @media (width >= 425px) {
+        --card-aspect-ratio: 3 / 4;
+        --card-title-size: 1.75rem;
+        --card-role-size: 1.1rem;
+        --card-description-size: 0.9rem;
+        --card-content-inset: 1.5rem;
+        --card-metadata-padding: 1.75rem;
+    }
+
+    /* Tablets: ONE card per row, more landscape */
+    @media (width >= 768px) {
+        --landscape-card-width: 100%;
+        --card-aspect-ratio: 5 / 3;
+        --card-border-radius: 0.6rem;
+        --card-content-inset: 2rem;
+        --card-badge-inset: 1.25rem;
+        --card-badge-size: 0.75rem;
+        --card-title-size: 2rem;
+        --card-season-label-size: 0.75rem;
+        --card-role-size: 1.2rem;
+        --card-description-size: 0.95rem;
+        --card-description-clamp: 3;
+        --card-description-max-width: 75%;
+        --card-tag-size: 0.8rem;
+        --card-metadata-padding: 2rem;
+    }
+
+    /* Desktop: TWO cards per row */
+    @media (width >= 1024px) {
+        --landscape-card-width: calc(50% - 0.625rem);
+        --carousel-card-gap: 1.25rem;
+        --card-aspect-ratio: 3 / 2;
+        --card-border-radius: 0.75rem;
+        --card-content-inset: 1.75rem;
+        --card-badge-inset: 1.25rem;
+        --card-badge-size: 0.75rem;
+        --card-title-size: 1.75rem;
+        --card-season-label-size: 0.75rem;
+        --card-role-size: 1.1rem;
+        --card-description-size: 0.9rem;
+        --card-description-clamp: 3;
+        --card-description-max-width: 85%;
+        --card-tag-size: 0.8rem;
+        --card-metadata-padding: 1.75rem;
+    }
+
+    /* Large desktop: TWO cards per row, bigger */
+    @media (width >= 1440px) {
+        --landscape-card-width: calc(50% - 0.75rem);
+        --carousel-card-gap: 1.5rem;
+        --card-aspect-ratio: 16 / 9;
+        --card-border-radius: 0.85rem;
+        --card-content-inset: 2rem;
+        --card-badge-inset: 1.5rem;
+        --card-badge-size: 0.8rem;
+        --card-title-size: 2rem;
+        --card-season-label-size: 0.8rem;
+        --card-role-size: 1.2rem;
+        --card-description-size: 0.95rem;
+        --card-description-clamp: 3;
+        --card-description-max-width: 80%;
+        --card-tag-size: 0.85rem;
+        --card-metadata-padding: 2rem;
+    }
+
+    /* Extra large: TWO cards per row, maximum size */
+    @media (width >= 1800px) {
+        --landscape-card-width: calc(50% - 0.875rem);
+        --carousel-card-gap: 1.75rem;
+        --card-aspect-ratio: 16 / 9;
+        --card-border-radius: 1rem;
+        --card-content-inset: 2.5rem;
+        --card-badge-inset: 1.75rem;
+        --card-badge-size: 0.85rem;
+        --card-title-size: 2.25rem;
+        --card-season-label-size: 0.85rem;
+        --card-role-size: 1.3rem;
+        --card-description-size: 1rem;
+        --card-description-clamp: 3;
+        --card-description-max-width: 75%;
+        --card-tag-size: 0.9rem;
+        --card-metadata-padding: 2.5rem;
+    }
+}
+
+/* ── Shimmer skeleton ─────────────────────────────────────────────────────── */
+.carousel-container.loading {
+    .strip .asset-link .asset.job .company-info .thumbnail-wrapper {
+        background: linear-gradient(
+            90deg,
+            hsla(var(--color-background-light-values), 0.4) 25%,
+            hsla(var(--color-background-light-values), 0.7) 50%,
+            hsla(var(--color-background-light-values), 0.4) 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.6s ease-in-out infinite;
+    }
+}
+
+@keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+/* Force correct layout after view transitions */
+.carousel-container.homepage-carousel.job {
+    /* Ensure homepage always uses the landscape card layout */
+    .strip {
+        flex-wrap: wrap;
+    }
+    
+    .asset-link {
+        width: var(--landscape-card-width) !important;
+        min-width: var(--landscape-card-width) !important;
+    }
+}
+
+.carousel-container.job-detail-carousel.job {
+    /* Ensure job detail page uses the same layout */
+    .strip {
+        flex-wrap: wrap;
+    }
+    
+    .asset-link {
+        width: var(--landscape-card-width) !important;
+        min-width: var(--landscape-card-width) !important;
     }
 }

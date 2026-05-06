@@ -16,5 +16,6 @@ export interface ExperienceAsset {
     title: string,
     transitionName: string,
     startYear: number,
+    endYear: number,
     thumbnailUrl: string
 }

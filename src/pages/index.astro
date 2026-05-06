@@ -12,7 +12,8 @@ const lang = getLangFromUrl(Astro.url)
 const translations = useTranslations(lang)
 const carouselParams = {
     title: translations('experience.carousel.title'),
-    history: 'auto'
+    history: 'auto',
+    classNames: 'job loading homepage-carousel'
 }
 const backgroundSrc = getImageUrl('frank_grayscale.webp').toString()
 const canonicalUrl = Astro.url.href

@@ -82,16 +82,75 @@
         }
         .tags {
             display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-self: stretch;
+            font-size: var(--metadata-tag-font-size);
+            font-weight: 500;
+
+            .tags-label {
+                font-family: 'REM Variable', sans-serif;
+                font-size: 0.72rem;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--color-text-muted);
+            }
+
+            .tags-list {
+                display: flex;
+                justify-content: var(--metadata-tags-justify-content);
+                align-items: center;
+                align-content: center;
+                gap: 0.25rem;
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Homepage tags (no label wrapper) */
+        .tags:not(:has(.tags-list)) {
+            flex-direction: row;
             justify-content: var(--metadata-tags-justify-content);
             align-items: center;
             align-content: center;
-            gap: 0.25rem;
-            align-self: stretch;
             flex-wrap: wrap;
-            font-size: var(--metadata-tag-font-size);
-            font-weight: 500;
         }
-        p {
+
+        .credits {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            padding: 0.25rem 0;
+
+            .credits-label {
+                font-family: 'REM Variable', sans-serif;
+                font-size: 0.72rem;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--color-text-muted);
+            }
+
+            .credits-roles {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: var(--metadata-tags-justify-content);
+
+                .credit-role {
+                    font-family: 'REM Variable', sans-serif;
+                    font-size: var(--metadata-h2);
+                    color: var(--color-text-secondary);
+                    font-weight: 500;
+
+                    &:not(:last-child)::after {
+                        content: ' ·';
+                        color: var(--color-text-muted);
+                        margin-left: 0.5rem;
+                    }
+                }
+            }
+        }        p {
             color: var(--color-text-paragraph);
             text-shadow: 2px 2px 0.2rem var(--color-background-dark);
             max-width: 80ch;
@@ -108,39 +167,89 @@
             display: flex;
             padding: 1.5rem 0;
             justify-content: var(--metadata-buttons-justify-content);
-            align-items: center;
+            align-items: flex-start;
             align-content: center;
-            gap: 0.75rem;
+            gap: 1rem;
             align-self: stretch;
             flex-wrap: wrap;
 
-            .playback-controls {
+            .primary-actions {
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                gap: 0.75rem;
+                gap: 1rem;
+                flex-wrap: wrap;
 
-                .button {
-                    &:first-child {
-                        flex-shrink: 0;
-                        z-index: 1;
-                    }
+                .secondary-actions {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
 
-                    &:last-child {
-                        animation: fade-out 0.5s var(--smooth-transition-function) forwards;
-                        flex-shrink: 1;
-                        width: 0;
-                        height: 0;
-                        transform: translateX(-100%);
-                    }
+                    .button.round {
+                        background: hsla(var(--color-background-neutral-values), 0.9);
+                        border: 1px solid hsla(var(--color-accent-primary-values), 0.2);
+                        padding: 1rem;
+                        min-width: 56px;
+                        min-height: 56px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: relative;
 
-                    &.visible {
-                        animation: fade-in 0.5s var(--smooth-transition-function) forwards;
-                        transform: translateX(0);
-                    }
+                        &:hover {
+                            background: hsla(var(--color-background-neutral-values), 1);
+                            border-color: hsla(var(--color-accent-primary-values), 0.4);
+                            transform: scale(1.05);
+                        }
 
-                    &:hover {
+                        .icon-left {
+                            width: 28px;
+                            height: 28px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            position: relative;
+                            overflow: hidden;
+
+                            svg {
+                                width: 28px;
+                                height: 28px;
+                                position: absolute;
+                                transition: opacity 0.3s var(--smooth-transition-function);
+                            }
+
+                            svg:first-child {
+                                opacity: 1;
+                            }
+
+                            svg:last-child {
+                                opacity: 0;
+                            }
+                        }
+
+                        &.playing .icon-left,
+                        &.muted .icon-left {
+                            svg:first-child {
+                                opacity: 0;
+                            }
+
+                            svg:last-child {
+                                opacity: 1;
+                            }
+                        }
+
+                        &:last-child {
+                            animation: fade-out 0.5s var(--smooth-transition-function) forwards;
+                            transform: translateX(-100%) scale(0);
+                            opacity: 0;
+                        }
+
                         &.visible {
+                            animation: fade-in 0.5s var(--smooth-transition-function) forwards;
+                            transform: translateX(0) scale(1);
+                            opacity: 1;
+                        }
+
+                        &:hover.visible {
                             transform: translateX(0) scale(1.05);
                         }
                     }
