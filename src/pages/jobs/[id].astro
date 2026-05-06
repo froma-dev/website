@@ -15,26 +15,25 @@ export async function getStaticPaths() {
     const experiences = await getCollection('experience')
     const paths = []
     
-    // Generate paths for both languages
-    for (const lang of ['en', 'es']) {
-        const langRegEx = new RegExp(lang)
-        const langExperiences = experiences.filter(({id}) => langRegEx.test(id))
+    // Generate paths for English only (this is the main /jobs/ route)
+    const lang = 'en'
+    const langRegEx = new RegExp(lang)
+    const langExperiences = experiences.filter(({id}) => langRegEx.test(id))
+    
+    for (const experience of langExperiences) {
+        const {data} = experience
+        const {id, href, backgroundUrl} = data
         
-        for (const experience of langExperiences) {
-            const {data} = experience
-            const {id, href, backgroundUrl} = data
-            
-            paths.push({
-                params: {
-                    id: id
-                },
-                props: {
-                    url: href,
-                    job: data,
-                    backgroundUrl: getImageUrl(backgroundUrl),
-                }
-            })
-        }
+        paths.push({
+            params: {
+                id: id
+            },
+            props: {
+                url: href,
+                job: data,
+                backgroundUrl: getImageUrl(backgroundUrl),
+            }
+        })
     }
     
     return paths
