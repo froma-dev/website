@@ -21,6 +21,7 @@ export async function getExperienceCollection(lang: Language) {
                 company: job.company,
                 description: job.description,
                 startYear: job.startYear,
+                endYear: job.endYear,
                 shortDescription: job.shortDescription,
                 thumbnailUrl: getImageUrl(job.thumbnailUrl).toString(),
             } as ExperienceAsset

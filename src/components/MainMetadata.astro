@@ -10,6 +10,7 @@ import PauseFilled from "../icons/PauseFilled.astro";
 import GithubLink from "./Links/Github.astro";
 import DownloadCV from "./Links/DownloadCV.astro";
 import Button from "./Button.astro";
+import NowStreamingBadge from "./NowStreamingBadge.astro";
 import {useTranslations, getLangFromUrl} from "@i18n/utils"
 
 const emailUrl = 'contact@frankromana.dev'
@@ -21,11 +22,12 @@ const t = useTranslations(lang);
 ---
 
 <Metadata>
+    <NowStreamingBadge />
     <h1>Frank<br/>Romaña</h1>
     <section class="info">
         <h2>
             <span class="role">{t('info.role')}</span>
-            <span>/</span>
+            <span class="separator">/</span>
             <span>{t('info.location')}</span>
         </h2>
         <div class="links">
@@ -43,22 +45,24 @@ const t = useTranslations(lang);
         <Tag text="Frontend"/>
     </div>
     <div class="buttons">
-        <DownloadCV type="cta" id="download-cv" ariaLabel={t('main.metadata.button.downloadCv')}>
-            {t('main.metadata.button.downloadCv')}
-        </DownloadCV>
-        <div class="playback-controls">
-            <Button text="" type="round" id="play-pause-button" ariaLabel={t('main.metadata.button.playPause.ariaLabel')}>
-                <div class="icon-left">
-                    <PlayFilled/>
-                    <PauseFilled/>
-                </div>
-            </Button>
-            <Button text="" type="round" id="volume-on-off-button" ariaLabel={t('main.metadata.button.mute.ariaLabel')}>
-                <div class="icon-left">
-                    <Volume/>
-                    <VolumeOff/>
-                </div>
-            </Button>
+        <div class="primary-actions">
+            <DownloadCV type="cta" id="download-cv" ariaLabel={t('main.metadata.button.downloadCv')}>
+                {t('main.metadata.button.downloadCv')}
+            </DownloadCV>
+            <div class="secondary-actions">
+                <Button text="" type="round" id="play-pause-button" ariaLabel={t('main.metadata.button.playPause.ariaLabel')}>
+                    <div class="icon-left">
+                        <PlayFilled/>
+                        <PauseFilled/>
+                    </div>
+                </Button>
+                <Button text="" type="round" id="volume-on-off-button" ariaLabel={t('main.metadata.button.mute.ariaLabel')}>
+                    <div class="icon-left">
+                        <Volume/>
+                        <VolumeOff/>
+                    </div>
+                </Button>
+            </div>
         </div>
     </div>
 </Metadata>

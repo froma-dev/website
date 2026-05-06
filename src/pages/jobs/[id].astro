@@ -12,17 +12,19 @@ const translations = useTranslations(lang)
 
 setCurrentUrl(Astro.url)
 export async function getStaticPaths() {
-    const lang = 'en'
     const experiences = await getCollection('experience')
-    const langRegEx = new RegExp(lang)
-
-    return experiences
-        .filter(({id}) => langRegEx.test(id))
-        .map(experience => {
+    const paths = []
+    
+    // Generate paths for both languages
+    for (const lang of ['en', 'es']) {
+        const langRegEx = new RegExp(lang)
+        const langExperiences = experiences.filter(({id}) => langRegEx.test(id))
+        
+        for (const experience of langExperiences) {
             const {data} = experience
             const {id, href, backgroundUrl} = data
-
-            return {
+            
+            paths.push({
                 params: {
                     id: id
                 },
@@ -31,8 +33,11 @@ export async function getStaticPaths() {
                     job: data,
                     backgroundUrl: getImageUrl(backgroundUrl),
                 }
-            }
-        })
+            })
+        }
+    }
+    
+    return paths
 }
 
 const {url, job, backgroundUrl} = Astro.props
@@ -53,14 +58,16 @@ const assets = assets2
             company: job.company,
             description: job.description,
             startYear: job.startYear,
+            endYear: job.endYear,
             shortDescription: job.shortDescription,
-            thumbnailUrl: job.thumbnailUrl,
+            thumbnailUrl: getImageUrl(job.thumbnailUrl).toString(),
         }
     })
 
 const carouselParams = {
-    title: translations('experience.carousel.title'),
-    history: 'replace'
+    title: translations('experience.more.like.this'),
+    history: 'replace',
+    classNames: 'job loading job-detail-carousel'
 }
 const canonicalUrl = Astro.url.href
 ---

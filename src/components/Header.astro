@@ -27,6 +27,20 @@ const translations = useTranslations(lang)
         grid-row: auto;
         grid-column: 1;
         z-index: 1;
+        position: sticky;
+        top: 0;
+        transition: background 0.3s var(--smooth-transition-function),
+                    backdrop-filter 0.3s var(--smooth-transition-function),
+                    box-shadow 0.3s var(--smooth-transition-function);
+
+        &.scrolled {
+            background: hsla(var(--color-background-dark-values), 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 0 hsla(var(--color-accent-primary-values), 0.08);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
     }
 
     .container {
@@ -74,7 +88,6 @@ const translations = useTranslations(lang)
             }
         }
     }
-
     .logo {
         display: flex;
         flex-direction: row;
@@ -113,3 +126,24 @@ const translations = useTranslations(lang)
         }
     }
 </style>
+
+<script>
+    function setupStickyHeader() {
+        const $header = document.querySelector('.header') as HTMLElement
+        if (!$header) return
+
+        const onScroll = () => {
+            if (window.scrollY > 20) {
+                $header.classList.add('scrolled')
+            } else {
+                $header.classList.remove('scrolled')
+            }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true })
+        // Run once on load in case page is already scrolled
+        onScroll()
+    }
+
+    document.addEventListener('astro:page-load', setupStickyHeader)
+</script>
