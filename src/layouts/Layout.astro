@@ -118,7 +118,7 @@ const lang = getLangFromUrl(Astro.url)
         $body = document.body as HTMLBodyElement
 
         // Force CSS recalculation after view transition
-        const $carouselContainer = document.querySelector('.carousel-container')
+        const $carouselContainer = document.querySelector('.carousel-container') as HTMLElement
         if ($carouselContainer) {
             // Trigger a reflow to ensure CSS variables are recalculated
             $carouselContainer.style.display = 'none'
