@@ -1,4 +1,4 @@
-export type JobId = '24i' | 'nokia'
+export type JobId = '24i' | 'nokia' | 'aszendit'
 
 export interface Job {
     id: JobId,
@@ -10,8 +10,9 @@ export interface Job {
     description: string,
     logoSrc?: string,
     backgroundUrl: string,
+    imageFit?: 'cover' | 'contain',
     transitionName: string,
     href: string,
     startYear: number
-    endYear: number
+    endYear?: number
 }

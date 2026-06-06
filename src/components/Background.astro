@@ -2,13 +2,15 @@
 interface Props {
     src: string;
     alt: string;
+    fit?: 'cover' | 'contain';
 }
 import Video from "./Video.astro";
-const {src, alt}: Props = Astro.props;
+const {src, alt, fit = 'cover'}: Props = Astro.props;
+const useContainFit = fit === 'contain'
 ---
 <div class="background">
     <Video/>
-    <img src={src} alt={alt} class="background-image loading" aspect-ratio="3000/2000"/>
+    <img src={src} alt={alt} class:list={["background-image", "loading", useContainFit && "contain-fit"]} aspect-ratio="3000/2000"/>
     <div class="background-overlay"/>
     <div class="background-grain" aria-hidden="true"/>
 </div>
@@ -41,6 +43,11 @@ const {src, alt}: Props = Astro.props;
 
             &.loaded {
                 opacity: 1;
+            }
+
+            &.contain-fit {
+                object-fit: contain;
+                background-color: hsl(216 25% 8%);
             }
         }
 

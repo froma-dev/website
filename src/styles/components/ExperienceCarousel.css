@@ -40,7 +40,7 @@
             aspect-ratio: var(--card-aspect-ratio);
             border-radius: var(--card-border-radius);
             border: 1px solid hsla(var(--color-accent-primary-values), 0.1);
-            background: var(--color-background-light);
+            background: #fff;
             cursor: pointer;
             /* Ensure border-radius is preserved during transform */
             will-change: transform;
@@ -67,6 +67,7 @@
                     width: 100%;
                     height: 100%;
                     aspect-ratio: unset;
+                    background: #fff;
                     border-radius: var(--card-border-radius);
                     overflow: hidden;
 
@@ -78,6 +79,12 @@
                         filter: brightness(0.85) saturate(0.7) contrast(1.1);
                         transition: transform 0.6s var(--smooth-transition-function),
                                     filter 0.6s var(--smooth-transition-function);
+                    }
+
+                    .thumbnail.contain-fit {
+                        object-fit: contain;
+                        background: #fff;
+                        filter: none;
                     }
 
                     /* Strong gradient for text legibility */
@@ -167,15 +174,17 @@
                     }
 
                     .season-divider {
-                        color: var(--color-text-muted);
+                        color: hsl(215 18% 78%);
                         font-size: var(--card-season-label-size);
+                        text-shadow: 0 1px 4px hsl(0 0% 0% / 0.45);
                     }
 
                     .season-years {
                         font-family: 'REM Variable', sans-serif;
                         font-size: var(--card-season-label-size);
-                        color: var(--color-text-muted);
+                        color: hsl(215 18% 90%);
                         letter-spacing: 0.04em;
+                        text-shadow: 0 1px 4px hsl(0 0% 0% / 0.55);
                     }
                 }
 
@@ -238,6 +247,11 @@
                     .thumbnail-wrapper .thumbnail {
                         transform: scale(1.08);
                         filter: brightness(0.75) saturate(0.6) contrast(1.2);
+                    }
+
+                    .thumbnail-wrapper .thumbnail.contain-fit {
+                        transform: none;
+                        filter: none;
                     }
 
                     .title {

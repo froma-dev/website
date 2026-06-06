@@ -1,0 +1,16 @@
+{
+  "id": "aszendit",
+  "company": "Aszendit Tech",
+  "linkedinUrl": "https://www.linkedin.com/company/aszendit/",
+  "websiteUrl": "https://www.aszendit.com/",
+  "roles": ["Desarrollador JavaScript"],
+  "tags": ["Samsung Tizen", "LG WebOS", "AndroidTV", "OTT", "STBs"],
+  "description": "Desarrollo de aplicaciones OTT de alto rendimiento para Smart TVs en múltiples plataformas, incluyendo Samsung Tizen, LG WebOS, AndroidTV y STBs. Enfocado en la optimización del rendimiento para garantizar una experiencia de streaming fluida y rápida en entornos de alto tráfico.",
+  "shortDescription": "Desarrollo de aplicaciones OTT para Smart TVs y optimización de rendimiento en entornos de alto tráfico.",
+  "backgroundUrl": "asz.webp",
+  "thumbnailUrl": "asz.webp",
+  "imageFit": "contain",
+  "transitionName": "aszendit_logo",
+  "href": "/jobs/aszendit",
+  "startYear": 2025
+}

@@ -1,5 +1,6 @@
 ---
 import {getCollection} from 'astro:content'
+import type {CollectionEntry} from 'astro:content'
 import Layout from "@layouts/Layout.astro";
 import ExperienceCarousel from "@components/ExperienceCarousel.astro";
 import Header from "@components/Header.astro";
@@ -12,13 +13,12 @@ const translations = useTranslations(lang)
 
 setCurrentUrl(Astro.url)
 export async function getStaticPaths() {
-    const experiences = await getCollection('experience')
+    const experiences: CollectionEntry<'experience'>[] = await getCollection('experience')
     const paths = []
     
     // Generate paths for English only (this is the main /jobs/ route)
     const lang = 'en'
-    const langRegEx = new RegExp(lang)
-    const langExperiences = experiences.filter(({id}) => langRegEx.test(id))
+    const langExperiences = experiences.filter((entry) => entry.id.startsWith(`${lang}/`))
     
     for (const experience of langExperiences) {
         const {data} = experience
@@ -42,12 +42,11 @@ export async function getStaticPaths() {
 const {url, job, backgroundUrl} = Astro.props
 const {company} = job
 
-const assets2 = await getCollection('experience')
-const langRegEx = new RegExp(lang)
+const assets2: CollectionEntry<'experience'>[] = await getCollection('experience')
 
 const assets = assets2
-    .filter(({id, data}) => langRegEx.test(id) && !url.includes(data.href))
-    .map(asset => {
+    .filter((entry: CollectionEntry<'experience'>) => entry.id.startsWith(`${lang}/`) && !url.includes(entry.data.href))
+    .map((asset: CollectionEntry<'experience'>) => {
         const job = asset.data
         return {
             classNames: 'job',
@@ -58,6 +57,7 @@ const assets = assets2
             description: job.description,
             startYear: job.startYear,
             endYear: job.endYear,
+            imageFit: job.imageFit,
             shortDescription: job.shortDescription,
             thumbnailUrl: getImageUrl(job.thumbnailUrl).toString(),
         }
@@ -75,6 +75,7 @@ const canonicalUrl = Astro.url.href
         description={translations('experience.meta.description')}
         bgSrc=`${backgroundUrl}`
         bgTitle={`${translations('experience.meta.background.alt')} ${company}`}
+        bgFit={job.imageFit ?? 'cover'}
         hasFooterContact={true}
         canonicalURL={canonicalUrl}>
     <Header>

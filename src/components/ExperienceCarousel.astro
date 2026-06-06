@@ -9,13 +9,14 @@ const {title, history, classNames = 'job loading'} = params
 const lang = getLangFromUrl(Astro.url)
 const translations = useTranslations(lang)
 
-// Sort by startYear ascending so Season 1 = earliest job
-const sortedAssets = [...assets].sort((a: ExperienceAsset, b: ExperienceAsset) => a.startYear - b.startYear)
+// Sort by startYear descending so recent roles are shown first
+const sortedAssets = [...assets].sort((a: ExperienceAsset, b: ExperienceAsset) => b.startYear - a.startYear)
 ---
 <Carousel title={title} classNames={classNames}>
     {sortedAssets.map((experience: ExperienceAsset, index: number) => {
-        const seasonNumber = index + 1
+        const seasonNumber = sortedAssets.length - index
         const duration = experience.endYear ? experience.endYear - experience.startYear : new Date().getFullYear() - experience.startYear
+        const useContainThumbnail = experience.imageFit === 'contain'
         return (
             <a
                     class="asset-link"
@@ -27,7 +28,7 @@ const sortedAssets = [...assets].sort((a: ExperienceAsset, b: ExperienceAsset) =
                         data-astro-history={history ?? 'auto'}>
                     <section class="company-info">
                         <div class="thumbnail-wrapper">
-                            <img src={experience.thumbnailUrl} alt={`${experience.company} thumbnail`} class="thumbnail" loading="lazy" />
+                            <img src={experience.thumbnailUrl} alt={`${experience.company} thumbnail`} class:list={["thumbnail", useContainThumbnail && "contain-fit"]} loading="lazy" />
                             <div class="thumbnail-overlay"/>
                             <span class="season-badge">S{seasonNumber}</span>
                         </div>

@@ -23,7 +23,9 @@ const {
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
-const duration = endYear - startYear
+const currentYear = new Date().getFullYear()
+const yearsCount = (endYear ?? currentYear) - startYear
+const endYearLabel = endYear !== undefined ? `${endYear}` : (lang === 'en' ? 'Present' : 'Actualidad')
 const websiteTooltipText = websiteUrl
 const linkedinTooltipText = lang === 'en' ? `${company}'s LinkedIn` : `LinkedIn de ${company}`
 ---
@@ -32,8 +34,8 @@ const linkedinTooltipText = lang === 'en' ? `${company}'s LinkedIn` : `LinkedIn 
     <h1 set:html={company.split(' ').join('<br>')}></h1>
     <div class="info">
         <div class="experience-years">
-            <Tag text={`${startYear}–${endYear}`} className="year"/>
-            <Tag text={`${duration} ${t('experience.tag.seasons')}`} className="duration"/>
+            <Tag text={`${startYear}–${endYearLabel}`} className="year"/>
+            <Tag text={`${yearsCount} ${t('experience.tag.seasons')}`} className="duration"/>
         </div>
         <div class="links">
             <LinkedinLink href={linkedinUrl} tooltipText={linkedinTooltipText}/>

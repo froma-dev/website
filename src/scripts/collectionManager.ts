@@ -6,10 +6,10 @@ import {getImageUrl} from "@services/cloud/cloud.ts";
 
 export async function getExperienceCollection(lang: Language) {
     const collection = await getCollection('experience')
-    const langRegEx = new RegExp(lang)
 
     return collection
-        .filter(({id}) => langRegEx.test(id))
+        .filter(({id}) => id.startsWith(`${lang}/`))
+        .sort((a, b) => b.data.startYear - a.data.startYear)
         .map(asset => {
             const job = asset.data
 
@@ -22,6 +22,7 @@ export async function getExperienceCollection(lang: Language) {
                 description: job.description,
                 startYear: job.startYear,
                 endYear: job.endYear,
+                imageFit: job.imageFit,
                 shortDescription: job.shortDescription,
                 thumbnailUrl: getImageUrl(job.thumbnailUrl).toString(),
             } as ExperienceAsset
