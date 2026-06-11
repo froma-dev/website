@@ -32,7 +32,10 @@ const sortedAssets = [...assets].sort((a: ExperienceAsset, b: ExperienceAsset) =
                             <div class="thumbnail-overlay"/>
                             <span class="season-badge">S{seasonNumber}</span>
                         </div>
-                        <h3 class="title">{experience.company}</h3>
+                        <div class="card-bottom">
+                            <span class="card-date">{experience.startYear}{experience.endYear ? `–${experience.endYear}` : '–'}</span>
+                            <h3 class="title">{experience.company}</h3>
+                        </div>
                     </section>
                     <section class="metadata">
                         <div class="season-info">

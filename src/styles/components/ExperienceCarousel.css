@@ -112,24 +112,39 @@
                     }
                 }
 
-                /* Company name pinned to bottom-left */
-                .title {
+                /* Year + company name pinned to bottom-left */
+                .card-bottom {
                     position: absolute;
                     bottom: var(--card-content-inset);
                     left: var(--card-content-inset);
                     right: var(--card-content-inset);
-                    text-align: left;
-                    font-size: var(--card-title-size);
-                    line-height: 1.15;
-                    color: var(--color-text-primary);
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.25rem;
                     z-index: 3;
-                    text-shadow: 
-                        0 1px 3px hsl(0 0% 0% / 1),
-                        0 2px 6px hsl(0 0% 0% / 0.8),
-                        0 4px 12px hsl(0 0% 0% / 0.6);
-                    -webkit-text-stroke: 0.5px hsl(0 0% 0% / 0.3);
                     transition: opacity 0.3s var(--smooth-transition-function),
                                 transform 0.3s var(--smooth-transition-function);
+
+                    .card-date {
+                        font-family: 'REM Variable', sans-serif;
+                        font-size: var(--card-season-label-size);
+                        font-weight: 600;
+                        letter-spacing: 0.08em;
+                        color: var(--color-accent-primary);
+                        text-shadow: 0 1px 4px hsl(0 0% 0% / 0.7);
+                    }
+
+                    .title {
+                        text-align: left;
+                        font-size: var(--card-title-size);
+                        line-height: 1.15;
+                        color: var(--color-text-primary);
+                        text-shadow: 
+                            0 1px 3px hsl(0 0% 0% / 1),
+                            0 2px 6px hsl(0 0% 0% / 0.8),
+                            0 4px 12px hsl(0 0% 0% / 0.6);
+                        -webkit-text-stroke: 0.5px hsl(0 0% 0% / 0.3);
+                    }
                 }
             }
 
@@ -254,7 +269,7 @@
                         filter: none;
                     }
 
-                    .title {
+                    .card-bottom {
                         opacity: 0;
                         transform: translateY(8px);
                     }
